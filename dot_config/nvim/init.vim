@@ -9,11 +9,15 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp', {'branch':'main'}
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'windwp/nvim-autopairs'
+Plug 'mfussenegger/nvim-dap'
 call plug#end()
 if has('nvim-0.5')
   augroup lsp
     au!
-    au FileType java lua require('jdtls').start_or_attach({cmd = {'launcher.sh'}})
+    au FileType java lua require('jdtls').start_or_attach({cmd = {'launcher.sh'},init_options = {bundles = {vim.fn.glob("/usr/share/java-debug/com.microsoft.java.debug.plugin-*.jar")}}})
+    au FileType java lua require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    au FileType java lua require('jdtls.setup').add_commands()
     nnoremap <A-CR> <Cmd>lua require('jdtls').code_action()<CR>
     vnoremap <A-CR> <Esc><Cmd>lua require('jdtls').code_action(true)<CR>
     nnoremap <leader>r <Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>
@@ -23,7 +27,15 @@ if has('nvim-0.5')
     vnoremap crv <Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>
     nnoremap crc <Cmd>lua require('jdtls').extract_constant()<CR>
     vnoremap crc <Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>
+    nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
+    nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
     vnoremap crm <Esc><Cmd>lua require('jdtls').extract_method(true)<CR>
+    
+    command! -buffer JdtCompile lua require('jdtls').compile()
+    command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()
+    command! -buffer JdtJol lua require('jdtls').jol()
+    command! -buffer JdtBytecode lua require('jdtls').javap()
+    command! -buffer JdtJshell lua require('jdtls').jshell()
   augroup end
 endif
 
@@ -81,4 +93,4 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 set copyindent
-
+lua require('nvim-autopairs').setup{}
