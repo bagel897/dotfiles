@@ -11,6 +11,9 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'windwp/nvim-autopairs'
 Plug 'mfussenegger/nvim-dap'
+Plug 'neoclide/coc.nvim',{'branch':'release'}
+Plug 'liuchengxu/eleline.vim'
+Plug 'simrat39/rust-tools.nvim'
 call plug#end()
 if has('nvim-0.5')
   augroup lsp
@@ -93,4 +96,5 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 set copyindent
+set laststatus=2
 lua require('nvim-autopairs').setup{}
