@@ -18,6 +18,7 @@ alias 'find'=fd
 alias 'sudo'='sudo '
 alias diff='diff --color=auto'
 alias ip='ip -color=auto'
+alias bpytop="btop"
 #alias 'cd'=z
 #set sudo 'sudo '
 alias fishrc="$EDITOR ~/.config/fish/config.fish"
