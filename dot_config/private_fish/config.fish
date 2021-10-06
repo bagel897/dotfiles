@@ -15,7 +15,7 @@ alias 'grep'=rg
 alias 'du'=dust
 alias 'cat'=bat
 alias 'find'=fd
-alias 'sudo'='sudo '
+#alias 'sudo'='sudo '
 alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 alias bpytop="btop"
