@@ -1,0 +1,13 @@
+Host bagelpi
+	User bageljr
+	Port 6389
+	Hostname bageljr.duckdns.org
+Host sampi
+	Hostname 192.168.3.144
+Host bagelgit
+	User git
+	Port 222
+	Hostname git.bageljr.duckdns.org
+Host neogi
+	User neogi
+	Hostname 129.120.30.20
