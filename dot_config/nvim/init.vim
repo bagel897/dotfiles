@@ -14,6 +14,7 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'neoclide/coc.nvim',{'branch':'release'}
 Plug 'liuchengxu/eleline.vim'
 Plug 'simrat39/rust-tools.nvim'
+Plug 'nvim-lua/lsp-status.nvim'
 call plug#end()
 if has('nvim-0.5')
   augroup lsp
