@@ -44,8 +44,8 @@ end
 function fishrc
     chezmoi edit --apply ~/.config/fish/config.fish
 end
-function fishrc
-    chezmoi edit --apply ~/.config/neovim/init.vim
+function neovimrc
+    chezmoi edit --apply ~/.config/nvim/init.vim
 end
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
