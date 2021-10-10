@@ -21,7 +21,6 @@ alias ip='ip -color=auto'
 alias bpytop="btop"
 #alias 'cd'=z
 #set sudo 'sudo '
-alias fishrc="$EDITOR ~/.config/fish/config.fish"
 function java-gui
     java --module-path /usr/lib/jvm/java-11-openjfx/lib --add-modules javafx.controls,javafx.fxml,javafx.web $argv
 end
@@ -38,7 +37,16 @@ function pipewire-restart
     systemctl --user restart app-discord@autostart.service
     pulseeffects-restart
 end
-
+function windows
+    sudo bootctl set-oneshot auto-windoes
+    sudo reboot
+end
+function fishrc
+    chezmoi edit --apply ~/.config/fish/config.fish
+end
+function fishrc
+    chezmoi edit --apply ~/.config/neovim/init.vim
+end
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
 set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")
