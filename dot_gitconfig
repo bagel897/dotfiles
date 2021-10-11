@@ -1,0 +1,12 @@
+[user]
+	name = bageljr
+	email = aryanagarwal897@gmail.com
+	signingkey = D708D4394DD7941BA62C301984055A5656BC1956
+[core]
+	autocrlf = input
+[commit]
+	gpgSign = true
+[color]
+	ui = auto
+[init]
+	defaultBranch = main
