@@ -17,42 +17,10 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/lsp-status.nvim'
 call plug#end()
 if has('nvim-0.5')
-  augroup lsp
-    au!
-    config['on_attach'] = function(client, bufnr)
-      -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
-      -- you make during a debug session immediately.
-      -- Remove the option if you do not want that.
-      require('jdtls').setup_dap({ hotcodereplace = 'auto' })
-    end
-    config['init_options'] = {
-      bundles = {
-        vim.fn.glob("path/to/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
-      };
-    }
-    config['cmd'] ='launcher.sh'
-    au FileType java lua require('jdtls').start_or_attach(config)
-    au FileType java lua require('jdtls').setup_dap({ hotcodereplace = 'auto' })
-    au FileType java lua require('jdtls.setup').add_commands()
-    nnoremap <A-CR> <Cmd>lua require('jdtls').code_action()<CR>
-    vnoremap <A-CR> <Esc><Cmd>lua require('jdtls').code_action(true)<CR>
-    nnoremap <leader>r <Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>
-
-    nnoremap <A-o> <Cmd>lua require'jdtls'.organize_imports()<CR>
-    nnoremap crv <Cmd>lua require('jdtls').extract_variable()<CR>
-    vnoremap crv <Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>
-    nnoremap crc <Cmd>lua require('jdtls').extract_constant()<CR>
-    vnoremap crc <Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>
-    nnoremap <leader>df <Cmd>lua require'jdtls'.test_class()<CR>
-    nnoremap <leader>dn <Cmd>lua require'jdtls'.test_nearest_method()<CR>
-    vnoremap crm <Esc><Cmd>lua require('jdtls').extract_method(true)<CR>
-    
-    command! -buffer JdtCompile lua require('jdtls').compile()
-    command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()
-    command! -buffer JdtJol lua require('jdtls').jol()
-    command! -buffer JdtBytecode lua require('jdtls').javap()
-    command! -buffer JdtJshell lua require('jdtls').jshell()
-  augroup end
+	augroup jdtls_lsp
+	    autocmd!
+	    autocmd FileType java lua require'jdtls_setup'.setup()
+	augroup end
 endif
 
 lua vim.o.completeopt = 'menuone,noselect'
