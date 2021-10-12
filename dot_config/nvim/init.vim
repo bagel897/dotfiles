@@ -19,7 +19,19 @@ call plug#end()
 if has('nvim-0.5')
   augroup lsp
     au!
-    au FileType java lua require('jdtls').start_or_attach({cmd = {'launcher.sh'},init_options = {bundles = {vim.fn.glob("/usr/share/java-debug/com.microsoft.java.debug.plugin-*.jar")}}})
+    config['on_attach'] = function(client, bufnr)
+      -- With `hotcodereplace = 'auto' the debug adapter will try to apply code changes
+      -- you make during a debug session immediately.
+      -- Remove the option if you do not want that.
+      require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    end
+    config['init_options'] = {
+      bundles = {
+        vim.fn.glob("path/to/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
+      };
+    }
+    config['cmd'] ='launcher.sh'
+    au FileType java lua require('jdtls').start_or_attach(config)
     au FileType java lua require('jdtls').setup_dap({ hotcodereplace = 'auto' })
     au FileType java lua require('jdtls.setup').add_commands()
     nnoremap <A-CR> <Cmd>lua require('jdtls').code_action()<CR>
