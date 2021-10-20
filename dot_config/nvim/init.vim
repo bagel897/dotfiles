@@ -64,8 +64,8 @@ lua << EOF
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
         },
+    }
     nnoremap <leader>v <cmd>CHADopen<cr>
-}
 EOF
 lua require('jdtls.ui').pick_one_async = require('fzy').pick_one
 set expandtab
