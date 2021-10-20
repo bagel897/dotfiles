@@ -18,6 +18,7 @@ Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+Plug 'radenling/vim-dispatch-neovim'
 call plug#end()
 lua vim.o.completeopt = 'menuone,noselect'
 lua << EOF
