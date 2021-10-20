@@ -84,3 +84,4 @@ set autoindent
 set copyindent
 set laststatus=2
 lua require('nvim-autopairs').setup{}
+lua require('jdtls.dap').setup_dap_main_class_configs()
