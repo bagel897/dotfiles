@@ -17,13 +17,15 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 call plug#end()
-if has('nvim-0.5')
-	augroup jdtls_lsp
-	    autocmd!
-	    autocmd FileType java lua require'jdtls_setup'.setup()
-	augroup end
-endif
+#if has('nvim-0.5')
+##	augroup jdtls_lsp
+#
+##        autocmd!
+#	    autocmd FileType java lua require'jdtls_setup'.setup()
+#	augroup end
+#endif
 
 lua vim.o.completeopt = 'menuone,noselect'
 lua << EOF
