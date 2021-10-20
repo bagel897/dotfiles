@@ -65,8 +65,8 @@ lua << EOF
             { name = 'luasnip' },
         },
     }
-    nnoremap <leader>v <cmd>CHADopen<cr>
 EOF
+nnoremap <leader>v <cmd>CHADopen<cr>
 lua require('jdtls.ui').pick_one_async = require('fzy').pick_one
 set expandtab
 set tabstop=4
