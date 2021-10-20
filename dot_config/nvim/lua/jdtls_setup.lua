@@ -162,7 +162,7 @@ function M.setup()
           };
         };
     }
-    config.cmd = {'launcher.sh', workspace_folder}
+    config.cmd = {'jdtls', workspace_folder}
     config.on_attach = on_attach
     config.on_init = function(client, _)
         client.notify('workspace/didChangeConfiguration', { settings = config.settings })
