@@ -21,6 +21,12 @@ Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-dispatch'
 call plug#end()
+if has('nvim-0.5')
+	augroup jdtls_lsp
+	    autocmd!
+	    autocmd FileType java lua require'jdtls_setup'.setup()
+	augroup end
+endif
 lua vim.o.completeopt = 'menuone,noselect'
 lua << EOF
    local luasnip = require 'luasnip'
