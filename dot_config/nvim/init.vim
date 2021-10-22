@@ -77,3 +77,4 @@ set shiftwidth=4
 set autoindent
 set copyindent
 set laststatus=2
+set updatetime=300
