@@ -83,4 +83,4 @@ set shiftwidth=4
 set autoindent
 set copyindent
 set laststatus=2
-lua require('nvim-autopairs').setup{}
+#lua require('nvim-autopairs').setup{}
