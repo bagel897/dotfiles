@@ -11,7 +11,6 @@ Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-dispatch'
 Plug 'puremourning/vimspector'
 call plug#end()
-lua vim.o.completeopt = 'menuone,noselect'
 nnoremap <leader>v <cmd>CHADopen<cr>
 lua require('jdtls.ui').pick_one_async = require('fzy').pick_one
 set expandtab
