@@ -1,20 +1,11 @@
 call plug#begin('~/.vim/plugged')
 Plug 'mfussenegger/nvim-jdtls'
-Plug 'hrsh7th/nvim-cmp', {'branch':'main'}
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/cmp-buffer', {'branch':'main'}
-Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'mfussenegger/nvim-fzy', {'branch':'main'}
-Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp', {'branch':'main'}
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'L3MON4D3/LuaSnip'
 Plug 'neoclide/coc.nvim',{'branch':'release'}
 Plug 'liuchengxu/eleline.vim'
-Plug 'simrat39/rust-tools.nvim'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-dispatch'
