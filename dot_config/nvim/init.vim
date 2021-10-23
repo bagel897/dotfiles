@@ -9,8 +9,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp', {'branch':'main'}
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'L3MON4D3/LuaSnip'
-Plug 'windwp/nvim-autopairs'
-Plug 'mfussenegger/nvim-dap'
 Plug 'neoclide/coc.nvim',{'branch':'release'}
 Plug 'liuchengxu/eleline.vim'
 Plug 'simrat39/rust-tools.nvim'
@@ -20,6 +18,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-dispatch'
+Plug 'puremourning/vimspector'
 call plug#end()
 lua vim.o.completeopt = 'menuone,noselect'
 lua << EOF
