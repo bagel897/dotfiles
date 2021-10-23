@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'mfussenegger/nvim-jdtls'
 Plug 'mfussenegger/nvim-fzy', {'branch':'main'}
-Plug 'hrsh7th/cmp-nvim-lsp', {'branch':'main'}
 Plug 'neoclide/coc.nvim',{'branch':'release'}
 Plug 'liuchengxu/eleline.vim'
 Plug 'nvim-lua/lsp-status.nvim'
