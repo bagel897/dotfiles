@@ -13,7 +13,7 @@ alias 'vim'=micro
 alias 'ls'=exa
 alias 'grep'=rg
 alias 'du'=dust
-alias 'cat'=bat
+alias 'cat'=bat -p -p
 alias 'find'=fd
 #alias 'sudo'='sudo '
 alias diff='diff --color=auto'
