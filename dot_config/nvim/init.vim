@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-#Plug 'mfussenegger/nvim-jdtls'
 Plug 'mfussenegger/nvim-fzy', {'branch':'main'}
 Plug 'neoclide/coc.nvim',{'branch':'release'}
 Plug 'liuchengxu/eleline.vim'
@@ -11,7 +10,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'puremourning/vimspector'
 call plug#end()
 nnoremap <leader>v <cmd>CHADopen<cr>
-#lua require('jdtls.ui').pick_one_async = require('fzy').pick_one
 set expandtab
 set tabstop=4
 set softtabstop=4
