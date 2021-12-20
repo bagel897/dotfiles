@@ -16,3 +16,5 @@ Host aur.archlinux.org
   User aur
 Host cs
     Hostname trix.cs.utexas.edu
+Host hart
+    Hostname 146.6.20.198
