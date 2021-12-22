@@ -2,6 +2,9 @@ Host bagelpi
 	User bageljr
 	Port 6389
 	Hostname bageljr.duckdns.org
+Host bagelpilocal
+    Port 6389
+    Hostname 192.168.3.129
 Host sampi
 	Hostname 192.168.3.144
 Host bagelgit
