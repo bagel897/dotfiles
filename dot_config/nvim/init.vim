@@ -1,8 +1,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'mfussenegger/nvim-fzy', {'branch':'main'}
 Plug 'neoclide/coc.nvim',{'branch':'release'}
-Plug 'liuchengxu/eleline.vim'
-Plug 'nvim-lua/lsp-status.nvim'
+" Plug 'liuchengxu/eleline.vim'
+" Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'radenling/vim-dispatch-neovim'
@@ -77,8 +77,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Use Ctrl+q to show documentation in preview window.
+nnoremap <silent> <C-q> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
