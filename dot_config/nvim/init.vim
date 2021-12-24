@@ -1,8 +1,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'mfussenegger/nvim-fzy', {'branch':'main'}
 Plug 'neoclide/coc.nvim',{'branch':'release'}
-" Plug 'liuchengxu/eleline.vim'
-" Plug 'nvim-lua/lsp-status.nvim'
+Plug 'liuchengxu/eleline.vim'
+Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'radenling/vim-dispatch-neovim'
@@ -159,7 +159,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+#set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
