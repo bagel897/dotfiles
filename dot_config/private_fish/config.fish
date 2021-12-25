@@ -49,7 +49,7 @@ function neovimrc
     chezmoi edit --apply ~/.config/nvim/init.vim
 end
 function ros
-    docker run -v "$HOME/.ros/:/root/.ros/" ros:noetic $argv
+    docker run -v "$HOME/.ros/:/root/.ros/" ros:noetic-robot $argv
 end
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
