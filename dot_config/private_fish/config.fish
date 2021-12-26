@@ -49,7 +49,7 @@ function neovimrc
     chezmoi edit --apply ~/.config/nvim/init.vim
 end
 function ros-start
-    docker run -v "$HOME/.ros/:/root/.ros/" -v "$HOME/code/hart/ros:/ros" --name "ros" ros:noetic-robot 
+    docker run -v "$HOME/.ros/:/root/.ros/" -v "$HOME/code/hart/ros:/ros" --name "ros" -d ros:noetic-robot 
 end
 function ros
     docker exec ros bash
