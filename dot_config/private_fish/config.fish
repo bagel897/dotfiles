@@ -54,6 +54,10 @@ end
 function ros
     docker exec -it ros bash
 end
+function ros-stop
+    docker container stop ros
+    docker container rm ros
+end
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
 set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")
