@@ -52,7 +52,7 @@ function ros-start
     docker run -v "$HOME/.ros/:/root/.ros/" -v "$HOME/code/hart/ros:/ros" --name "ros" -d ros:noetic-robot roscore
 end
 function ros
-    docker exec ros bash
+    docker exec -it ros bash
 end
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
