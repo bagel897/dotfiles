@@ -48,15 +48,8 @@ end
 function neovimrc
     chezmoi edit --apply ~/.config/nvim/init.vim
 end
-function ros-start
-    docker run --restart=always -v "$HOME/.ros/:/root/.ros/" -v "$HOME/code/hart/ros:/ros" --name "ros" -d osrf/ros:noetic-desktop-full roscore
-end
 function ros
     docker exec -it ros bash
-end
-function ros-stop
-    docker container stop ros
-    docker container rm ros
 end
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
