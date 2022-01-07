@@ -10,7 +10,7 @@ set -g theme_display_date yes
 set -g VDPAU_DRIVER radeonsi
 set -g LIBVA_DRIVER_NAME radeonsi
 set fzf_preview_dir_cmd exa --all --color=always
-alias 'vim'=micro
+alias 'vim'=$EDITOR
 alias 'ls'=exa
 alias 'grep'=rg
 alias 'du'=dust
