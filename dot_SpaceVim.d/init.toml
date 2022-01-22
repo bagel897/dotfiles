@@ -44,18 +44,18 @@
   gtagslabel = "ctags"
 [[layers]]
   name = "lsp"
-  enabled_clients = [ "rust_analyzer", "pyright", "clangd", "vimls", "bashls", "sumneko_lua", "jsonls", "cmake", "dockerls"]
+  enabled_clients = [ "rust_analyzer","pyright", "clangd", "vimls", "bashls", "sumneko_lua", "jsonls", "cmake", "dockerls"]
 [[layers]]
   name = "denite"
 [[layers]]
   name = 'git'
 [[layers]]
   name = 'VersionControl'
-# [[layers]]
-  # name = "lang#python"
-  # enable_typeinfo = true
-  # format_on_save = true
-  # enabled_linters = ['python', 'pylint']
+[[layers]]
+  name = "lang#python"
+  enable_typeinfo = true
+  format_on_save = true
+  enabled_linters = ['python', 'pylint']
 
 [[layers]]
   name = "lang#toml"
@@ -65,4 +65,5 @@
   name = "debug"
 [[layers]]
   name = "github"
-
+[[layers]]
+  name = "ssh"
