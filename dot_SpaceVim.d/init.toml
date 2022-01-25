@@ -67,3 +67,5 @@
   name = "github"
 [[layers]]
   name = "ssh"
+[[layers]]
+  name = "lang#c"
