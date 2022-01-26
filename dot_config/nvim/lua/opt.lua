@@ -27,7 +27,7 @@ vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
-
+require("which-key").setup{}
 require('lualine').setup {
   options = {
     icons_enabled = false,

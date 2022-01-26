@@ -118,5 +118,9 @@ cmp.setup {
       { name = 'cmdline' }
     })
   })
-
+require('lint').linters_by_ft = {
+  python = {'pylint','black','mypy'},
+  cpp = {'clangtidy'},
+  lua = {'luacheck'}
+}
 

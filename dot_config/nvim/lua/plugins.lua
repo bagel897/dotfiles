@@ -36,5 +36,8 @@ return require('packer').startup(function()
   'romgrk/barbar.nvim',
   requires = {'kyazdani42/nvim-web-devicons'}
   }
+  use {"nvim-telescope/telescope-dap.nvim"}
+  use {"folke/which-key.nvim"}
+  use 'mfussenegger/nvim-lint'
 end)
 
