@@ -102,23 +102,34 @@ vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
 
 
-require("scrollbar").setup()
-local sidebar = require("sidebar-nvim")
-local opts = {
-  open = true,
-  sections = {
-        "files",
-        "git",
-        "diagnostics",
-        "symbols",
-        require("dap-sidebar-nvim.breakpoints")
-    },
-    dap = {
-        breakpoints = {
-            icon = "🔍"
-        }
-    },
-  disable_closing_prompt = true
-}
-sidebar.setup(opts)
+require("telescope").load_extension("refactoring")
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>tr",
+	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+	{ noremap = true }
+)
+vim.api.nvim_set_keymap("v", "<Leader>te", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<Leader>tf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<Leader>tv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<Leader>ti", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+-- require("scrollbar").setup()
+-- local sidebar = require("sidebar-nvim")
+-- local opts = {
+--   open = true,
+--   side = "right",
+--   sections = {
+--         "git",
+--         "diagnostics",
+--         "symbols",
+--         require("dap-sidebar-nvim.breakpoints")
+--     },
+--     dap = { 
+--         breakpoints = {
+--             icon = "🔍"
+--         }
+--     },
+--   disable_closing_prompt = true
+-- }
+-- sidebar.setup(opts)
 vim.api.nvim_set_keymap('n','q',[[<cmd> q <CR>]], { noremap = true, silent = true })

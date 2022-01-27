@@ -69,3 +69,6 @@
   name = "ssh"
 [[layers]]
   name = "lang#c"
+[[layers]]
+  name = "checkers"
+  lint_on_the_fly=true

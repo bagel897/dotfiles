@@ -2,11 +2,8 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
-augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerUpdate
-augroup end
 lua require('plugins')
+let g:coq_settings = { 'auto_start': 'shut-up' }
 lua require('lsp')
 au BufWritePost <buffer> lua require('lint').try_lint()
 lua require('opt')

@@ -4,7 +4,7 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
-return require('packer').startup({function()
+return require('packer').startup({function(use)
   use 'wbthomason/packer.nvim'
   use 'onsails/lspkind-nvim'
   use 'tpope/vim-fugitive' -- Git commands in nvim
@@ -23,19 +23,14 @@ return require('packer').startup({function()
     -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'ms-jpq/coq_nvim'
+  use 'ms-jpq/coq.artifacts'
+  use 'ms-jpq/coq.thirdparty'
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use 'mfussenegger/nvim-dap'
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use {'tpope/vim-sleuth'}
   use {'jiangmiao/auto-pairs'}
-  use "Pocco81/DAPInstall.nvim"
   use 'mfussenegger/nvim-dap-python'
   use {
   'romgrk/barbar.nvim',
@@ -48,11 +43,42 @@ return require('packer').startup({function()
   use 'kosayoda/nvim-lightbulb'
   use("petertriho/nvim-scrollbar")
   use("sidebar-nvim/sidebar.nvim")
+  -- use{"ms-jpq/chadtree", run = 'python3 -m chadtree deps'}
   use("sidebar-nvim/sections-dap")
-  end,
-  config = {
-    display = {
-      open_fn = require('packer.util').float,
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
     }
-}})
+  }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function() require'nvim-tree'.setup {
+      auto_close=true,
+      diagnostics= {
+        enable = true,
+        icons = {
+          hint = "",
+          info = "",
+          warning = "",
+          error = "",
+        }
+      },
+      update_focused_file = {
+        enable = true,
+      },
+      filters = {
+        dotfiles = false,
+      },
+      view = {
+        auto_resize = true,
+      }
+    } end
+  }
+  end,
+})
 
