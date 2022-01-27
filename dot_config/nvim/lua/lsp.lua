@@ -33,6 +33,8 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
     vim.api.nvim_command [[augroup END]]
   end
+  vim.api.nvim_command [[au TextChanged <buffer> lua require('lint').try_lint()]]
+  vim.api.nvim_buf_set_keymap(bufnr,'n','<leader>lf',"<cmd>lua require('lint').try_lint()<CR>",opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -120,7 +122,7 @@ cmp.setup {
   })
 require('lint').linters_by_ft = {
   python = {'pylint','black','mypy'},
-  cpp = {'clangtidy'},
+  cpp = {'clangtidy','cppcheck'},
   lua = {'luacheck'}
 }
-
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]

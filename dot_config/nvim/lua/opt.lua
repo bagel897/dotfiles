@@ -102,19 +102,23 @@ vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
 
 
-require'nvim-tree'.setup{
-   open_on_setup = true,
-   open_on_tab = true,
+require("scrollbar").setup()
+local sidebar = require("sidebar-nvim")
+local opts = {
+  open = true,
+  sections = {
+        "files",
+        "git",
+        "diagnostics",
+        "symbols",
+        require("dap-sidebar-nvim.breakpoints")
+    },
+    dap = {
+        breakpoints = {
+            icon = "🔍"
+        }
+    },
+  disable_closing_prompt = true
 }
-local tree ={}
-tree.open = function ()
-   require'bufferline.state'.set_offset(31, 'FileTree')
-   require'nvim-tree'.find_file(true)
-end
-
-tree.close = function ()
-   require'bufferline.state'.set_offset(0)
-   require'nvim-tree'.close()
-end
-
-return tree
+sidebar.setup(opts)
+vim.api.nvim_set_keymap('n','q',[[<cmd> q <CR>]], { noremap = true, silent = true })
