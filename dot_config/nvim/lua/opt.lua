@@ -30,18 +30,19 @@ vim.o.completeopt = 'menuone,noselect'
 require("which-key").setup{}
 require('lualine').setup {
   options = {
-    icons_enabled = false,
+    icons_enabled = true,
     theme = 'onedark',
     component_separators = '|',
     section_separators = '',
   },
+  extensions = {"nvim-tree","fzf", "quickfix","fugitive"},
 }
 
 --Enable Comment.nvim
 require('Comment').setup()
 
 --Remap space as leader key
-vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<Space>','<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -76,14 +77,17 @@ require('gitsigns').setup {
   },
 }
 
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
 -- Telescope
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
-        ['<C-u>'] = false,
+        ["<c-t>"] = trouble.open_with_trouble, 
         ['<C-d>'] = false,
       },
+      n = { ["<c-t>"] = trouble.open_with_trouble },
     },
   },
   extensions = {
@@ -141,3 +145,21 @@ vim.api.nvim_set_keymap("v", "<Leader>ti", [[ <Esc><Cmd>lua require('refactoring
 -- }
 -- sidebar.setup(opts)
 vim.api.nvim_set_keymap('n','q',[[<cmd> q <CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
+  {silent = true, noremap = true}
+)
