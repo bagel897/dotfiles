@@ -30,7 +30,7 @@ return require('packer').startup({function(use)
   use 'mfussenegger/nvim-dap'
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use {'tpope/vim-sleuth'}
-  -- use {"windwp/nvim-autopairs", config = require('nvim-autopairs').setup{}}
+  use {"windwp/nvim-autopairs", config = function() require('nvim-autopairs').setup{} end}
   use 'mfussenegger/nvim-dap-python'
   use {
   'romgrk/barbar.nvim',
