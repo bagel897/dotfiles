@@ -52,6 +52,8 @@ return require('packer').startup({function(use)
         {"nvim-treesitter/nvim-treesitter"}
     }
   }
+  use {"nvim-telescope/telescope-dap.nvim"}
+  use {"theHamsta/nvim-dap-virtual-text"}
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {

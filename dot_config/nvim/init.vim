@@ -1,7 +1,8 @@
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
-
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 lua require('plugins')
 let g:coq_settings = { 'auto_start': 'shut-up' }
 lua require('lsp')

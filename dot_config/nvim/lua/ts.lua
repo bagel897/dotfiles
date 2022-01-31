@@ -13,21 +13,10 @@ require('nvim-treesitter.configs').setup {
       node_decremental = 'grm',
     },
   },
-  indent = {
-    enable = true,
-  },
-  ensure_installed = {
-	"toml",
-	"fish",
-	"json",
-	"yaml",
-	"c",
-	"cpp",
-	"java",
-	"lua",
-	"python",
-	"rust",
-  },
+  -- indent = {
+  --   enable = true,
+  -- },
+  ensure_installed = "maintained",
   textobjects = {
     select = {
       enable = true,

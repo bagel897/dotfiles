@@ -56,8 +56,8 @@ for _, lsp in pairs(servers) do
 end
 
 require('lint').linters_by_ft = {
-  python = {'pylint','mypy'},
-  cpp = {'clangtidy','cppcheck'},
+  python = {'pylint'},
+  cpp = {'clangtidy'},
   lua = {'luacheck'}
 }
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
