@@ -30,7 +30,7 @@ return require('packer').startup({function(use)
   use 'mfussenegger/nvim-dap'
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   use {'tpope/vim-sleuth'}
-  use {'jiangmiao/auto-pairs'}
+  -- use {"windwp/nvim-autopairs", config = require('nvim-autopairs').setup{}}
   use 'mfussenegger/nvim-dap-python'
   use {
   'romgrk/barbar.nvim',
@@ -52,7 +52,6 @@ return require('packer').startup({function(use)
         {"nvim-treesitter/nvim-treesitter"}
     }
   }
-  use {"nvim-telescope/telescope-dap.nvim"}
   use {"theHamsta/nvim-dap-virtual-text"}
   -- use 'simrat39/rust-tools.nvim'
   use {'nvim-telescope/telescope-ui-select.nvim' }
