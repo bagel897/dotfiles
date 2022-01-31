@@ -40,7 +40,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "rust_analyzer", "clangd", "vimls", "bashls", "sumneko_lua", "jsonls", "cmake", "dockerls", "pylsp" }
+local servers = { "rust_analyzer","clangd", "vimls", "bashls", "sumneko_lua", "jsonls", "cmake", "dockerls", "pylsp" }
 local coq = require "coq"
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup (
@@ -56,9 +56,12 @@ for _, lsp in pairs(servers) do
 end
 
 require('lint').linters_by_ft = {
-  python = {'pylint'},
-  cpp = {'clangtidy'},
-  lua = {'luacheck'}
+  python = {'pylint','mypy'},
+  cpp = {'clangtidy','cppcheck'},
+  lua = {'luacheck'},
 }
+-- require('rust-tools'--[[ ).setup( ]]{})
+-- require('rust-tools.inlay_hints').set_inlay_hints()
+
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 require('refactoring').setup({})
