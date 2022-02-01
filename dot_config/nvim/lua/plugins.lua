@@ -82,12 +82,9 @@ return require("packer").startup(
       use "ms-jpq/coq.thirdparty"
       use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
       use {
-        "rcarriga/nvim-dap-ui",
-        requires = {"mfussenegger/nvim-dap"},
-        config = function()
-          require("dap_setup")
-        end
+        "mfussenegger/nvim-dap",
       }
+      use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
       -- use {"tpope/vim-sleuth"}
       use {
         "windwp/nvim-autopairs",
@@ -155,6 +152,9 @@ return require("packer").startup(
           "kyazdani42/nvim-web-devicons" -- optional, for file icon
         },
         config = function()
+          vim.api.nvim_set_keymap("n",'C-n',":NvimTreeToggle<CR>",{noremap = true})
+          -- vim.api.nvim_set_keymap("n",'<leader>r',":NvimTreeRefresh<CR>",{noremap = true})
+          -- vim.api.nvim_set_keymap("n",'<leader>n',":NvimTreeFindFile<CR>",{noremap = true})
           require "nvim-tree".setup {
             auto_close = true,
             diagnostics = {
