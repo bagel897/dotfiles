@@ -9,11 +9,23 @@
 -- for _, debugger in ipairs(dbg_list) do
 -- 	dap_install.config(debugger)
 -- end
-require('dap-python').setup('/usr/bin/python')
-local dap = require('dap')
+local opts = {noremap = false, silent = true}
+
+vim.api.nvim_buf_set_keymap(0, "n", "<Leader>dn", '<cmd>lua require"dap".step_over()<CR>', opts)
+vim.api.nvim_buf_set_keymap(0, "n", "<Leader>ds", '<cmd>lua require"dap".step_into()<CR>', opts)
+vim.api.nvim_buf_set_keymap(0, "n", "<Leader>do", '<cmd>lua require"dap".step_out()<CR>', opts)
+vim.api.nvim_buf_set_keymap(0, "n", "<Leader>db", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
+-- vim.api.nvim_buf_set_keymap( 0, 'n', '<Leader>dB',
+--        '<cmd>lua require"dap".set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>', opts)
+vim.api.nvim_buf_set_keymap(0, "n", "<Leader>dc", '<cmd>lua require"dap".continue()<CR>', opts)
+
+vim.api.nvim_buf_set_keymap(0, "n", "<Leader>dr", '<cmd>lua require"dap".run_last()<CR>', opts)
+
+require("dap-python").setup("/usr/bin/python")
+local dap = require("dap")
 dap.adapters.lldb = {
-  type = 'executable',
-  command = '/usr/bin/lldb-vscode', -- adjust as needed
+  type = "executable",
+  command = "/usr/bin/lldb-vscode", -- adjust as needed
   name = "lldb"
 }
 dap.configurations.cpp = {
@@ -22,12 +34,11 @@ dap.configurations.cpp = {
     type = "lldb",
     request = "launch",
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
     end,
-    cwd = '${workspaceFolder}',
+    cwd = "${workspaceFolder}",
     stopOnEntry = false,
     args = {},
-
     -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
     --
     --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
@@ -38,12 +49,14 @@ dap.configurations.cpp = {
     --
     -- But you should be aware of the implications:
     -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
-    runInTerminal = false,
-  },
+    runInTerminal = false
+  }
 }
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
-table.insert(require('dap').configurations.cpp, {
+table.insert(
+  require("dap").configurations.cpp,
+  {
     name = "compile and launch",
     type = "lldb",
     program = "/tmp/debug",
@@ -51,8 +64,9 @@ table.insert(require('dap').configurations.cpp, {
     stopOnEntry = false,
     initCommands = "g++ -g -o /tmp/debug ${file}",
     args = {},
-    runInTerminal = false,
-})
+    runInTerminal = false
+  }
+)
 -- dap.adapters.python = {
 --   type = 'executable';
 --   command = '/usr/bin/python';
@@ -96,4 +110,4 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 require("nvim-dap-virtual-text").setup()
-require('dap.ext.vscode').load_launchjs()
+require("dap.ext.vscode").load_launchjs()

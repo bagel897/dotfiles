@@ -34,8 +34,8 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
     vim.api.nvim_command [[augroup END]]
   end
-  vim.api.nvim_command [[au TextChanged <buffer> lua require('lint').try_lint()]]
-  vim.api.nvim_buf_set_keymap(bufnr,'n','<leader>lf',"<cmd>lua require('lint').try_lint()<CR>",opts)
+  vim.api.nvim_command [[au TextChanged <buffer> lua vim.lsp.buf.formatting_sync()]]
+  -- vim.api.nvim_buf_set_keymap(bufnr,'n','<leader>lf',"<cmd>lua require('lint').try_lint()<CR>",opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -55,11 +55,7 @@ for _, lsp in pairs(servers) do
   )
 end
 
-require('lint').linters_by_ft = {
-  python = {'pylint','mypy'},
-  cpp = {'clangtidy','cppcheck'},
-  lua = {'luacheck'},
-}
+
 -- require('rust-tools'--[[ ).setup( ]]{})
 -- require('rust-tools.inlay_hints').set_inlay_hints()
 

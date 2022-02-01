@@ -6,9 +6,7 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 lua require('plugins')
 let g:coq_settings = { 'auto_start': 'shut-up' }
 lua require('lsp')
-au BufWritePost <buffer> lua require('lint').try_lint()
 lua require('opt')
-lua require('ts')
 " nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
 " nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
 " vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
@@ -16,5 +14,4 @@ nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.i
 nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
 " nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
 
-lua require('dap_util')
 " autocmd CursorHold,CursorHoldI * lua require('code_action_utils').code_action_listener()
