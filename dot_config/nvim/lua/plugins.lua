@@ -185,5 +185,6 @@ return require("packer").startup({
 				require("stabilize").setup()
 			end,
 		})
+		use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 	end,
 })
