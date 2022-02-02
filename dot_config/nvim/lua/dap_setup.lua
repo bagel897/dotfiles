@@ -11,15 +11,16 @@
 -- end
 local opts = {noremap = false, silent = true}
 
-vim.api.nvim_buf_set_keymap(0, "n", "<Leader>dn", '<cmd>lua require"dap".step_over()<CR>', opts)
-vim.api.nvim_buf_set_keymap(0, "n", "<Leader>ds", '<cmd>lua require"dap".step_into()<CR>', opts)
-vim.api.nvim_buf_set_keymap(0, "n", "<Leader>do", '<cmd>lua require"dap".step_out()<CR>', opts)
-vim.api.nvim_buf_set_keymap(0, "n", "<Leader>db", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
+vim.api.nvim_set_keymap("n", "<Leader>dn", '<cmd>lua require"dap".step_over()<CR>', opts)
+vim.api.nvim_set_keymap("n", "<Leader>ds", '<cmd>lua require"dap".step_into()<CR>', opts)
+
+vim.api.nvim_set_keymap("n", "<Leader>do", '<cmd>lua require"dap".step_out()<CR>', opts)
+vim.api.nvim_set_keymap( "n", "<Leader>db", '<cmd>lua require"dap".toggle_breakpoint()<CR>', opts)
 -- vim.api.nvim_buf_set_keymap( 0, 'n', '<Leader>dB',
 --        '<cmd>lua require"dap".set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>', opts)
-vim.api.nvim_buf_set_keymap(0, "n", "<Leader>dc", '<cmd>lua require"dap".continue()<CR>', opts)
+vim.api.nvim_set_keymap( "n", "<Leader>dc", '<cmd>lua require"dap".continue()<CR>', opts)
 
-vim.api.nvim_buf_set_keymap(0, "n", "<Leader>dr", '<cmd>lua require"dap".run_last()<CR>', opts)
+vim.api.nvim_set_keymap( "n", "<Leader>dr", '<cmd>lua require"dap".run_last()<CR>', opts)
 
 require("dap-python").setup("/usr/bin/python")
 local dap = require("dap")
