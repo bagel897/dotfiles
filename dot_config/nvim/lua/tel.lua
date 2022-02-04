@@ -21,7 +21,7 @@ require("telescope").setup({
 })
 -- Enable telescope fzf native
 require("telescope").load_extension("fzf")
--- require("telescope").load_extension("ui-select")
+require("telescope").load_extension("ui-select")
 --Add leader shortcuts
 vim.api.nvim_set_keymap(
 	"n",

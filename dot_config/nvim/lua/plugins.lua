@@ -99,13 +99,6 @@ return require("packer").startup({
 				require("which-key").setup({})
 			end,
 		})
-		-- use "mfussenegger/nvim-lint"
-		-- use {
-		--   "mhartington/formatter.nvim",
-		--   config = function()
-		--     require("formatting")
-		--   end
-		-- }
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
@@ -185,6 +178,18 @@ return require("packer").startup({
 				require("stabilize").setup()
 			end,
 		})
-		use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
+		-- use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
+		use({
+			"akinsho/toggleterm.nvim",
+			config = function()
+				require("toggleterm").setup({})
+			end,
+		})
+		-- use({
+		-- 	"neomake/neomake",
+		-- 	config = function()
+		-- 		vim.cmd([[call neomake#configure#automake('w')]])
+		-- 	end,
+		-- })
 	end,
 })

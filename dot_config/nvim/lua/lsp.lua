@@ -6,7 +6,7 @@ vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<C
 vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<space>lm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+vim.api.nvim_set_keymap("n", "<space>lm", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -38,10 +38,9 @@ local on_attach = function(client, bufnr)
 	if client.resolved_capabilities.document_formatting then
 		vim.api.nvim_command([[augroup Format]])
 		vim.api.nvim_command([[autocmd! * <buffer>]])
-		vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
+		vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting_seq_sync()]])
 		vim.api.nvim_command([[augroup END]])
 	end
-	vim.api.nvim_command([[au TextChanged <buffer> lua vim.lsp.buf.formatting_sync()]])
 	-- vim.api.nvim_buf_set_keymap(bufnr,'n','<leader>lf',"<cmd>lua require('lint').try_lint()<CR>",opts)
 end
 
@@ -58,15 +57,25 @@ for _, lsp in pairs(servers) do
 		},
 	}))
 end
+require("lspconfig").sumneko_lua.setup(coq.lsp_ensure_capabilities({
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+}))
 local null_ls = require("null-ls")
 local sources = {
 	null_ls.builtins.formatting.black,
 	-- null_ls.builtins.formatting.clang_format,
 	null_ls.builtins.formatting.stylua,
-	null_ls.builtins.diagnostics.flake8,
+	-- null_ls.builtins.diagnostics.flake8,
 	null_ls.builtins.diagnostics.gitlint,
 	-- null_ls.builtins.diagnostics.luacheck,
-	null_ls.builtins.diagnostics.pylint,
+	-- null_ls.builtins.diagnostics.pylint,
 	null_ls.builtins.code_actions.refactoring,
 }
 require("null-ls").setup({
