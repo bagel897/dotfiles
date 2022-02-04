@@ -12,3 +12,5 @@
 	defaultBranch = main
 [status]
 	submoduleSummary = true
+[pull]
+	rebase = false
