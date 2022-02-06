@@ -6,11 +6,21 @@ vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<C
 vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<space>lm", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", opts)
 
+local wk = require("which-key")
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+	wk.register({
+		l = {
+			name = "lsp",
+			d = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "type definition" },
+			r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "rename" },
+			a = { "<cmd>CodeActionMenu<CR>", "code actions" },
+			f = { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "format" },
+			q = { "<cmd> lua vim.lsp.buf.hover() <CR>", "documentation" },
+		},
+	}, { prefix = "<leader>" })
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -30,10 +40,6 @@ local on_attach = function(client, bufnr)
 		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
 		opts
 	)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>ld", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	-- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>la", "<cmd>CodeActionMenu<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	if client.resolved_capabilities.document_formatting then
 		vim.api.nvim_command([[augroup Format]])
@@ -41,7 +47,6 @@ local on_attach = function(client, bufnr)
 		vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting_seq_sync()]])
 		vim.api.nvim_command([[augroup END]])
 	end
-	-- vim.api.nvim_buf_set_keymap(bufnr,'n','<leader>lf',"<cmd>lua require('lint').try_lint()<CR>",opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -85,6 +90,12 @@ require("null-ls").setup({
 
 -- require('rust-tools'--[[ ).setup( ]]{})
 -- require('rust-tools.inlay_hints').set_inlay_hints()
-
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = true,
+	severity_sort = true,
+})
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
 require("refactoring").setup({})

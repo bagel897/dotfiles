@@ -12,16 +12,30 @@ require("telescope").setup({
 		},
 	},
 	extensions = {
+		fzf = {
+			fuzzy = true,
+			overwrite_generic_sorter = true,
+			overwrite_file_sorter = true,
+			case_mode = "smart_case",
+		},
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown({
 				-- even more opts
 			}),
 		},
 	},
+	pickers = {
+		find_files = {
+			find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+		},
+	},
 })
 -- Enable telescope fzf native
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("refactoring")
+require("telescope").load_extension("file_browser")
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("dap")
 --Add leader shortcuts
 vim.api.nvim_set_keymap(
 	"n",
@@ -29,56 +43,22 @@ vim.api.nvim_set_keymap(
 	[[<cmd>lua require('telescope.builtin').buffers()<CR>]],
 	{ noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>sf",
-	[[<cmd>lua require('telescope.builtin').find_files({previewer = false})<CR>]],
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>sb",
-	[[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]],
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>sh",
-	[[<cmd>lua require('telescope.builtin').help_tags()<CR>]],
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>st",
-	[[<cmd>lua require('telescope.builtin').tags()<CR>]],
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>sd",
-	[[<cmd>lua require('telescope.builtin').grep_string()<CR>]],
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>sp",
-	[[<cmd>lua require('telescope.builtin').live_grep()<CR>]],
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>so",
-	[[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]],
-	{ noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>?",
-	[[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],
-	{ noremap = true, silent = true }
-)
-
-require("telescope").load_extension("refactoring")
+local wk = require("which-key")
+wk.register({
+	f = {
+		name = "find",
+		g = { ":Telescope file_browser <CR>", "file browser" },
+		f = { [[<cmd>lua require('telescope.builtin').find_files()<CR>]], "files" },
+		b = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>", "buffer" },
+		h = { [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], "help" },
+		t = { [[<cmd>lua require('telescope.builtin').tags()<CR>]], "tags" },
+		d = { [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], "grep string" },
+		p = { [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], "live grep" },
+		o = { [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], "current buffer" },
+		c = { "<cmd>lua require('telescope.builtin').commands()<CR>", "commands" },
+		-- ? = {[[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],"old files"},
+	},
+}, { prefix = "<leader>" })
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader>tr",
