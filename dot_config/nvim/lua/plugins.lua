@@ -190,6 +190,8 @@ use { "nvim-telescope/telescope-file-browser.nvim" }
 		-- 		vim.cmd([[call neomake#configure#automake('w')]])
 		-- 	end,
 		-- })
-		use({ "p00f/cphelper.nvim" })
+		use({ "p00f/cphelper.nvim" , config = function ()
+                                            vim.g.cpp_compile_command="g++ -g solution.cpp -o cpp.out"
+                                        end})
 	end,
 })

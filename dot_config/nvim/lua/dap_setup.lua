@@ -79,15 +79,24 @@ dap.configurations.cpp = {
 	-- 	args = {},
 	-- 	runInTerminal = false,
 	-- },
-	-- {
-	-- 	name = "test file",
-	-- 	type = "lldb",
-	-- 	program = "a.out",
-	-- 	request = "launch",
-	-- 	stopOnEntry = false,
-	-- 	args = { "<test.in" },
-	-- 	runInTerminal = false,
-	-- },
+	{
+		name = "test file",
+		type = "lldb",
+		program = "cpp.out",
+		request = "launch",
+		stopOnEntry = false,
+		args = { "<", "${workspaceFolder}/input1" },
+		runInTerminal = false,
+	},
+	{
+		name = "test file 2",
+		type = "lldb",
+		program = "cpp.out",
+		request = "launch",
+		stopOnEntry = false,
+		args = { "<", "${workspaceFolder}/input2" },
+		runInTerminal = false,
+	},
 }
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
