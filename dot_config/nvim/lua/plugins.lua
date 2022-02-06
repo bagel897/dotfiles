@@ -72,7 +72,7 @@ return require("packer").startup({
 		})
 		-- Additional textobjects for treesitter
 		use("neovim/nvim-lspconfig") -- Collection of configurations for built-in LSP client
-		use("ms-jpq/coq_nvim")
+		use({ "ms-jpq/coq_nvim", run = ":COQdeps" })
 		use("ms-jpq/coq.artifacts")
 		use("ms-jpq/coq.thirdparty")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -103,7 +103,6 @@ return require("packer").startup({
 			"jose-elias-alvarez/null-ls.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
-		-- use {'jose-elias-alvarez/null-ls.nvim', config = function() require("formatting")end}
 		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 		use("kosayoda/nvim-lightbulb")
 		use({
@@ -113,7 +112,6 @@ return require("packer").startup({
 			end,
 		})
 		use("sidebar-nvim/sidebar.nvim")
-		-- use{"ms-jpq/chadtree", run = 'python3 -m chadtree deps'}
 		use("sidebar-nvim/sections-dap")
 		use({
 			"ThePrimeagen/refactoring.nvim",
@@ -125,39 +123,38 @@ return require("packer").startup({
 		use({ "theHamsta/nvim-dap-virtual-text" })
 		-- use 'simrat39/rust-tools.nvim'
 		use({ "nvim-telescope/telescope-ui-select.nvim" })
-		-- use({
-		-- 	"kyazdani42/nvim-tree.lua",
-		-- 	requires = {
-		-- 		"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		-- 	},
-		-- 	config = function()
-		-- 		vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true })
-		-- 		-- vim.api.nvim_set_keymap("n",'<leader>r',":NvimTreeRefresh<CR>",{noremap = true})
-		-- 		-- vim.api.nvim_set_keymap("n",'<leader>n',":NvimTreeFindFile<CR>",{noremap = true})
-		-- 		require("nvim-tree").setup({
-		-- 			auto_close = true,
-		-- 			diagnostics = {
-		-- 				enable = true,
-		-- 				icons = {
-		-- 					hint = "",
-		-- 					info = "",
-		-- 					warning = "",
-		-- 					error = "",
-		-- 				},
-		-- 			},
-		-- 			update_focused_file = {
-		-- 				enable = true,
-		-- 			},
-		-- 			filters = {
-		-- 				dotfiles = false,
-		-- 			},
-		-- 			view = {
-		-- 				auto_resize = true,
-		-- 			},
-		-- 		})
-		-- 	end,
-		-- })
-		use { "nvim-telescope/telescope-file-browser.nvim" }
+		use({
+			"kyazdani42/nvim-tree.lua",
+			requires = {
+				"kyazdani42/nvim-web-devicons", -- optional, for file icon
+			},
+			config = function()
+				vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true })
+				-- vim.api.nvim_set_keymap("n",'<leader>r',":NvimTreeRefresh<CR>",{noremap = true})
+				-- vim.api.nvim_set_keymap("n",'<leader>n',":NvimTreeFindFile<CR>",{noremap = true})
+				require("nvim-tree").setup({
+					auto_close = true,
+					diagnostics = {
+						enable = true,
+						icons = {
+							hint = "",
+							info = "",
+							warning = "",
+							error = "",
+						},
+					},
+					update_focused_file = {
+						enable = true,
+					},
+					filters = {
+						dotfiles = false,
+					},
+					view = {
+						auto_resize = true,
+					},
+				})
+			end,
+		})
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
@@ -192,5 +189,6 @@ return require("packer").startup({
 		-- 		vim.cmd([[call neomake#configure#automake('w')]])
 		-- 	end,
 		-- })
+		use({ "p00f/cphelper.nvim" })
 	end,
 })
