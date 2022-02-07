@@ -1,3 +1,10 @@
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -155,7 +162,7 @@ return require("packer").startup({
 		-- 		})
 		-- 	end,
 		-- })
-use { "nvim-telescope/telescope-file-browser.nvim" }
+		use({ "nvim-telescope/telescope-file-browser.nvim" })
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
@@ -190,8 +197,14 @@ use { "nvim-telescope/telescope-file-browser.nvim" }
 		-- 		vim.cmd([[call neomake#configure#automake('w')]])
 		-- 	end,
 		-- })
-		use({ "p00f/cphelper.nvim" , config = function ()
-                                            vim.g.cpp_compile_command="g++ -g solution.cpp -o cpp.out"
-                                        end})
+		use({
+			"p00f/cphelper.nvim",
+			config = function()
+				vim.g.cpp_compile_command = "g++ -g solution.cpp -o cpp.out"
+			end,
+		})  if packer_bootstrap then
+    require('packer').sync()
+  end
+
 	end,
 })

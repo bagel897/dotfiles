@@ -7,6 +7,7 @@ require("telescope").setup({
 			i = {
 				["<c-t>"] = trouble.open_with_trouble,
 				["<C-d>"] = false,
+                        ["<C-h>"] = "which_key",
 			},
 			n = { ["<c-t>"] = trouble.open_with_trouble },
 		},

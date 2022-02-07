@@ -59,7 +59,7 @@ local servers = {
 	"cmake",
 	"dockerls",
 	"pylsp",
-	"pyright",
+	-- "pyright",
 }
 local coq = require("coq")
 for _, lsp in pairs(servers) do
