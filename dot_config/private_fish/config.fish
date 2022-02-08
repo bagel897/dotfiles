@@ -67,6 +67,10 @@ function update
     flatpak update
     chezmoi update
 end
+function compile_cmake
+  cmake -H. -BDebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
+  ln -s Debug/compile_commands.json .
+end
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
 set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")
