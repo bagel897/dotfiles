@@ -128,6 +128,7 @@ return require("packer").startup({
 			},
 		})
 		use({ "theHamsta/nvim-dap-virtual-text" })
+    use({"p00f/clangd_extensions.nvim"})
 		-- use 'simrat39/rust-tools.nvim'
 		use({ "nvim-telescope/telescope-ui-select.nvim" })
 		-- use({

@@ -65,10 +65,9 @@ local coq = require("coq")
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup(coq.lsp_ensure_capabilities({
 		on_attach = on_attach,
-		flags = {
-			-- This will be the default in neovim 0.7+
-			debounce_text_changes = 150,
-		},
+		-- flags = {
+		-- 	debounce_text_changes = 150,
+		-- },
 	}))
 end
 require("lspconfig").sumneko_lua.setup(coq.lsp_ensure_capabilities({
@@ -81,6 +80,8 @@ require("lspconfig").sumneko_lua.setup(coq.lsp_ensure_capabilities({
 		},
 	},
 }))
+-- require("clangd_extensions").setup()
+
 local null_ls = require("null-ls")
 local sources = {
 	null_ls.builtins.formatting.black,
