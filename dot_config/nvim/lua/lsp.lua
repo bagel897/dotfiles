@@ -54,7 +54,7 @@ local servers = {
 	"clangd",
 	"vimls",
 	"bashls",
-	"sumneko_lua",
+	-- "sumneko_lua",
 	"jsonls",
 	"cmake",
 	"dockerls",
@@ -70,28 +70,46 @@ for _, lsp in pairs(servers) do
 		-- },
 	}))
 end
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
 require("lspconfig").sumneko_lua.setup(coq.lsp_ensure_capabilities({
-	on_attach = on_attach,
 	settings = {
 		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = runtime_path,
+			},
 			diagnostics = {
+				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
 			},
 		},
 	},
+	on_attach = on_attach,
 }))
+
 -- require("clangd_extensions").setup()
 
 local null_ls = require("null-ls")
 local sources = {
-	null_ls.builtins.formatting.black,
 	-- null_ls.builtins.formatting.clang_format,
 	null_ls.builtins.formatting.stylua,
-	-- null_ls.builtins.diagnostics.flake8,
-	null_ls.builtins.diagnostics.gitlint,
+	-- null_ls.builtins.diagnostics.gitlint,
 	-- null_ls.builtins.diagnostics.luacheck,
 	-- null_ls.builtins.diagnostics.pylint,
-	null_ls.builtins.code_actions.refactoring,
+	-- null_ls.builtins.code_actions.refactoring,
 }
 require("null-ls").setup({
 	sources = sources,
