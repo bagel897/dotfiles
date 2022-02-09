@@ -1,9 +1,15 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
 end
-
 
 vim.cmd([[
   augroup packer_user_config
@@ -11,6 +17,20 @@ vim.cmd([[
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
+local packer = require("packer")
+packer.init({
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "single" })
+		end,
+		prompt_border = "single",
+	},
+	git = {
+		clone_timeout = 6000, -- seconds
+	},
+	auto_clean = true,
+	compile_on_sync = true,
+})
 return require("packer").startup({
 	function(use)
 		use({
@@ -51,21 +71,21 @@ return require("packer").startup({
 			end,
 		})
 		-- -- Add indentation guides even on blank lines
-		-- use "lukas-reineke/indent-blankline.nvim"
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("indent_blankline").setup({
+					show_current_context = true,
+					show_current_context_start = true,
+				})
+			end,
+		})
 		-- Add git related info in the signs columns and popups
 		use({
 			"lewis6991/gitsigns.nvim",
 			requires = { "nvim-lua/plenary.nvim" },
 			config = function()
-				require("gitsigns").setup({
-					signs = {
-						add = { text = "+" },
-						change = { text = "~" },
-						delete = { text = "_" },
-						topdelete = { text = "‾" },
-						changedelete = { text = "~" },
-					},
-				})
+				require("gitsigns").setup({})
 			end,
 		})
 		-- Highlight, edit, and navigate code using a fast incremental parsing library
@@ -78,8 +98,18 @@ return require("packer").startup({
 			end,
 		})
 		-- Additional textobjects for treesitter
-		use("neovim/nvim-lspconfig") -- Collection of configurations for built-in LSP client
-		use({ "ms-jpq/coq_nvim", run = ":COQdeps" })
+		use({
+			"neovim/nvim-lspconfig",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/nvim-cmp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+		}) -- Collection of configurations for built-in LSP client
+		-- use({ "ms-jpq/coq_nvim", run = ":COQdeps" })
 		use("ms-jpq/coq.artifacts")
 		use("ms-jpq/coq.thirdparty")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -128,7 +158,7 @@ return require("packer").startup({
 			},
 		})
 		use({ "theHamsta/nvim-dap-virtual-text" })
-    use({"p00f/clangd_extensions.nvim"})
+		use({ "p00f/clangd_extensions.nvim" })
 		-- use 'simrat39/rust-tools.nvim'
 		use({ "nvim-telescope/telescope-ui-select.nvim" })
 		-- use({
@@ -203,9 +233,9 @@ return require("packer").startup({
 			config = function()
 				vim.g.cpp_compile_command = "g++ -g solution.cpp -o cpp.out"
 			end,
-		})  if packer_bootstrap then
-    require('packer').sync()
-  end
-
+		})
+		if packer_bootstrap then
+			require("packer").sync()
+		end
 	end,
 })
