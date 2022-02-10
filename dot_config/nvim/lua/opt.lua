@@ -1,6 +1,6 @@
 --Set highlight on search
 vim.o.hlsearch = true
-
+vim.o.clipboard = "unnamedplus"
 --Make line numbers default
 vim.wo.number = true
 
