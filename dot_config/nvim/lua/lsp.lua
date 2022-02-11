@@ -64,8 +64,8 @@ cmp.setup({
 		{ name = "luasnip" }, -- For luasnip users.
 		{ name = "buffer" },
 		{ name = "nvim_lsp_signature_help" },
-          { name = "path" },
-      { name = "nvim_lua" },
+		{ name = "path" },
+		{ name = "nvim_lua" },
 	}),
 })
 -- cmp.setup.cmdline("/", {
@@ -124,7 +124,7 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = {
 	"rust_analyzer",
-	"clangd",
+	-- "clangd",
 	"vimls",
 	"bashls",
 	-- "sumneko_lua",
@@ -134,6 +134,12 @@ local servers = {
 	"pylsp",
 	-- "pyright",
 }
+local clang_tidy = require("clang-tidy")
+
+local custom_attach_clangd = function(client, bufnr)
+	clang_tidy.setup({})
+	on_attach(client, bufnr)
+end
 -- local coq = require("coq")
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
@@ -147,7 +153,21 @@ end
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-
+require("lspconfig").clangd.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	cmd = {
+		"clangd",
+		"--background-index",
+		"--clang-tidy",
+		"--all-scopes-completion",
+		"--cross-file-rename",
+		"--completion-style=detailed",
+		"--header-insertion-decorators",
+		"--header-insertion=iwyu",
+		"--pch-storage=memory",
+	},
+})
 require("lspconfig").sumneko_lua.setup({
 	settings = {
 		Lua = {

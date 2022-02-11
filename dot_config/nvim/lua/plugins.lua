@@ -109,6 +109,7 @@ return require("packer").startup({
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 		}) -- Collection of configurations for built-in LSP client
+		use({ "emilienlemaire/clang-tidy.nvim"})
 		-- use({ "ms-jpq/coq_nvim", run = ":COQdeps" })
 		use("ms-jpq/coq.artifacts")
 		use("ms-jpq/coq.thirdparty")
