@@ -1,7 +1,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	packer_bootstrap = fn.system({
+	local packer_bootstrap = fn.system({
 		"git",
 		"clone",
 		"--depth",
@@ -109,7 +109,6 @@ return require("packer").startup({
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 		}) -- Collection of configurations for built-in LSP client
-		use({ "emilienlemaire/clang-tidy.nvim"})
 		-- use({ "ms-jpq/coq_nvim", run = ":COQdeps" })
 		use("ms-jpq/coq.artifacts")
 		use("ms-jpq/coq.thirdparty")
@@ -201,7 +200,7 @@ return require("packer").startup({
 			config = function()
 				require("trouble").setup({
 					auto_open = true,
-					auto_close = true,
+					-- auto_close = true,
 					auto_fole = true,
 					use_diagnostic_signs = true,
 					-- your configuration comes here

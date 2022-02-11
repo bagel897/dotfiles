@@ -134,12 +134,7 @@ local servers = {
 	"pylsp",
 	-- "pyright",
 }
-local clang_tidy = require("clang-tidy")
 
-local custom_attach_clangd = function(client, bufnr)
-	clang_tidy.setup({})
-	on_attach(client, bufnr)
-end
 -- local coq = require("coq")
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
@@ -153,7 +148,7 @@ end
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
-require("lspconfig").clangd.setup({
+require("clangd_extensions").setup( {server = {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	cmd = {
@@ -167,7 +162,7 @@ require("lspconfig").clangd.setup({
 		"--header-insertion=iwyu",
 		"--pch-storage=memory",
 	},
-})
+}})
 require("lspconfig").sumneko_lua.setup({
 	settings = {
 		Lua = {
