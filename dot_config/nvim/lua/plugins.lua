@@ -33,6 +33,25 @@ packer.init({
 })
 return require("packer").startup({
 	function(use)
+		-- use({
+		-- 	"akinsho/bufferline.nvim",
+		-- 	requires = "kyazdani42/nvim-web-devicons",
+		-- 	config = function()
+		-- 		require("bufferline").setup({
+		-- 			show_close_icon = true,
+		-- 			show_tab_indicators = true,
+		-- 			enforce_regular_tabs = false,
+		-- 			view = "multiwindow",
+		-- 			show_buffer_close_icons = true,
+		-- 			always_show_bufferline = true,
+		--         diagnostics = "nvim_lsp"
+		-- 		})
+		-- 	end,
+		-- })
+    use {
+  'romgrk/barbar.nvim',
+  requires = {'kyazdani42/nvim-web-devicons'}
+}
 		use({
 			"glepnir/dashboard-nvim",
 			config = function()
@@ -125,10 +144,7 @@ return require("packer").startup({
 			end,
 		})
 		use("mfussenegger/nvim-dap-python")
-		use({
-			"romgrk/barbar.nvim",
-			requires = { "kyazdani42/nvim-web-devicons" },
-		})
+
 		use({ "nvim-telescope/telescope-dap.nvim" })
 		use({
 			"folke/which-key.nvim",
@@ -234,6 +250,7 @@ return require("packer").startup({
 				vim.g.cpp_compile_command = "g++ -g solution.cpp -o cpp.out"
 			end,
 		})
+		use({ "onsails/lspkind-nvim" })
 		if packer_bootstrap then
 			require("packer").sync()
 		end

@@ -84,20 +84,32 @@ dap.configurations.cpp = {
 	{
 		name = "test file",
 		type = "lldb",
-		program = "cpp.out",
+		program = "${workspaceFolder}/cpp.out",
 		request = "launch",
 		stopOnEntry = false,
-		args = { "<", "${workspaceFolder}/input1" },
+		cwd = "${workspaceFolder}",
+		args = {},
 		runInTerminal = false,
-	},
+		stdio = { "${workspaceFolder}/input1", "none","none"},
+  },
 	{
 		name = "test file 2",
 		type = "lldb",
-		program = "cpp.out",
+		program = "${workspaceFolder}/cpp.out",
 		request = "launch",
 		stopOnEntry = false,
-		args = { "<", "${workspaceFolder}/input2" },
+		cwd = "${workspaceFolder}",
+		args = { "<", "input2" },
 		runInTerminal = false,
+	},
+	{
+		-- If you get an "Operation not permitted" error using this, try disabling YAMA:
+		--  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+		name = "Attach to process",
+		type = "lldb", -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+		request = "attach",
+		pid = require("dap.utils").pick_process,
+		args = {},
 	},
 }
 dap.configurations.c = dap.configurations.cpp
@@ -133,11 +145,13 @@ dap.configurations.rust = dap.configurations.cpp
 --   },
 -- }
 
-require("dapui").setup(  {tray = {
-    elements = { "repl" },
-    size = 10,
-    position = "bottom", -- Can be "left", "right", "top", "bottom"
-  },})
+require("dapui").setup({
+	tray = {
+		-- elements = { "repl" },
+		-- size = 10,
+		-- position = "bottom", -- Can be "left", "right", "top", "bottom"
+	},
+})
 local dapui = require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
 	dapui.open()
