@@ -7,7 +7,7 @@ require("telescope").setup({
 			i = {
 				["<c-t>"] = trouble.open_with_trouble,
 				["<C-d>"] = false,
-                        ["<C-h>"] = "which_key",
+				["<C-h>"] = "which_key",
 			},
 			n = { ["<c-t>"] = trouble.open_with_trouble },
 		},
@@ -35,8 +35,8 @@ require("telescope").setup({
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("refactoring")
 require("telescope").load_extension("file_browser")
-require("telescope").load_extension("ui-select")
 require("telescope").load_extension("dap")
+require("telescope").load_extension('lsp_handlers')
 --Add leader shortcuts
 vim.api.nvim_set_keymap(
 	"n",

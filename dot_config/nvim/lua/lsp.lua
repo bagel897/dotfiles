@@ -19,6 +19,7 @@ local on_attach = function(client, bufnr)
 			a = { "<cmd>CodeActionMenu<CR>", "code actions" },
 			f = { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "format" },
 			q = { "<cmd> lua vim.lsp.buf.hover() <CR>", "documentation" },
+			i = { "<cmd> lua vim.lsp.buf.implementation() <CR>", "implementation" },
 		},
 	}, { prefix = "<leader>" })
 	-- Enable completion triggered by <c-x><c-o>

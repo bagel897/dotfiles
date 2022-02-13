@@ -33,25 +33,17 @@ packer.init({
 })
 return require("packer").startup({
 	function(use)
-		-- use({
-		-- 	"akinsho/bufferline.nvim",
-		-- 	requires = "kyazdani42/nvim-web-devicons",
-		-- 	config = function()
-		-- 		require("bufferline").setup({
-		-- 			show_close_icon = true,
-		-- 			show_tab_indicators = true,
-		-- 			enforce_regular_tabs = false,
-		-- 			view = "multiwindow",
-		-- 			show_buffer_close_icons = true,
-		-- 			always_show_bufferline = true,
-		--         diagnostics = "nvim_lsp"
-		-- 		})
-		-- 	end,
-		-- })
-    use {
-  'romgrk/barbar.nvim',
-  requires = {'kyazdani42/nvim-web-devicons'}
-}
+		use({
+			"stevearc/dressing.nvim",
+			config = function()
+				require("dressing").setup({})
+			end,
+		})
+
+		use({
+			"romgrk/barbar.nvim",
+			requires = { "kyazdani42/nvim-web-devicons" },
+		})
 		use({
 			"glepnir/dashboard-nvim",
 			config = function()
@@ -116,7 +108,6 @@ return require("packer").startup({
 				require("ts")
 			end,
 		})
-		-- Additional textobjects for treesitter
 		use({
 			"neovim/nvim-lspconfig",
 			"hrsh7th/cmp-nvim-lsp",
@@ -127,23 +118,23 @@ return require("packer").startup({
 			"hrsh7th/nvim-cmp",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
-		}) -- Collection of configurations for built-in LSP client
-		-- use({ "ms-jpq/coq_nvim", run = ":COQdeps" })
-		use("ms-jpq/coq.artifacts")
-		use("ms-jpq/coq.thirdparty")
-		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-		use({
-			"mfussenegger/nvim-dap",
 		})
-		use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-		-- use {"tpope/vim-sleuth"}
+		use({
+			"jose-elias-alvarez/null-ls.nvim",
+			requires = { "nvim-lua/plenary.nvim" },
+		})
+		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
+		use("kosayoda/nvim-lightbulb")
+		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+		use({ "mfussenegger/nvim-dap" })
+		use({ "rcarriga/nvim-dap-ui" })
+		use("mfussenegger/nvim-dap-python")
 		use({
 			"windwp/nvim-autopairs",
 			config = function()
 				require("nvim-autopairs").setup({})
 			end,
 		})
-		use("mfussenegger/nvim-dap-python")
 
 		use({ "nvim-telescope/telescope-dap.nvim" })
 		use({
@@ -152,20 +143,15 @@ return require("packer").startup({
 				require("which-key").setup({})
 			end,
 		})
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-		})
-		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
-		use("kosayoda/nvim-lightbulb")
+
 		use({
 			"petertriho/nvim-scrollbar",
 			config = function()
 				require("scrollbar").setup()
 			end,
 		})
-		use("sidebar-nvim/sidebar.nvim")
-		use("sidebar-nvim/sections-dap")
+		-- use("sidebar-nvim/sidebar.nvim")
+		-- use("sidebar-nvim/sections-dap")
 		use({
 			"ThePrimeagen/refactoring.nvim",
 			requires = {
@@ -176,7 +162,6 @@ return require("packer").startup({
 		use({ "theHamsta/nvim-dap-virtual-text" })
 		use({ "p00f/clangd_extensions.nvim" })
 		-- use 'simrat39/rust-tools.nvim'
-		use({ "nvim-telescope/telescope-ui-select.nvim" })
 		-- use({
 		-- 	"kyazdani42/nvim-tree.lua",
 		-- 	requires = {
@@ -210,6 +195,7 @@ return require("packer").startup({
 		-- 	end,
 		-- })
 		use({ "nvim-telescope/telescope-file-browser.nvim" })
+    use({"gbrlsnchs/telescope-lsp-handlers.nvim"})
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
