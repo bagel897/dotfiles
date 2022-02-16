@@ -34,6 +34,12 @@ packer.init({
 return require("packer").startup({
 	function(use)
 		use({
+			"j-hui/fidget.nvim",
+			config = function()
+				require("fidget").setup({})
+			end,
+		})
+		use({
 			"stevearc/dressing.nvim",
 			config = function()
 				require("dressing").setup({})
@@ -195,14 +201,14 @@ return require("packer").startup({
 		-- 	end,
 		-- })
 		use({ "nvim-telescope/telescope-file-browser.nvim" })
-    use({"gbrlsnchs/telescope-lsp-handlers.nvim"})
+		use({ "gbrlsnchs/telescope-lsp-handlers.nvim" })
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
 			config = function()
 				require("trouble").setup({
 					auto_open = true,
-					-- auto_close = true,
+					auto_close = true,
 					auto_fole = true,
 					use_diagnostic_signs = true,
 					-- your configuration comes here
