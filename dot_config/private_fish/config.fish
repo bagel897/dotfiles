@@ -79,6 +79,5 @@ set -xU LESS_TERMCAP_se (printf "\e[0m")
 set -xU LESS_TERMCAP_us (printf "\e[01;32m")
 set -xU LESS_TERMCAP_ue (printf "\e[0m")
 
-thefuck --alias | source
 status is-login; and pyenv init --path | source
 status is-interactive; and pyenv init - | source
