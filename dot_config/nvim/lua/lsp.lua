@@ -52,16 +52,18 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
- "rust_analyzer",
- -- "clangd",
- "vimls",
- "bashls",
- -- "sumneko_lua",
- "jsonls",
- "cmake",
- "dockerls",
- "pylsp",
- -- "pyright",
+	"texlab",
+	"ltex",
+	"rust_analyzer",
+	-- "clangd",
+	"vimls",
+	"bashls",
+	-- "sumneko_lua",
+	"jsonls",
+	"cmake",
+	"dockerls",
+	"pylsp",
+	"pyright",
 }
 
 -- local coq = require("coq")
