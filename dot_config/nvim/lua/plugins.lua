@@ -125,10 +125,7 @@ return require("packer").startup({
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 		})
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			requires = { "nvim-lua/plenary.nvim" },
-		})
+
 		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 		use("kosayoda/nvim-lightbulb")
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
