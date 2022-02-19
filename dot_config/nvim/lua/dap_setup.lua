@@ -17,6 +17,7 @@ wk.register({
 		n = { '<cmd>lua require"dap".step_over()<CR>', "step over" },
 		s = { '<cmd>lua require"dap".step_into()<CR>', "step into" },
 		o = { '<cmd>lua require"dap".step_out()<CR>', "step out" },
+    u = {'<cmd> lua require"dap".run_to_cursor()<CR>', "run to cursor"},
 		b = { '<cmd>lua require"dap".toggle_breakpoint()<CR>', "breakpoint" },
 		c = { '<cmd>lua require"dap".continue()<CR>', "continue" },
 		r = { '<cmd>lua require"dap".run_last()<CR>', "run_last" },
