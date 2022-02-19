@@ -55,24 +55,24 @@ vim.g.indent_blankline_filetype_exclude = { "help", "packer", "dashboard" }
 vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
--- local sidebar = require("sidebar-nvim")
--- local opts = {
---   open = true,
---   side = "right",
---   sections = {
---         "git",
---         "diagnostics",
---         "symbols",
---         require("dap-sidebar-nvim.breakpoints")
---     },
---     dap = {
---         breakpoints = {
---             icon = "🔍"
---         }
---     },
---   disable_closing_prompt = true
--- }
--- sidebar.setup(opts)
+local sidebar = require("sidebar-nvim")
+local opts = {
+  open = true,
+  side = "right",
+  sections = {
+        "git",
+        "diagnostics",
+        "symbols",
+        require("dap-sidebar-nvim.breakpoints")
+    },
+    dap = {
+        breakpoints = {
+            icon = "🔍"
+        }
+    },
+  disable_closing_prompt = true
+}
+sidebar.setup(opts)
 vim.api.nvim_set_keymap("n", "q", [[<cmd> q <CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
