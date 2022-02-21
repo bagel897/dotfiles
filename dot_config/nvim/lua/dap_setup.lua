@@ -21,9 +21,11 @@ wk.register({
 		b = { '<cmd>lua require"dap".toggle_breakpoint()<CR>', "breakpoint" },
 		c = { '<cmd>lua require"dap".continue()<CR>', "continue" },
 		r = { '<cmd>lua require"dap".run_last()<CR>', "run_last" },
-		p = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "conditional" },
+		q = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "conditional" },
 		x = { "<cmd> lua require'dap'.terminate()<CR>", "terminate" },
 		e = { "<cmd> lua require'dapui'.close()<CR>", "close" },
+    p = {"<cmd> lua require'dap'.pause()<CR>","pause"}
+
 	},
 }, { prefix = "<leader>" })
 -- vim.api.nvim_set_keymap("n", "<Leader>dn", '<cmd>lua require"dap".step_over()<CR>', opts)

@@ -115,18 +115,29 @@ return require("packer").startup({
        require("ts")
    end,
      })
-     use({
-   "neovim/nvim-lspconfig",
-   "hrsh7th/cmp-nvim-lsp",
-   "hrsh7th/cmp-buffer",
-   "hrsh7th/cmp-path",
-   "hrsh7th/cmp-cmdline",
-   "hrsh7th/cmp-nvim-lsp-signature-help",
-   "hrsh7th/nvim-cmp",
-   "L3MON4D3/LuaSnip",
-   "saadparwaiz1/cmp_luasnip",
-     })
+     --   use({
+     -- "neovim/nvim-lspconfig",
+     -- "hrsh7th/cmp-nvim-lsp",
+     -- "hrsh7th/cmp-buffer",
+     -- "hrsh7th/cmp-path",
+     -- "hrsh7th/cmp-cmdline",
+     -- "hrsh7th/cmp-nvim-lsp-signature-help",
+     -- "hrsh7th/nvim-cmp",
+     -- "L3MON4D3/LuaSnip",
+     -- "saadparwaiz1/cmp_luasnip",
+     -- "onsails/lspkind-nvim",
+     --   })
+     use({ "neovim/nvim-lspconfig", })
+     use({ "ms-jpq/coq_nvim", "ms-jpq/coq.artifacts",
+           "ms-jpq/coq.thirdparty",
+           config = function()
+               vim.g.coq_settings = { auto_start = 'shut-up', xdg = true }
+               require("coq_3p"){
 
+          { src = "nvimlua", short_name = "nLUA", conf_only = true },
+          { src = "dap" },
+               }
+           end, run = ":COQDeps" })
      use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
      use("kosayoda/nvim-lightbulb")
      use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -154,7 +165,7 @@ return require("packer").startup({
        require("scrollbar").setup()
    end,
      })
-     use({ "sidebar-nvim/sidebar.nvim", "sidebar-nvim/sections-dap"})
+     -- use({ "sidebar-nvim/sidebar.nvim", "sidebar-nvim/sections-dap" })
      use({
    "ThePrimeagen/refactoring.nvim",
    requires = {
@@ -199,27 +210,24 @@ return require("packer").startup({
      -- })
      use({ "nvim-telescope/telescope-file-browser.nvim" })
      use({ "gbrlsnchs/telescope-lsp-handlers.nvim" })
-     --   use({
-     -- "folke/trouble.nvim",
-     -- requires = "kyazdani42/nvim-web-devicons",
-     -- config = function()
-     --     require("trouble").setup({
-     --   auto_open = true,
-     --   auto_close = true,
-     --   auto_fole = true,
-     --   use_diagnostic_signs = true,
-     --   -- your configuration comes here
-     --   -- or leave it empty to use the default settings
-     --   -- refer to the configuration section below
-     --     })
-     -- end,
-     --   })
-     --   use({
-     -- "luukvbaal/stabilize.nvim",
-     -- config = function()
-     --     require("stabilize").setup({ nested = "QuickFixCmdPost,DiagnosticChanged *" })
-     -- end,
-     --   })
+     use({
+     "folke/trouble.nvim",
+     requires = "kyazdani42/nvim-web-devicons",
+     config = function()
+         require("trouble").setup({
+       auto_open = true,
+       -- auto_close = true,
+       -- auto_fold = true,
+       use_diagnostic_signs = true,
+         })
+     end,
+     })
+     use({
+     "luukvbaal/stabilize.nvim",
+     config = function()
+         require("stabilize").setup({ nested = "QuickFixCmdPost,DiagnosticChanged *" })
+     end,
+     })
      -- use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
      use({
    "akinsho/toggleterm.nvim",
@@ -239,7 +247,6 @@ return require("packer").startup({
        vim.g.cpp_compile_command = "g++ -g solution.cpp -o cpp.out"
    end,
      })
-     use({ "onsails/lspkind-nvim" })
      if packer_bootstrap then
          require("packer").sync()
      end

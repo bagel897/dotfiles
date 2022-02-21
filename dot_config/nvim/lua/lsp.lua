@@ -7,8 +7,8 @@ vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", op
 vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 local wk = require("which-key")
-
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local coq = require "coq"
+-- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
     wk.register({
@@ -17,7 +17,7 @@ local on_attach = function(client, bufnr)
    d = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "type definition" },
    r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "rename" },
    a = { "<cmd>CodeActionMenu<CR>", "code actions" },
-   f = { "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", "format" },
+   f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "format" },
    q = { "<cmd> lua vim.lsp.buf.hover() <CR>", "documentation" },
    i = { "<cmd> lua vim.lsp.buf.implementation() <CR>", "implementation" },
   },
@@ -52,37 +52,35 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-	"texlab",
-	"ltex",
-	"rust_analyzer",
-	-- "clangd",
-	"vimls",
-	"bashls",
-	-- "sumneko_lua",
-	"jsonls",
-	"cmake",
-	"dockerls",
-	"pylsp",
-	"pyright",
+ "texlab",
+ "ltex",
+ "rust_analyzer",
+ -- "clangd",
+ "vimls",
+ "bashls",
+ -- "sumneko_lua",
+ "jsonls",
+ "cmake",
+ "dockerls",
+ "pylsp",
+ -- "pyright",
 }
 
 -- local coq = require("coq")
 for _, lsp in pairs(servers) do
-    require("lspconfig")[lsp].setup({
+    require("lspconfig")[lsp].setup(coq.lsp_ensure_capabilities({
   on_attach = on_attach,
-  capabilities = capabilities,
   -- flags = {
   -- 	debounce_text_changes = 150,
   -- },
-    })
+    }))
 end
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 require("clangd_extensions").setup({
- server = {
+ server = coq.lsp_ensure_capabilities({
   on_attach = on_attach,
-  capabilities = capabilities,
   cmd = {
    "clangd",
    "--background-index",
@@ -94,9 +92,9 @@ require("clangd_extensions").setup({
    "--header-insertion=iwyu",
    "--pch-storage=memory",
   },
- },
+ }),
 })
-require("lspconfig").sumneko_lua.setup({
+require("lspconfig").sumneko_lua.setup(coq.lsp_ensure_capabilities({
  settings = {
   Lua = {
    runtime = {
@@ -114,13 +112,10 @@ require("lspconfig").sumneko_lua.setup({
     library = vim.api.nvim_get_runtime_file("", true),
    },
    -- Do not send telemetry data containing a randomized but unique identifier
-   telemetry = {
-    enable = false,
-   },
   },
  },
  on_attach = on_attach,
-})
+}))
 
 
 -- local null_ls = require("null-ls")
