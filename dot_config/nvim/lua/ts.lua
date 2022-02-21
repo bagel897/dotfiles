@@ -3,7 +3,7 @@
 require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true, -- false will disable the whole extension
-          use_languagetree = true,
+		use_languagetree = true,
 	},
 	incremental_selection = {
 		enable = true,
