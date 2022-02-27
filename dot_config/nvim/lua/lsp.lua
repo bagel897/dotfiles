@@ -89,7 +89,7 @@ require("lspconfig").texlab.setup(
 					onSave = true,
 				},
 				chktex = {
-					onEdit = true,
+					onEdit = false,
 					onOpenAndSave = true,
 				},
 				diagnosticsDelay = 300,
