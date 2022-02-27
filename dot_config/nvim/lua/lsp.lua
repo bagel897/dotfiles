@@ -75,30 +75,37 @@ for _, lsp in pairs(servers) do
 		-- },
 	}))
 end
-require("lspconfig").texlab.setup(coq.lsp_ensure_capabilities({on_attach == on_attach,settings= {texlab = {auxDirectory = ".",
-        bibtexFormatter = "texlab",
-        build = {
-          args = { "--keep-logs", "--keep-intermediates", "-synctex" ,"$f"},
-          executable = "tectonic",
-          forwardSearchAfter = false,
-          onSave = true
-        },
-        chktex = {
-          onEdit = true,
-          onOpenAndSave = true
-        },
-        diagnosticsDelay = 300,
-        formatterLineLength = 80,
-        forwardSearch = {
-          args = {}
-        },
-        latexFormatter = "latexindent",
-        latexindent = {
-          modifyLineBreaks = true
-        }
- }}}))
-local runtime_path = vim.split(package.path,
-  ";")
+require("lspconfig").texlab.setup(
+	coq.lsp_ensure_capabilities({
+		on_attach == on_attach,
+		settings = {
+			texlab = {
+				auxDirectory = ".",
+				bibtexFormatter = "texlab",
+				build = {
+					args = { "--keep-logs", "--keep-intermediates", "-synctex", "$f" },
+					executable = "tectonic",
+					forwardSearchAfter = false,
+					onSave = true,
+				},
+				chktex = {
+					onEdit = true,
+					onOpenAndSave = true,
+				},
+				diagnosticsDelay = 300,
+				formatterLineLength = 80,
+				forwardSearch = {
+					args = {},
+				},
+				latexFormatter = "latexindent",
+				latexindent = {
+					modifyLineBreaks = true,
+				},
+			},
+		},
+	})
+)
+local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 require("clangd_extensions").setup({
