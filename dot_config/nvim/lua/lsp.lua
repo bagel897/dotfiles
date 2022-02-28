@@ -20,6 +20,8 @@ local on_attach = function(client, bufnr)
 			f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "format" },
 			q = { "<cmd> lua vim.lsp.buf.hover() <CR>", "documentation" },
 			i = { "<cmd> lua vim.lsp.buf.implementation() <CR>", "implementation" },
+			c = { "<cmd> lua vim.lsp.buf.incoming_calls() <CR>", "incoming calls" },
+			o = { "<cmd> lua vim.lsp.buf.outgoing_calls() <CR>", "outgoing calls" },
 		},
 	}, { prefix = "<leader>" })
 	-- Enable completion triggered by <c-x><c-o>
