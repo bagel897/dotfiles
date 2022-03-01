@@ -149,19 +149,19 @@ require("lspconfig").sumneko_lua.setup(coq.lsp_ensure_capabilities({
 	on_attach = on_attach,
 }))
 
--- local null_ls = require("null-ls")
--- local sources = {
--- 	-- null_ls.builtins.formatting.clang_format,
--- 	null_ls.builtins.formatting.stylua,
--- 	-- null_ls.builtins.diagnostics.gitlint,
--- 	-- null_ls.builtins.diagnostics.luacheck,
--- 	-- null_ls.builtins.diagnostics.pylint,
--- 	-- null_ls.builtins.code_actions.refactoring,
--- }
--- require("null-ls").setup({
--- 	sources = sources,
--- 	on_attach = on_attach,
--- })
+local null_ls = require("null-ls")
+local sources = {
+	-- null_ls.builtins.formatting.clang_format,
+	null_ls.builtins.formatting.stylua,
+	-- null_ls.builtins.diagnostics.gitlint,
+	-- null_ls.builtins.diagnostics.luacheck,
+	-- null_ls.builtins.diagnostics.pylint,
+	-- null_ls.builtins.code_actions.refactoring,
+}
+require("null-ls").setup({
+	sources = sources,
+	on_attach = on_attach,
+})
 
 -- require('rust-tools'--[[ ).setup( ]]{})
 -- require('rust-tools.inlay_hints').set_inlay_hints()

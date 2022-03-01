@@ -19,11 +19,7 @@ require("telescope").setup({
 			overwrite_file_sorter = true,
 			case_mode = "smart_case",
 		},
-		["ui-select"] = {
-			require("telescope.themes").get_dropdown({
-				-- even more opts
-			}),
-		},
+
 	},
 	pickers = {
 		find_files = {
