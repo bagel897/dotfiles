@@ -85,7 +85,7 @@ require("lspconfig").texlab.setup(
 				auxDirectory = ".",
 				bibtexFormatter = "texlab",
 				build = {
-					args = { "--keep-logs", "--keep-intermediates", "-synctex", "$f" },
+					args = { "--keep-logs", "--keep-intermediates", "-synctex", "%f" },
 					executable = "tectonic",
 					forwardSearchAfter = false,
 					onSave = true,
