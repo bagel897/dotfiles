@@ -18,11 +18,8 @@ vim.o.breakindent = true
 --Save undo history
 vim.opt.undofile = true
 vim.o.autowrite = true
-vim.o.smartindent = true
-vim.o.expandtab = true
-vim.o.shiftwidth = 3
-vim.o.tabstop = 3
 --Case insensitive searching UNLESS /C or capital in search
+
 vim.o.ignorecase = true
 vim.o.smartcase = true
 

@@ -30,113 +30,45 @@ wk.register({
 require("dap-python").setup("/usr/bin/python")
 -- local dap_install = require("dap-install")
 local dap = require("dap")
-dap.defaults.fallback.terminal_win_cmd = "50vsplit new"
-dap.defaults.fallback.external_terminal = {
-	command = "/usr/bin/kgx",
-	args = { "-e" },
-}
-dap.defaults.fallback.force_external_terminal = true
 dap.adapters.lldb = {
 	type = "executable",
 	command = "/usr/bin/lldb-vscode", -- adjust as needed
 	name = "lldb",
 }
--- dap_install.config("ccppr_vsc", {
--- 	configurations = {
--- 		{
--- 			name = "Launch",
--- 			type = "cppdbg",
--- 			request = "launch",
--- 			program = function()
--- 				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
--- 			end,
--- 			cwd = "${workspaceFolder}",
--- 			stopOnEntry = false,
--- 			args = {},
--- 			-- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
--- 			--
--- 			--    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
--- 			--
--- 			-- Otherwise you might get the following error:
--- 			--
--- 			--    Error on launch: Failed to attach to the target process
--- 			--
--- 			-- But you should be aware of the implications:
--- 			-- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
--- 			runInTerminal = false,
--- 			setupCommands = {
--- 				{
--- 					text = "-enable-pretty-printing",
--- 					description = "enable pretty printing",
--- 					ignoreFailures = false,
--- 				},
--- 			},
--- 		},
---
--- 		{
--- 			name = "test file",
--- 			type = "cppdbg",
--- 			program = "${workspaceFolder}/cpp.out",
--- 			request = "launch",
--- 			stopOnEntry = false,
--- 			cwd = "${workspaceFolder}",
--- 			runInTerminal = false,
--- 			args = { "<", "input1" },
--- 			setupCommands = {
--- 				{
--- 					text = "-enable-pretty-printing",
--- 					description = "enable pretty printing",
--- 					ignoreFailures = false,
--- 				},
--- 			},
--- 		},
--- 		{
--- 			name = "test file 2",
--- 			type = "cppdbg",
--- 			program = "${workspaceFolder}/cpp.out",
--- 			request = "launch",
--- 			stopOnEntry = false,
--- 			cwd = "${workspaceFolder}",
--- 			args = { "<", "input2" },
--- 			runInTerminal = false,
--- 			setupCommands = {
--- 				{
--- 					text = "-enable-pretty-printing",
--- 					description = "enable pretty printing",
--- 					ignoreFailures = false,
--- 				},
--- 			},
--- 		},
--- 		{
--- 			-- If you get an "Operation not permitted" error using this, try disabling YAMA:
--- 			--  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
--- 			name = "Attach to process",
--- 			type = "cppdbg", -- Adjust this to match your adapter name (`dap.adapters.<name>`)
--- 			request = "attach",
--- 			pid = require("dap.utils").pick_process,
--- 			args = {},
--- 			setupCommands = {
--- 				{
--- 					text = "-enable-pretty-printing",
--- 					description = "enable pretty printing",
--- 					ignoreFailures = false,
--- 				},
--- 			},
--- 		},
--- 	},
--- })
-dap.configurations.cpp = {
-	{
 
-		name = "test file lldb",
+dap.configurations.cpp = {
+	-- {
+	--
+	-- 	name = "test file lldb",
+	-- 	type = "lldb",
+	-- 	program = "${workspaceFolder}/cpp.out",
+	-- 	request = "launch",
+	-- 	stopOnEntry = false,
+	-- 	cwd = "${workspaceFolder}",
+	-- 	terminal = "external",
+	-- 	stdio = { "${workspaceFolder}/input1", "${workspaceFolder}/test_output" },
+	-- 	runInTerminal = true,
+	-- },
+	{
+		name = "Launch",
 		type = "lldb",
-		program = "${workspaceFolder}/cpp.out",
 		request = "launch",
-		stopOnEntry = false,
+		program = function()
+			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+		end,
 		cwd = "${workspaceFolder}",
-		terminal = "external",
-		stdio = { "${workspaceFolder}/input1", "${workspaceFolder}/test_output" },
-		runInTerminal = true,
+		stopOnEntry = false,
+		args = {},
+		runInTerminal = false,
+	},
+	{
+		-- If you get an "Operation not permitted" error using this, try disabling YAMA:
+		--  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+		name = "Attach to process",
+		type = "lldb", -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+		request = "attach",
+		pid = require("dap.utils").pick_process,
+		args = {},
 	},
 }
 -- dap.adapters.python = {
@@ -188,4 +120,3 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 require("nvim-dap-virtual-text").setup()
-require("dap.ext.vscode").load_launchjs()

@@ -15,7 +15,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost config/packer.lua source <afile> | PackerCompile
   augroup end
 ]])
 local packer = require("packer")
@@ -34,6 +34,7 @@ packer.init({
 })
 return require("packer").startup({
 	function(use)
+		use("tpope/vim-sleuth")
 		use({
 			"j-hui/fidget.nvim",
 			config = function()
@@ -85,7 +86,6 @@ return require("packer").startup({
 			"gbrlsnchs/telescope-lsp-handlers.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
 			requires = { { "nvim-lua/plenary.nvim" } },
-
 		})
 		use("mjlbach/onedark.nvim") -- Theme inspired by Automatic
 		use({
@@ -167,7 +167,6 @@ return require("packer").startup({
 			"nvim-telescope/telescope-dap.nvim",
 			"theHamsta/nvim-dap-virtual-text",
 			"mfussenegger/nvim-dap-python",
-
 		})
 		use({
 			"windwp/nvim-autopairs",
