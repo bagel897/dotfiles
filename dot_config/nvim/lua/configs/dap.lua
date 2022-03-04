@@ -31,11 +31,11 @@ require("dap-python").setup("/usr/bin/python")
 -- local dap_install = require("dap-install")
 local dap = require("dap")
 dap.defaults.fallback.terminal_win_cmd = "50vsplit new"
--- dap.defaults.fallback.external_terminal = {
--- 	command = "/usr/bin/kgx",
--- 	args = { "-e" },
--- }
--- dap.defaults.fallback.force_external_terminal = true
+dap.defaults.fallback.external_terminal = {
+	command = "/usr/bin/kgx",
+	args = { "-e" },
+}
+dap.defaults.fallback.force_external_terminal = true
 dap.adapters.lldb = {
 	type = "executable",
 	command = "/usr/bin/lldb-vscode", -- adjust as needed

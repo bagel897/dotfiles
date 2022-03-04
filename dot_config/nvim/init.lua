@@ -1,6 +1,8 @@
 vim.opt.termguicolors = true
 require("configs/packer")
 require("configs/lsp")
+require("configs/dap")
+require("configs/telescope")
 --Set highlight on search
 vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"

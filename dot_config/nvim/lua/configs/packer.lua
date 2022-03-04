@@ -85,9 +85,7 @@ return require("packer").startup({
 			"gbrlsnchs/telescope-lsp-handlers.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
 			requires = { { "nvim-lua/plenary.nvim" } },
-			config = function()
-				require("configs/telescope")
-			end,
+
 		})
 		use("mjlbach/onedark.nvim") -- Theme inspired by Automatic
 		use({
@@ -169,9 +167,7 @@ return require("packer").startup({
 			"nvim-telescope/telescope-dap.nvim",
 			"theHamsta/nvim-dap-virtual-text",
 			"mfussenegger/nvim-dap-python",
-			config = function()
-				require("configs/dap")
-			end,
+
 		})
 		use({
 			"windwp/nvim-autopairs",
@@ -201,14 +197,14 @@ return require("packer").startup({
 				{ "nvim-treesitter/nvim-treesitter" },
 			},
 		})
-		use 'simrat39/rust-tools.nvim'
+		use("simrat39/rust-tools.nvim")
 		use({
 			"kyazdani42/nvim-tree.lua",
 			requires = {
 				"kyazdani42/nvim-web-devicons", -- optional, for file icon
 			},
 			config = function()
-               require("configs/tree")
+				require("configs/tree")
 			end,
 		})
 		use({
