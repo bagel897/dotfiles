@@ -201,39 +201,16 @@ return require("packer").startup({
 				{ "nvim-treesitter/nvim-treesitter" },
 			},
 		})
-		-- use 'simrat39/rust-tools.nvim'
-		-- use({
-		-- 	"kyazdani42/nvim-tree.lua",
-		-- 	requires = {
-		-- 		"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		-- 	},
-		-- 	config = function()
-		-- 		vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true })
-		-- 		-- vim.api.nvim_set_keymap("n",'<leader>r',":NvimTreeRefresh<CR>",{noremap = true})
-		-- 		-- vim.api.nvim_set_keymap("n",'<leader>n',":NvimTreeFindFile<CR>",{noremap = true})
-		-- 		require("nvim-tree").setup({
-		-- 			auto_close = true,
-		-- 			diagnostics = {
-		-- 				enable = true,
-		-- 				icons = {
-		-- 					hint = "",
-		-- 					info = "",
-		-- 					warning = "",
-		-- 					error = "",
-		-- 				},
-		-- 			},options
-		-- 			update_focused_file = {
-		-- 				enable = true,
-		-- 			},
-		-- 			filters = {
-		-- 				dotfiles = false,
-		-- 			},
-		-- 			view = {
-		-- 				auto_resize = true,
-		-- 			},
-		-- 		})
-		-- 	end,
-		-- })
+		use 'simrat39/rust-tools.nvim'
+		use({
+			"kyazdani42/nvim-tree.lua",
+			requires = {
+				"kyazdani42/nvim-web-devicons", -- optional, for file icon
+			},
+			config = function()
+               require("configs/tree")
+			end,
+		})
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
