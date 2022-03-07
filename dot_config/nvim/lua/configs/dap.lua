@@ -35,7 +35,6 @@ dap.adapters.lldb = {
 	command = "/usr/bin/lldb-vscode", -- adjust as needed
 	name = "lldb",
 }
-
 dap.configurations.cpp = {
 	-- {
 	--
@@ -102,6 +101,7 @@ dap.configurations.cpp = {
 --   },
 -- }
 
+require("dap.ext.vscode").load_launchjs()
 require("dapui").setup({
 	tray = {
 		-- elements = { "repl" },

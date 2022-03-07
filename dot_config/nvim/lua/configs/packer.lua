@@ -47,12 +47,12 @@ return require("packer").startup({
 				require("dressing").setup({})
 			end,
 		})
-		use({
-			"mrjones2014/legendary.nvim",
-			config = function()
-				require("legendary").setup({ auto_register_which_key = true })
-			end,
-		})
+		-- use({
+		-- 	"mrjones2014/legendary.nvim",
+		-- 	config = function()
+		-- 		require("legendary").setup({ auto_register_which_key = true })
+		-- 	end,
+		-- })
 		use({
 			"romgrk/barbar.nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
