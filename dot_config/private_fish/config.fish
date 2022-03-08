@@ -81,6 +81,4 @@ set -xU LESS_TERMCAP_ue (printf "\e[0m")
 
 status is-login; and pyenv init --path | source
 status is-interactive; and pyenv init - | source
-if pwd | grep rocket
-    set -g theme_display_git no
-end
+set -g theme_display_git no
