@@ -238,6 +238,13 @@ return require("packer").startup({
 				vim.g.cpp_compile_command = "g++ -g solution.cpp -o cpp.out"
 			end,
 		})
+		use({
+			"narutoxy/dim.lua",
+			requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+			config = function()
+				require("dim").setup({})
+			end,
+		})
 		if packer_bootstrap then
 			require("packer").sync()
 		end
