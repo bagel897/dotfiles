@@ -71,8 +71,11 @@ wk.register({
 		name = "git",
 		b = { require("telescope.builtin").git_branches, "branches" },
 		s = { require("telescope.builtin").git_status, "status" },
-		c = { require("telescope.builtin").git_commits, "commits" },
-		a = { "[[<cmd>:G add <CR>]]" },
+		h = { require("telescope.builtin").git_commits, "commit history" },
+		w = { "[[<cmd>:Gwrite<CR>]]", "write and add" },
+		c = { "[[<cmd>:Git commit <CR>]]", "commit" },
+		p = { "[[<cmd>:Git! push <CR>", "push" },
+		g = { "[[<cmd>:Git! pull <CR>", "pull" },
 
 		-- s = { [[<cmd>lua require('telescope.builtin').git_stash()<CR>]], "stash" },
 	},
@@ -80,8 +83,7 @@ wk.register({
 -- local refactoring = require("refactoring")
 wk.register({
 	r = { require("telescope").extensions.refactoring.refactors, "refactors" },
-},	{ prefix = "<leader>", mode = "v" }
-)
+}, { prefix = "<leader>", mode = "v" })
 
 require("telescope").load_extension("dap")
 -- vim.api.nvim_set_keymap(
