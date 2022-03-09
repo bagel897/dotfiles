@@ -1,7 +1,8 @@
 -- local actions = require("telescope.actions")
 -- local trouble = require("trouble.providers.telescope")
 -- Telescope
-require("telescope").setup({
+local telescope = require("telescope")
+telescope.setup({
 	defaults = {
 		mappings = {
 			i = {
@@ -27,65 +28,62 @@ require("telescope").setup({
 	},
 })
 -- Enable telescope fzf native
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("refactoring")
-require("telescope").load_extension("file_browser")
-require("telescope").load_extension("dap")
-require("telescope").load_extension("lsp_handlers")
+telescope.load_extension("fzf")
+telescope.load_extension("refactoring")
+telescope.load_extension("file_browser")
+telescope.load_extension("dap")
+telescope.load_extension("lsp_handlers")
 --Add leader shortcuts
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader><space>",
-	[[<cmd>lua require('telescope.builtin').buffers()<CR>]],
-	{ noremap = true, silent = true }
-)
+
 local wk = require("which-key")
+local builtin = require("telescope.builtin")
 wk.register({
 	f = {
 		name = "find",
 		g = { ":Telescope file_browser <CR>", "file browser" },
-		f = { require("telescope.builtin").find_files, "files" },
-		b = { require("telescope.builtin").current_buffer_fuzzy_find, "buffer" },
-		h = { require("telescope.builtin").help_tags, "help" },
-		t = { require("telescope.builtin").tags, "tags" },
-		d = { require("telescope.builtin").grep_string, "grep string" },
-		p = { require("telescope.builtin").live_grep, "live grep" },
+		f = { builtin.find_files, "files" },
+		b = { builtin.current_buffer_fuzzy_find, "buffer" },
+		h = { builtin.help_tags, "help" },
+		t = { builtin.tags, "tags" },
+		d = { builtin.grep_string, "grep string" },
+		p = { builtin.live_grep, "live grep" },
 		o = {
 			function()
-				require("telescope.builtin").tags({ only_current_buffer = true })
+				builtin.tags({ only_current_buffer = true })
 			end,
 			"current buffer",
 		},
 		s = {
 			function()
-				require("telescope.builtin").current_buffer_fuzzy_find({ fuzzy = false, case_mode = "ignore_case" })
+				builtin.current_buffer_fuzzy_find({ fuzzy = false, case_mode = "ignore_case" })
 			end,
 			"current buffer",
 		},
-		c = { require("telescope.builtin").commands, "commands" },
-		-- ? = {[[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],"old files"},
+		c = { builtin.commands, "commands" },
+		-- ? = {[[<cmd>lua require('builtin').oldfiles()<CR>]],"old files"},
 	},
+	["<space>"] = { builtin.buffers, "buffers" },
 }, { prefix = "<leader>" })
 wk.register({
 	g = {
 		name = "git",
-		b = { require("telescope.builtin").git_branches, "branches" },
-		s = { require("telescope.builtin").git_status, "status" },
-		h = { require("telescope.builtin").git_commits, "commit history" },
+		b = { builtin.git_branches, "branches" },
+		s = { builtin.git_status, "status" },
+		h = { builtin.git_commits, "commit history" },
 		w = { "[[<cmd>:Gwrite<CR>]]", "write and add" },
 		c = { "[[<cmd>:Git commit <CR>]]", "commit" },
 		p = { "[[<cmd>:Git! push <CR>", "push" },
 		g = { "[[<cmd>:Git! pull <CR>", "pull" },
 
-		-- s = { [[<cmd>lua require('telescope.builtin').git_stash()<CR>]], "stash" },
+		-- s = { [[<cmd>lua require('builtin').git_stash()<CR>]], "stash" },
 	},
 }, { prefix = "<leader>" })
 -- local refactoring = require("refactoring")
 wk.register({
-	r = { require("telescope").extensions.refactoring.refactors, "refactors" },
+	r = { telescope.extensions.refactoring.refactors, "refactors" },
 }, { prefix = "<leader>", mode = "v" })
 
-require("telescope").load_extension("dap")
+telescope.load_extension("dap")
 -- vim.api.nvim_set_keymap(
 -- 	"v",
 -- 	"<Leader>te",

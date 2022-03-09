@@ -2,10 +2,10 @@
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.g.coq_settings = { auto_start = "shut-up" }
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 local wk = require("which-key")
 local coq = require("coq")
 -- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -14,14 +14,14 @@ local on_attach = function(client, bufnr)
 	wk.register({
 		l = {
 			name = "lsp",
-			d = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "type definition" },
-			r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "rename" },
+			d = { vim.lsp.buf.type_definition, "type definition" },
+			r = { vim.lsp.buf.rename, "rename" },
 			a = { "<cmd>CodeActionMenu<CR>", "code actions" },
-			f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "format" },
-			q = { "<cmd> lua vim.lsp.buf.hover() <CR>", "documentation" },
-			i = { "<cmd> lua vim.lsp.buf.implementation() <CR>", "implementation" },
-			c = { "<cmd> lua vim.lsp.buf.incoming_calls() <CR>", "incoming calls" },
-			o = { "<cmd> lua vim.lsp.buf.outgoing_calls() <CR>", "outgoing calls" },
+			f = { vim.lsp.buf.formatting, "format" },
+			q = { vim.lsp.buf.hover, "documentation" },
+			i = { vim.lsp.buf.implementation, "implementation" },
+			c = { vim.lsp.buf.incoming_calls, "incoming calls" },
+			o = { vim.lsp.buf.outgoing_calls, "outgoing calls" },
 		},
 	}, { prefix = "<leader>" })
 	-- Enable completion triggered by <c-x><c-o>
@@ -29,20 +29,16 @@ local on_attach = function(client, bufnr)
 
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<space>wl",
-		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	vim.keymap.set( "n", "gD", vim.lsp.buf.declaration, opts)
+	vim.keymap.set( "n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set( "n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set( "n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set( "n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+	vim.keymap.set( "n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+	vim.keymap.set( "n", "<space>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, opts)
+	vim.keymap.set( "n", "gr", vim.lsp.buf.references, opts)
 	if client.resolved_capabilities.document_formatting then
 		vim.api.nvim_command([[augroup Format]])
 		vim.api.nvim_command([[autocmd! * <buffer>]])

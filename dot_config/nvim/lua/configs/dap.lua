@@ -11,25 +11,30 @@
 -- end
 -- local opts = { noremap = false, silent = true }
 local wk = require("which-key")
+local dap = require("dap")
 wk.register({
 	d = {
 		name = "debug",
-		n = { '<cmd>lua require"dap".step_over()<CR>', "step over" },
-		s = { '<cmd>lua require"dap".step_into()<CR>', "step into" },
-		o = { '<cmd>lua require"dap".step_out()<CR>', "step out" },
-		u = { '<cmd> lua require"dap".run_to_cursor()<CR>', "run to cursor" },
-		b = { '<cmd>lua require"dap".toggle_breakpoint()<CR>', "breakpoint" },
-		c = { '<cmd>lua require"dap".continue()<CR>', "continue" },
-		r = { '<cmd>lua require"dap".run_last()<CR>', "run_last" },
-		q = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "conditional" },
-		x = { "<cmd> lua require'dap'.terminate()<CR>", "terminate" },
-		e = { "<cmd> lua require'dapui'.close()<CR>", "close" },
-		p = { "<cmd> lua require'dap'.pause()<CR>", "pause" },
+		n = { dap.step_over, "step over" },
+		s = { dap.step_into, "step into" },
+		o = { dap.step_out, "step out" },
+		u = { dap.run_to_cursor, "run to cursor" },
+		b = { dap.toggle_breakpoint, "breakpoint" },
+		c = { dap.continue, "continue" },
+		r = { dap.run_last, "run_last" },
+		q = {
+			function()
+				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+			end,
+			"conditional",
+		},
+		x = { dap.terminate, "terminate" },
+		e = { require("dapui").close, "close" },
+		p = { dap.pause, "pause" },
 	},
 }, { prefix = "<leader>" })
 require("dap-python").setup("/usr/bin/python")
 -- local dap_install = require("dap-install")
-local dap = require("dap")
 dap.adapters.lldb = {
 	type = "executable",
 	command = "/usr/bin/lldb-vscode", -- adjust as needed
