@@ -65,7 +65,7 @@ local servers = {
 	"jsonls",
 	"cmake",
 	"dockerls",
-	-- "pylsp",
+	"pylsp",
 	"pyright",
 }
 
