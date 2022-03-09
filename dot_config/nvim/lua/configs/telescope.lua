@@ -19,7 +19,6 @@ require("telescope").setup({
 			overwrite_file_sorter = true,
 			case_mode = "smart_case",
 		},
-
 	},
 	pickers = {
 		find_files = {
@@ -52,8 +51,18 @@ wk.register({
 		d = { [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], "grep string" },
 		p = { [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], "live grep" },
 		o = { [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], "current buffer" },
+		s = { [[:Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case<CR>]], "current buffer" },
 		c = { "<cmd>lua require('telescope.builtin').commands()<CR>", "commands" },
 		-- ? = {[[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],"old files"},
+	},
+}, { prefix = "<leader>" })
+wk.register({
+	g = {
+		name = "git",
+		b = { [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], "branches" },
+		s = { [[<cmd>lua require('telescope.builtin').git_status()<CR>]], "status" },
+		c = { [[<cmd>lua require('telescope.builtin').git_commits()<CR>]], "commits" },
+		-- s = { [[<cmd>lua require('telescope.builtin').git_stash()<CR>]], "stash" },
 	},
 }, { prefix = "<leader>" })
 vim.api.nvim_set_keymap(
