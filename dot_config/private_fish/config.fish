@@ -75,6 +75,7 @@ function vimdiff
     nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 end
 set -g DEBUGINFOD_URLS "https://debuginfod.elfutils.org/"
+set -g DIFFPROG "nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'"
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
 set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")
