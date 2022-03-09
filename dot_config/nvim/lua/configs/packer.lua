@@ -66,8 +66,7 @@ return require("packer").startup({
 		use("wbthomason/packer.nvim")
 		use("tpope/vim-fugitive") -- Git commands in nvim
 		use("tpope/vim-rhubarb") -- Fugitive-companion to interact with github
-		use(("t-troebst/perfanno.nvim")
-		)
+		use("t-troebst/perfanno.nvim")
 		use({
 			"numToStr/Comment.nvim",
 			config = function()
@@ -215,9 +214,7 @@ return require("packer").startup({
 		-- use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 		use({
 			"akinsho/toggleterm.nvim",
-			config = function()
-				require("toggleterm").setup({})
-			end,
+			config = require("toggleterm").setup,
 		})
 		-- use({
 		-- 	"neomake/neomake",
@@ -234,10 +231,9 @@ return require("packer").startup({
 		use({
 			"narutoxy/dim.lua",
 			requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-			config = function()
-				require("dim").setup({})
-			end,
+			config = require("dim").setup,
 		})
+		use({ "lewis6991/impatient.nvim" })
 		if packer_bootstrap then
 			require("packer").sync()
 		end
