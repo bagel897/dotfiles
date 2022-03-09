@@ -44,55 +44,67 @@ wk.register({
 	f = {
 		name = "find",
 		g = { ":Telescope file_browser <CR>", "file browser" },
-		f = { [[<cmd>lua require('telescope.builtin').find_files()<CR>]], "files" },
-		b = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>", "buffer" },
-		h = { [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], "help" },
-		t = { [[<cmd>lua require('telescope.builtin').tags()<CR>]], "tags" },
-		d = { [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], "grep string" },
-		p = { [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], "live grep" },
-		o = { [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], "current buffer" },
-		s = { [[:Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case<CR>]], "current buffer" },
-		c = { "<cmd>lua require('telescope.builtin').commands()<CR>", "commands" },
+		f = { require("telescope.builtin").find_files, "files" },
+		b = { require("telescope.builtin").current_buffer_fuzzy_find, "buffer" },
+		h = { require("telescope.builtin").help_tags, "help" },
+		t = { require("telescope.builtin").tags, "tags" },
+		d = { require("telescope.builtin").grep_string, "grep string" },
+		p = { require("telescope.builtin").live_grep, "live grep" },
+		o = {
+			function()
+				require("telescope.builtin").tags({ only_current_buffer = true })
+			end,
+			"current buffer",
+		},
+		s = {
+			function()
+				require("telescope.builtin").current_buffer_fuzzy_find({ fuzzy = false, case_mode = "ignore_case" })
+			end,
+			"current buffer",
+		},
+		c = { require("telescope.builtin").commands, "commands" },
 		-- ? = {[[<cmd>lua require('telescope.builtin').oldfiles()<CR>]],"old files"},
 	},
 }, { prefix = "<leader>" })
 wk.register({
 	g = {
 		name = "git",
-		b = { [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], "branches" },
-		s = { [[<cmd>lua require('telescope.builtin').git_status()<CR>]], "status" },
-		c = { [[<cmd>lua require('telescope.builtin').git_commits()<CR>]], "commits" },
+		b = { require("telescope.builtin").git_branches, "branches" },
+		s = { require("telescope.builtin").git_status, "status" },
+		c = { require("telescope.builtin").git_commits, "commits" },
+		a = { "[[<cmd>:G add <CR>]]" },
+
 		-- s = { [[<cmd>lua require('telescope.builtin').git_stash()<CR>]], "stash" },
 	},
 }, { prefix = "<leader>" })
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>tr",
-	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-	{ noremap = true }
+-- local refactoring = require("refactoring")
+wk.register({
+	r = { require("telescope").extensions.refactoring.refactors, "refactors" },
+},	{ prefix = "<leader>", mode = "v" }
 )
+
 require("telescope").load_extension("dap")
-vim.api.nvim_set_keymap(
-	"v",
-	"<Leader>te",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"v",
-	"<Leader>tf",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"v",
-	"<Leader>tv",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
-vim.api.nvim_set_keymap(
-	"v",
-	"<Leader>ti",
-	[[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
-	{ noremap = true, silent = true, expr = false }
-)
+-- vim.api.nvim_set_keymap(
+-- 	"v",
+-- 	"<Leader>te",
+-- 	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
+-- 	{ noremap = true, silent = true, expr = false }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"v",
+-- 	"<Leader>tf",
+-- 	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]],
+-- 	{ noremap = true, silent = true, expr = false }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"v",
+-- 	"<Leader>tv",
+-- 	[[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]],
+-- 	{ noremap = true, silent = true, expr = false }
+-- )
+-- vim.api.nvim_set_keymap(
+-- 	"v",
+-- 	"<Leader>ti",
+-- 	[[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+-- 	{ noremap = true, silent = true, expr = false }
+-- )
