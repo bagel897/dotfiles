@@ -1,6 +1,6 @@
 vim.opt.termguicolors = true
-require('impatient')
 require("configs/packer")
+require('impatient')
 require("configs/lsp")
 require("configs/dap")
 require("configs/telescope")
