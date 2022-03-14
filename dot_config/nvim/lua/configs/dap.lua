@@ -39,6 +39,9 @@ dap.adapters.lldb = {
 	type = "executable",
 	command = "/usr/bin/lldb-vscode", -- adjust as needed
 	name = "lldb",
+			env = {
+			LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES",
+		},
 }
 dap.adapters.codelldb = function(on_adapter)
 	local stdout = vim.loop.new_pipe(false)

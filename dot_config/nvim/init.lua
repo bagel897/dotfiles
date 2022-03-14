@@ -1,9 +1,10 @@
 vim.opt.termguicolors = true
 require("configs/packer")
-require('impatient')
+require("impatient")
 require("configs/lsp")
 require("configs/dap")
 require("configs/telescope")
+require("configs/legendary")
 --Set highlight on search
 vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"
@@ -45,12 +46,6 @@ vim.api.nvim_set_keymap("n", "k", "v:count == 1 ? 'gk' : 'k'", { noremap = true,
 vim.api.nvim_set_keymap("n", "j", "v:count == 1 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 
 -- Highlight on yank
-vim.cmd([[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]])
 
 --Map blankline
 vim.g.indent_blankline_char = "┊"
@@ -78,7 +73,9 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- sidebar.setup(opts)
 vim.api.nvim_set_keymap("n", "q", [[<cmd> q <CR>]], { noremap = true, silent = true })
 
-				local util = require("perfanno.util")
-				local bgcolor = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui")
-				require("perfanno").setup({ line_highlights = util.make_bg_highlights(bgcolor, "#CC3300", 10),
-				                            vt_highlight = util.make_fg_highlight("#CC3300"), })
+local util = require("perfanno.util")
+local bgcolor = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui")
+require("perfanno").setup({
+	line_highlights = util.make_bg_highlights(bgcolor, "#CC3300", 10),
+	vt_highlight = util.make_fg_highlight("#CC3300"),
+})

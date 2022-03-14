@@ -12,12 +12,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	})
 end
 
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost config/packer.lua source <afile> | PackerCompile
-  augroup end
-]])
 local packer = require("packer")
 packer.init({
 	display = {
@@ -47,12 +41,9 @@ return require("packer").startup({
 				require("dressing").setup({})
 			end,
 		})
-		-- use({
-		-- 	"mrjones2014/legendary.nvim",
-		-- 	config = function()
-		-- 		require("legendary").setup({ auto_register_which_key = true })
-		-- 	end,
-		-- })
+		use({
+			"mrjones2014/legendary.nvim",
+		})
 		use({
 			"romgrk/barbar.nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
@@ -214,7 +205,9 @@ return require("packer").startup({
 		-- use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 		use({
 			"akinsho/toggleterm.nvim",
-			config = require("toggleterm").setup,
+			config = function()
+				require("toggleterm").setup({})
+			end,
 		})
 		-- use({
 		-- 	"neomake/neomake",
@@ -231,7 +224,9 @@ return require("packer").startup({
 		use({
 			"narutoxy/dim.lua",
 			requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-			config = require("dim").setup,
+			config = function()
+				require("dim").setup({})
+			end,
 		})
 		use({ "lewis6991/impatient.nvim" })
 		if packer_bootstrap then

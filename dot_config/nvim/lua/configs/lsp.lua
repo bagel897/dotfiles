@@ -29,22 +29,16 @@ local on_attach = function(client, bufnr)
 
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	vim.keymap.set( "n", "gD", vim.lsp.buf.declaration, opts)
-	vim.keymap.set( "n", "gd", vim.lsp.buf.definition, opts)
-	vim.keymap.set( "n", "K", vim.lsp.buf.hover, opts)
-	vim.keymap.set( "n", "gi", vim.lsp.buf.implementation, opts)
-	vim.keymap.set( "n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-	vim.keymap.set( "n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-	vim.keymap.set( "n", "<space>wl", function()
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+	vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+	vim.keymap.set("n", "<space>wl", function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, opts)
-	vim.keymap.set( "n", "gr", vim.lsp.buf.references, opts)
-	if client.resolved_capabilities.document_formatting then
-		vim.api.nvim_command([[augroup Format]])
-		vim.api.nvim_command([[autocmd! * <buffer>]])
-		vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting_seq_sync()]])
-		vim.api.nvim_command([[augroup END]])
-	end
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -62,7 +56,7 @@ local servers = {
 	"cmake",
 	"dockerls",
 	"pylsp",
-	"pyright",
+	-- "pyright",
 }
 
 -- local coq = require("coq")
@@ -74,6 +68,14 @@ for _, lsp in pairs(servers) do
 		-- },
 	}))
 end
+require("lspconfig").pylsp.setup(coq.lsp_ensure_capabilities({
+	on_attach = on_attach,
+	settings = {
+		pylsp = {
+			plugins = { pydocstyle = { enabled = true }, pylint = { enabled = false }, flake8 = { enabled = true } },
+		},
+	},
+}))
 require("lspconfig").texlab.setup(coq.lsp_ensure_capabilities({
 	on_attach == on_attach,
 	settings = {
@@ -152,7 +154,7 @@ local sources = {
 	-- null_ls.builtins.diagnostics.luacheck,
 	-- null_ls.builtins.diagnostics.pylint,
 	-- null_ls.builtins.code_actions.refactoring,
-	null_ls.builtins.formatting.black,
+	-- null_ls.builtins.formatting.black,
 	-- Black can be finnicky on the lsp side so I use Null to back it up
 }
 require("null-ls").setup({
@@ -163,7 +165,6 @@ require("null-ls").setup({
 -- require('rust-tools'--[[ ).setup( ]]{})
 -- require('rust-tools.inlay_hints').set_inlay_hints()
 
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
 require("refactoring").setup({})
 vim.diagnostic.config({
 	virtual_text = true,
