@@ -54,7 +54,7 @@ return require("packer").startup({
 				vim.g.dashboard_default_executive = "telescope"
 			end,
 		})
-		use("wbthomason/packer.nvim")
+		use({ "wbthomason/packer.nvim", opt = false })
 		use("tpope/vim-fugitive") -- Git commands in nvim
 		use("tpope/vim-rhubarb") -- Fugitive-companion to interact with github
 		use("t-troebst/perfanno.nvim")
@@ -70,18 +70,21 @@ return require("packer").startup({
 			"nvim-telescope/telescope-file-browser.nvim",
 			requires = { { "nvim-lua/plenary.nvim" } },
 		})
-		use("mjlbach/onedark.nvim") -- Theme inspired by Automatic
+		use({
+			"folke/tokyonight.nvim",
+			config = function()
+				vim.g.tokyonight_style = "night"
+			end,
+		})
 		use({
 			"nvim-lualine/lualine.nvim",
 			config = function()
 				require("lualine").setup({
 					options = {
 						icons_enabled = true,
-						theme = "onedark",
-						component_separators = "|",
-						section_separators = "",
+						theme = "tokyonight",
 					},
-					extensions = { "nvim-tree", "fzf", "quickfix", "fugitive" },
+					extensions = { "nvim-tree", "fzf", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
 				})
 			end,
 		})
@@ -163,6 +166,7 @@ return require("packer").startup({
 			config = function()
 				require("which-key").setup({})
 			end,
+			opt = false,
 		})
 
 		use({
@@ -196,13 +200,13 @@ return require("packer").startup({
 				require("configs/trouble")
 			end,
 		})
-		--   use({
-		-- "luukvbaal/stabilize.nvim",
-		-- config = function()
-		--     require("stabilize").setup({ nested = "QuickFixCmdPost,DiagnosticChanged *" })
-		-- end,
-		--   })
-		-- use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
+		  use({
+		"luukvbaal/stabilize.nvim",
+		config = function()
+		    require("stabilize").setup({ nested = "QuickFixCmdPost,DiagnosticChanged *" })
+		end,
+		  })
+		use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 		use({
 			"akinsho/toggleterm.nvim",
 			config = function()

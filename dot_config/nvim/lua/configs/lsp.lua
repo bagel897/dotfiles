@@ -55,8 +55,8 @@ local servers = {
 	"jsonls",
 	"cmake",
 	"dockerls",
-	"pylsp",
-	-- "pyright",
+	-- "pylsp",
+	"pyright",
 }
 
 -- local coq = require("coq")
