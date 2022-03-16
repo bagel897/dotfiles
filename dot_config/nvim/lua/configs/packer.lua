@@ -115,35 +115,35 @@ return require("packer").startup({
 				require("configs/treesitter")
 			end,
 		})
-		--   use({
-		-- "neovim/nvim-lspconfig",
-		-- "hrsh7th/cmp-nvim-lsp",
-		-- "hrsh7th/cmp-buffer",
-		-- "hrsh7th/cmp-path",
-		-- "hrsh7th/cmp-cmdline",
-		-- "hrsh7th/cmp-nvim-lsp-signature-help",
-		-- "hrsh7th/nvim-cmp",
-		-- "L3MON4D3/LuaSnip",
-		-- "saadparwaiz1/cmp_luasnip",
-		-- "onsails/lspkind-nvim",
-		--   })
+		use({
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/nvim-cmp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"onsails/lspkind-nvim",
+		})
+		use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
 		use({
 			"neovim/nvim-lspconfig",
 			"jose-elias-alvarez/null-ls.nvim",
 			"p00f/clangd_extensions.nvim",
-			"ms-jpq/coq_nvim",
-			"ms-jpq/coq.artifacts",
-			"ms-jpq/coq.thirdparty",
+			-- "ms-jpq/coq_nvim",
+			-- "ms-jpq/coq.artifacts",
+			-- "ms-jpq/coq.thirdparty",
 			"kosayoda/nvim-lightbulb",
-			config = function()
-				vim.g.coq_settings = { auto_start = "shut-up", xdg = true }
-				require("coq_3p")({
-
-					{ src = "nvimlua", short_name = "nLUA", conf_only = true },
-					{ src = "dap" },
-				})
-			end,
-			run = ":COQDeps",
+			-- config = function()
+			-- 	vim.g.coq_settings = { auto_start = "shut-up", xdg = true }
+			-- 	require("coq_3p")({
+			--
+			-- 		{ src = "nvimlua", short_name = "nLUA", conf_only = true },
+			-- 		{ src = "dap" },
+			-- 	})
+			-- end,
+			-- run = ":COQDeps",
 		})
 		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
@@ -156,8 +156,25 @@ return require("packer").startup({
 		})
 		use({
 			"windwp/nvim-autopairs",
-			config = function()
-				require("nvim-autopairs").setup({})
+			config = function()local Rule = require('nvim-autopairs.rule')
+				local npairs = require("nvim-autopairs")
+
+				npairs.setup({
+					check_ts = true,
+					ts_config = {
+						lua = { "string" }, -- it will not add a pair on that treesitter node
+						javascript = { "template_string" },
+						java = false, -- don't check treesitter on java
+					},
+				})
+
+				local ts_conds = require("nvim-autopairs.ts-conds")
+
+				-- press % => %% only while inside a comment or string
+				npairs.add_rules({
+					Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node({ "string", "comment" })),
+					Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node({ "function" })),
+				})
 			end,
 		})
 
@@ -200,12 +217,12 @@ return require("packer").startup({
 				require("configs/trouble")
 			end,
 		})
-		  use({
-		"luukvbaal/stabilize.nvim",
-		config = function()
-		    require("stabilize").setup({ nested = "QuickFixCmdPost,DiagnosticChanged *" })
-		end,
-		  })
+		use({
+			"luukvbaal/stabilize.nvim",
+			config = function()
+				require("stabilize").setup({ nested = "QuickFixCmdPost,DiagnosticChanged *" })
+			end,
+		})
 		use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 		use({
 			"akinsho/toggleterm.nvim",

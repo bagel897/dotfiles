@@ -7,8 +7,8 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 local wk = require("which-key")
-local coq = require("coq")
--- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local coq = require("coq")
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
 	wk.register({
@@ -61,22 +61,24 @@ local servers = {
 
 -- local coq = require("coq")
 for _, lsp in pairs(servers) do
-	require("lspconfig")[lsp].setup(coq.lsp_ensure_capabilities({
+	require("lspconfig")[lsp].setup({
 		on_attach = on_attach,
+		capabilities = capabilities,
 		-- flags = {
 		-- 	debounce_text_changes = 150,
 		-- },
-	}))
+	})
 end
-require("lspconfig").pylsp.setup(coq.lsp_ensure_capabilities({
+require("lspconfig").pylsp.setup({
 	on_attach = on_attach,
 	settings = {
 		pylsp = {
 			plugins = { pydocstyle = { enabled = true }, pylint = { enabled = false }, flake8 = { enabled = true } },
 		},
 	},
-}))
-require("lspconfig").texlab.setup(coq.lsp_ensure_capabilities({
+	capabilities = capabilities,
+})
+require("lspconfig").texlab.setup({
 	on_attach == on_attach,
 	settings = {
 		texlab = {
@@ -103,12 +105,13 @@ require("lspconfig").texlab.setup(coq.lsp_ensure_capabilities({
 			},
 		},
 	},
-}))
+	capabilities = capabilities,
+})
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 require("clangd_extensions").setup({
-	server = coq.lsp_ensure_capabilities({
+	server = {
 		on_attach = on_attach,
 		cmd = {
 			"clangd",
@@ -121,9 +124,10 @@ require("clangd_extensions").setup({
 			"--header-insertion=iwyu",
 			"--pch-storage=memory",
 		},
-	}),
+		capabilities = capabilities,
+	},
 })
-require("lspconfig").sumneko_lua.setup(coq.lsp_ensure_capabilities({
+require("lspconfig").sumneko_lua.setup({
 	settings = {
 		Lua = {
 			runtime = {
@@ -144,7 +148,8 @@ require("lspconfig").sumneko_lua.setup(coq.lsp_ensure_capabilities({
 		},
 	},
 	on_attach = on_attach,
-}))
+	capabilities = capabilities,
+})
 
 local null_ls = require("null-ls")
 local sources = {

@@ -5,6 +5,7 @@ require("configs/lsp")
 require("configs/dap")
 require("configs/telescope")
 require("configs/legendary")
+require("configs/cmp")
 --Set highlight on search
 vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"
@@ -33,8 +34,6 @@ vim.wo.signcolumn = "yes"
 vim.o.termguicolors = true
 vim.cmd([[colorscheme tokyonight]])
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
 
 --Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
