@@ -24,6 +24,8 @@ local on_attach = function(client, bufnr)
 			o = { vim.lsp.buf.outgoing_calls, "outgoing calls" },
 		},
 	}, { prefix = "<leader>" })
+	-- vim.keymap.set("v", "<leader>la", vim.lsp.buf.range_code_action)
+
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
