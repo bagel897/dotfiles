@@ -16,12 +16,10 @@ alias 'grep'=rg
 alias 'du'=dust
 alias 'cat'="bat -p -p"
 alias 'find'=fd
-#alias 'sudo'='sudo '
 alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 alias bpytop="btop"
 #alias 'cd'=z
-#set sudo 'sudo '
 function java-gui
     java --module-path /usr/lib/jvm/java-11-openjfx/lib --add-modules javafx.controls,javafx.fxml,javafx.web $argv
 end
@@ -85,4 +83,3 @@ set -xU LESS_TERMCAP_ue (printf "\e[0m")
 
 status is-login; and pyenv init --path | source
 status is-interactive; and pyenv init - | source
-set -g theme_display_git no
