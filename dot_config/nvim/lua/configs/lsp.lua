@@ -7,7 +7,6 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 local wk = require("which-key")
--- local coq = require("coq")
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
@@ -58,7 +57,7 @@ local servers = {
 	"cmake",
 	"dockerls",
 	-- "pylsp",
-	"pyright",
+	-- "pyright",
 }
 
 -- local coq = require("coq")
