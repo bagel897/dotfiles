@@ -81,8 +81,8 @@ return require("packer").startup({
 			config = function()
 				require("lualine").setup({
 					options = {
-						icons_enabled = true,
 						theme = "tokyonight",
+						globalstatus = true,
 					},
 					extensions = { "nvim-tree", "fzf", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
 				})
@@ -156,7 +156,8 @@ return require("packer").startup({
 		})
 		use({
 			"windwp/nvim-autopairs",
-			config = function()local Rule = require('nvim-autopairs.rule')
+			config = function()
+				local Rule = require("nvim-autopairs.rule")
 				local npairs = require("nvim-autopairs")
 
 				npairs.setup({

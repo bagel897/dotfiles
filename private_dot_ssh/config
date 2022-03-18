@@ -1,7 +1,7 @@
 Host bagelpi
 	User bageljr
 	Port 6389
-	Hostname bageljr.duckdns.org
+	Hostname bageljr.com
 Host bagelpilocal
     Port 6389
     Hostname 192.168.3.129
