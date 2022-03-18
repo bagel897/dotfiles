@@ -4,7 +4,6 @@ require("impatient")
 require("configs/lsp")
 require("configs/dap")
 require("configs/telescope")
-require("configs/legendary")
 require("configs/cmp")
 --Set highlight on search
 vim.o.hlsearch = true
@@ -78,3 +77,4 @@ require("perfanno").setup({
 	line_highlights = util.make_bg_highlights(bgcolor, "#CC3300", 10),
 	vt_highlight = util.make_fg_highlight("#CC3300"),
 })
+require("configs/legendary")
