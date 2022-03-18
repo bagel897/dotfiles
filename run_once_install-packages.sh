@@ -17,7 +17,7 @@ if ! type -P pylsp; then
 	pip install pylsp-rope python-lsp-server[all] python-lsp-black pylsp-mypy
 fi
 if ! type -P fd; then 
-	cargo install fd
+	cargo install fd-find
 fi
 if ! type -P fzf; then 
 	cargo install fzf
