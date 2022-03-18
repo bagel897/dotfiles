@@ -1,2 +1,2 @@
 #!/bin/sh
-nvim --headless -c 'PackerSync'
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
