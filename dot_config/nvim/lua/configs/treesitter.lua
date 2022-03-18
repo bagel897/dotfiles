@@ -18,6 +18,7 @@ require("nvim-treesitter.configs").setup({
 	-- 	enable = true,
 	-- },
 	ensure_installed = "maintained",
+	ignore_install = {"tlaplus"},
 	textobjects = {
 		select = {
 			enable = true,

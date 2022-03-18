@@ -10,16 +10,15 @@ if ! type -P nvim; then
 	echo Copying to ~/.local/bin/nvim
 	mv /tmp/nvim.appimage ~/.local/bin/nvim
 fi
+if ! type -P cargo; then
+	curl https://sh.rustup.rs -sSf | sh
+fi
 if ! type -P pylsp; then
 	pip install pylsp-rope python-lsp-server[all] python-lsp-black pylsp-mypy
 fi
 if ! type -P fd; then 
-	if ! type -P cargo; then
-		cargo install fd
-	fi
+	cargo install fd-find
 fi
 if ! type -P fzf; then 
-	if ! type -P cargo; then
-		cargo install fzf
-	fi
+	cargo install fzf
 fi
