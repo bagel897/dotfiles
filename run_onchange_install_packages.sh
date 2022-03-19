@@ -1,4 +1,4 @@
-#!/bin/bash
+#curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher!/bin/bash
 
 if ! type -P nvim > /dev/null; then
 	if [ ! -d ~/.local/bin ]; then

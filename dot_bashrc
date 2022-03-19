@@ -10,6 +10,7 @@ PS1='[\u@\h \W]\$ '
 export PATH=$PATH:~/.local/bin:~/.cargo/bin/
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+. "$HOME/.cargo/env"
 if type -P pyenv; then
 	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
