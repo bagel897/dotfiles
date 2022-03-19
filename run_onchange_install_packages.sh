@@ -23,7 +23,7 @@ if ! type -P fzf > /dev/null; then
 	cargo install fzf
 fi
 if ! type -P rg > /dev/null; then 
-	cargo install rg
+	cargo install ripgrep
 fi
 if ! type -P fisher > /dev/null; then
 	if type -P fish > /dev/null; then
