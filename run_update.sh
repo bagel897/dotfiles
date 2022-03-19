@@ -1,3 +1,3 @@
 #!/bin/sh
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-fisher update
+fish -c "fisher update"
