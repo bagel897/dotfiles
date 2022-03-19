@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ! type -P nvim; then
+if ! type -P nvim > /dev/null; then
 	if [ ! -d ~/.local/bin ]; then
 		mkdir ~/.local/bin
 	fi
@@ -10,15 +10,20 @@ if ! type -P nvim; then
 	echo Copying to ~/.local/bin/nvim
 	mv /tmp/nvim.appimage ~/.local/bin/nvim
 fi
-if ! type -P cargo; then
+if ! type -P cargo > /dev/null; then
 	curl https://sh.rustup.rs -sSf | sh
 fi
-if ! type -P pylsp; then
+if ! type -P pylsp > /dev/null; then
 	pip install pylsp-rope python-lsp-server[all] python-lsp-black pylsp-mypy
 fi
-if ! type -P fd; then 
+if ! type -P fd > /dev/null; then 
 	cargo install fd-find
 fi
-if ! type -P fzf; then 
+if ! type -P fzf > /dev/null; then 
 	cargo install fzf
+fi
+if ! type -P fisher > /dev/null; then
+	if type -P fish -> /dev/null; then
+		 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+	fi
 fi
