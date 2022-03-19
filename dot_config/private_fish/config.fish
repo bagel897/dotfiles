@@ -1,9 +1,4 @@
 #zoxide init  fish | source
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-#eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
 set pipenv_fish_fancy yes
 set -g theme_nerd_fonts yes
 set -g theme_display_date yes
@@ -72,7 +67,6 @@ end
 function vimdiff
     nvim -d $1
 end
-set -g DEBUGINFOD_URLS "https://debuginfod.elfutils.org/"
 set -g DIFFPROG "nvim -d $1"
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
