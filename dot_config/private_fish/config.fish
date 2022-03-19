@@ -1,7 +1,6 @@
 #zoxide init  fish | source
+set fish_greeting
 set pipenv_fish_fancy yes
-set -g theme_nerd_fonts yes
-set -g theme_display_date yes
 set -g VDPAU_DRIVER radeonsi
 set -g LIBVA_DRIVER_NAME radeonsi
 set fzf_preview_dir_cmd exa --all --color=always
@@ -13,23 +12,12 @@ alias 'cat'="bat -p -p"
 alias 'find'=fd
 alias diff='diff --color=auto'
 alias ip='ip -color=auto'
-alias bpytop="btop"
 #alias 'cd'=z
 function java-gui
     java --module-path /usr/lib/jvm/java-11-openjfx/lib --add-modules javafx.controls,javafx.fxml,javafx.web $argv
 end
 function dmesg
     sudo dmesg | grep -v audit | grep -v swap
-end
-function pulseeffects-restart
-    killall pulseeffects
-    systemctl --user restart app-pulseeffects\\x2dservice@autostart.service
-end    
-function pipewire-restart
-    systemctl --user restart pipewire
-    killall electron
-    systemctl --user restart app-discord@autostart.service
-    pulseeffects-restart
 end
 function windows
     sudo bootctl set-oneshot auto-windoes
