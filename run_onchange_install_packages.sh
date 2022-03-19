@@ -22,6 +22,9 @@ fi
 if ! type -P fzf > /dev/null; then 
 	cargo install fzf
 fi
+if ! type -P rg > /dev/null; then 
+	cargo install rg
+fi
 if ! type -P fisher > /dev/null; then
 	if type -P fish > /dev/null; then
 		fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
