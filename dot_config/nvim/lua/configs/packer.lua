@@ -251,6 +251,22 @@ return require("packer").startup({
 			end,
 		})
 		use({ "lewis6991/impatient.nvim" })
+		use({ "nvim-lua/popup.nvim", requires = { "nvim-lua/plenary.nvim" } })
+		use({
+			"nathom/filetype.nvim",
+			config = function()
+				require("filetype").setup({})
+			end,
+		})
+		use({
+			"karb94/neoscroll.nvim",
+			config = function()
+				require("neoscroll").setup()
+			end,
+		})
+		use({
+			"simrat39/symbols-outline.nvim",
+		})
 		if packer_bootstrap then
 			require("packer").sync()
 		end
