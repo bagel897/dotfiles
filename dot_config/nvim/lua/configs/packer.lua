@@ -125,7 +125,7 @@ return require("packer").startup({
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind-nvim",
-		})
+		})use "rafamadriz/friendly-snippets"
 		use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
 		use({
 			"neovim/nvim-lspconfig",

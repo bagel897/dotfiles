@@ -12,7 +12,7 @@ local has_words_before = function()
 end
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menu,menuone,noselect"
-
+require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({ mode = "symbol_text" }),

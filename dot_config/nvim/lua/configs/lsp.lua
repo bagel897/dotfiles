@@ -40,15 +40,16 @@ local on_attach = function(client, bufnr)
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, opts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-	vim.cmd[[:SymbolsOutlineOpen]]
+	-- vim.cmd([[:SymbolsOutlineOpen]])
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-	"texlab",
+	-- "texlab",
 	"ltex",
 	"rust_analyzer",
+	-- "prosemd_lsp",
 	-- "ccls",
 	-- "clangd",
 	"vimls",

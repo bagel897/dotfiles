@@ -65,3 +65,4 @@ set -xU LESS_TERMCAP_ue (printf "\e[0m")
 
 status is-login; and pyenv init --path | source
 status is-interactive; and pyenv init - | source
+# source /usr/share/neovim-tokyonight-git/fish_tokyonight_night.fish
