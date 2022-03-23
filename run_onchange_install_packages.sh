@@ -19,6 +19,12 @@ fi
 if ! type -P fd > /dev/null; then 
 	cargo install fd-find
 fi
+if ! type -P starship > /dev/null; then 
+	cargo install starship
+fi
+if ! type -P exa > /dev/null; then 
+	cargo install exa
+fi
 if ! type -P fzf > /dev/null; then 
 	cargo install fzf
 fi
