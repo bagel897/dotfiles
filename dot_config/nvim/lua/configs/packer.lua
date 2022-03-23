@@ -27,7 +27,7 @@ packer.init({
 	compile_on_sync = true,
 })
 return require("packer").startup({
-	function(use)
+	function(use)use('mrjones2014/smart-splits.nvim')
 		use("tpope/vim-sleuth")
 		use({
 			"j-hui/fidget.nvim",
