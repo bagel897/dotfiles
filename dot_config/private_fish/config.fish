@@ -1,6 +1,5 @@
 #zoxide init  fish | source
 set fish_greeting
-set pipenv_fish_fancy yes
 set -g VDPAU_DRIVER radeonsi
 set -g LIBVA_DRIVER_NAME radeonsi
 set fzf_preview_dir_cmd exa --all --color=always
@@ -56,12 +55,6 @@ function vimdiff
     nvim -d $1
 end
 set -g DIFFPROG "nvim -d $1"
-set -xU LESS_TERMCAP_md (printf "\e[01;31m")
-set -xU LESS_TERMCAP_me (printf "\e[0m")
-set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")
-set -xU LESS_TERMCAP_se (printf "\e[0m")
-set -xU LESS_TERMCAP_us (printf "\e[01;32m")
-set -xU LESS_TERMCAP_ue (printf "\e[0m")
 
 status is-login; and pyenv init --path | source
 status is-interactive; and pyenv init - | source 
