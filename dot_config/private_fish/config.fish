@@ -64,4 +64,5 @@ set -xU LESS_TERMCAP_us (printf "\e[01;32m")
 set -xU LESS_TERMCAP_ue (printf "\e[0m")
 
 status is-login; and pyenv init --path | source
-status is-interactive; and pyenv init - | source
+status is-interactive; and pyenv init - | source 
+starship init fish | source
