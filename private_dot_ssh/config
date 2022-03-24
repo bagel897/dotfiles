@@ -30,4 +30,6 @@ Host bagelzero
 	User bageljr
 	Hostname     100.83.204.100
 	Port 6389
-
+Host bagelmax
+	Hostname 100.87.126.14
+	
