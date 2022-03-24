@@ -5,6 +5,7 @@ require("configs/lsp")
 require("configs/dap")
 require("configs/telescope")
 require("configs/cmp")
+				require("configs/splits")
 --Set highlight on search
 vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"

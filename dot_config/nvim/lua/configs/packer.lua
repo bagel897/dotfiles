@@ -27,7 +27,10 @@ packer.init({
 	compile_on_sync = true,
 })
 return require("packer").startup({
-	function(use)use('mrjones2014/smart-splits.nvim')
+	function(use)
+		use({
+			"mrjones2014/smart-splits.nvim",
+		})
 		use("tpope/vim-sleuth")
 		use({
 			"j-hui/fidget.nvim",
@@ -84,7 +87,8 @@ return require("packer").startup({
 						theme = "tokyonight",
 						globalstatus = true,
 					},
-					extensions = { "nvim-tree", "fzf", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
+					extensions = { "nvim-tree", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
+					sections = { lualine_c = { { "filename", path = 1 } } },
 				})
 			end,
 		})
@@ -125,7 +129,8 @@ return require("packer").startup({
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind-nvim",
-		})use "rafamadriz/friendly-snippets"
+		})
+		use("rafamadriz/friendly-snippets")
 		use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
 		use({
 			"neovim/nvim-lspconfig",
