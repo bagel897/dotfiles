@@ -76,7 +76,7 @@ require("lspconfig").pylsp.setup({
 	on_attach = on_attach,
 	settings = {
 		pylsp = {
-			plugins = { pydocstyle = { enabled = true }, pylint = { enabled = false }, flake8 = { enabled = true } },
+			plugins = { pydocstyle = { enabled = false }, pylint = { enabled = false }, flake8 = { enabled = true } },
 		},
 	},
 	capabilities = capabilities,
