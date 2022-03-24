@@ -108,4 +108,4 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
-require("cmp_git").setup()
+require("cmp_git").setup()require("luasnip.loaders.from_snipmate").lazy_load()
