@@ -29,6 +29,15 @@ packer.init({
 return require("packer").startup({
 	function(use)
 		use({
+			"AckslD/nvim-neoclip.lua",
+			requires = {
+				{ "nvim-telescope/telescope.nvim" },
+			},
+			config = function()
+				require("neoclip").setup()
+			end,
+		})
+		use({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
 			requires = {

@@ -5,7 +5,7 @@ require("configs/lsp")
 require("configs/dap")
 require("configs/telescope")
 require("configs/cmp")
-				require("configs/splits")
+require("configs/splits")
 --Set highlight on search
 vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"
@@ -33,7 +33,6 @@ vim.wo.signcolumn = "yes"
 --Set colorscheme
 vim.o.termguicolors = true
 vim.cmd([[colorscheme tokyonight]])
-
 
 --Remap space as leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
