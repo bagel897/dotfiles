@@ -33,7 +33,7 @@ wk.register({
 		p = { dap.pause, "pause" },
 	},
 }, { prefix = "<leader>" })
-require("dap-python").setup("/usr/bin/python")
+require("dap-python").setup("python")
 -- local dap_install = require("dap-install")
 dap.adapters.lldb = {
 	type = "executable",
