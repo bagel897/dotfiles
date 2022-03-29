@@ -14,7 +14,7 @@ if ! type -P cargo > /dev/null; then
 	curl https://sh.rustup.rs -sSf | sh
 fi
 if ! type -P pylsp > /dev/null; then
-	pip install pylsp-rope python-lsp-server[all] python-lsp-black pylsp-mypy
+	pip install pylsp-rope python-lsp-server[all] python-lsp-black pylsp-mypy pylsp-autoimport
 fi
 if ! type -P fd > /dev/null; then 
 	cargo install fd-find
