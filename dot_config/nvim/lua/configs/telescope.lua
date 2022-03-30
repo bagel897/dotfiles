@@ -64,20 +64,47 @@ wk.register({
 	},
 	["<space>"] = { builtin.buffers, "buffers" },
 }, { prefix = "<leader>" })
-wk.register({
-	g = {
-		name = "git",
-		b = { builtin.git_branches, "branches" },
-		s = { builtin.git_status, "status" },
-		h = { builtin.git_commits, "commit history" },
-		w = { "[[<cmd>:Gwrite<CR>]]", "write and add" },
-		c = { "[[<cmd>:Git commit <CR>]]", "commit" },
-		p = { "[[<cmd>:Git! push <CR>", "push" },
-		g = { "[[<cmd>:Git! pull <CR>", "pull" },
-
-		-- s = { [[<cmd>lua require('builtin').git_stash()<CR>]], "stash" },
-	},
-}, { prefix = "<leader>" })
+-- local neogit = require("neogit")
+-- wk.register({
+-- 	g = {
+-- 		name = "git",
+-- 		b = { builtin.git_branches, "branches" },
+-- 		s = { builtin.git_status, "status" },
+-- 		h = { builtin.git_commits, "commit history" },
+-- 		w = {
+-- 			function()
+-- 				neogit.open({ "stage" })
+-- 			end,
+-- 			"stage",
+-- 		},
+-- 		c = {
+-- 			function()
+-- 				neogit.open({ "commit" })
+-- 			end,
+-- 			"commit",
+-- 		},
+-- 		p = {
+-- 			function()
+-- 				neogit.open({ "push" })
+-- 			end,
+-- 			"push",
+-- 		},
+-- 		g = {
+-- 			function()
+-- 				neogit.open({ "pull" })
+-- 			end,
+-- 			"pull",
+-- 		},
+-- 		d = {
+-- 			function()
+-- 				neogit.open({ "diff" })
+-- 			end,
+-- 			"diff",
+-- 		},
+--
+-- 		-- s = { [[<cmd>lua require('builtin').git_stash()<CR>]], "stash" },
+-- 	},
+-- }, { prefix = "<leader>" })
 -- local refactoring = require("refactoring")
 wk.register({
 	r = { telescope.extensions.refactoring.refactors, "refactors" },

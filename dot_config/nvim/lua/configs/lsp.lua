@@ -77,10 +77,8 @@ require("lspconfig").pylsp.setup({
 	settings = {
 		pylsp = {
 			plugins = {
-				pydocstyle = { enabled = false },
-				pycodestyle = { enabled = true, maxLineLength = 88},
-				pylint = { enabled = false },
-				flake8 = { enabled = true, ignore = "E501" },
+				pycodestyle = { enabled = true, maxLineLength = 88 },
+				pylint = { enabled = true, args = {"--disable C0301"}},
 			},
 		},
 	},

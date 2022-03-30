@@ -79,8 +79,15 @@ return require("packer").startup({
 			end,
 		})
 		use({ "wbthomason/packer.nvim", opt = false })
-		use("tpope/vim-fugitive") -- Git commands in nvim
-		use("tpope/vim-rhubarb") -- Fugitive-companion to interact with github
+		use({
+			"TimUntersberger/neogit",
+			requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
+			config = function()
+				local neogit = require("neogit")
+				require("neogit").setup({ integrations = { diffview = true } })
+				vim.keymap.set("n" ,"<leader>g",neogit.open )
+			end,
+		})
 		use("t-troebst/perfanno.nvim")
 		use({
 			"numToStr/Comment.nvim",
