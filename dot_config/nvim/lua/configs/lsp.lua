@@ -49,6 +49,7 @@ local servers = {
 	-- "texlab",
 	"ltex",
 	"rust_analyzer",
+	"yamlls",
 	-- "prosemd_lsp",
 	-- "ccls",
 	-- "clangd",

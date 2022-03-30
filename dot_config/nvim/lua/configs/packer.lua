@@ -29,6 +29,13 @@ packer.init({
 return require("packer").startup({
 	function(use)
 		use({
+			"ellisonleao/glow.nvim",
+			ft = { "markdown" },
+			config = function()
+				vim.keymap.set("n", "<leader>p", ":Glow<CR>")
+			end,
+		})
+		use({
 			"AckslD/nvim-neoclip.lua",
 			requires = {
 				{ "nvim-telescope/telescope.nvim" },
@@ -85,7 +92,7 @@ return require("packer").startup({
 			config = function()
 				local neogit = require("neogit")
 				require("neogit").setup({ integrations = { diffview = true } })
-				vim.keymap.set("n" ,"<leader>g",neogit.open )
+				vim.keymap.set("n", "<leader>g", neogit.open)
 			end,
 		})
 		use("t-troebst/perfanno.nvim")
