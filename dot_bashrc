@@ -11,10 +11,10 @@ export PATH=$PATH:~/.local/bin:~/.cargo/bin/
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 . "$HOME/.cargo/env"
-if type -P pyenv; then
+if type -P pyenv > /dev/null; then
 	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 fi
-if type -P fish; then
+if type -P fish > /dev/null; then
 	fish 
 fi
