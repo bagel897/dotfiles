@@ -1,16 +1,16 @@
--- local actions = require("telescope.actions")
--- local trouble = require("trouble.providers.telescope")
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
 -- Telescope
 local telescope = require("telescope")
 telescope.setup({
 	defaults = {
 		mappings = {
 			i = {
-				-- ["<c-t>"] = trouble.open_with_trouble,
+				["<c-t>"] = trouble.open_with_trouble,
 				["<C-d>"] = false,
 				["<C-h>"] = "which_key",
 			},
-			-- n = { ["<c-t>"] = trouble.open_with_trouble },
+			n = { ["<c-t>"] = trouble.open_with_trouble },
 		},
 	},
 	extensions = {
@@ -35,36 +35,6 @@ telescope.load_extension("dap")
 telescope.load_extension("lsp_handlers")
 --Add leader shortcuts
 
-local wk = require("which-key")
-local builtin = require("telescope.builtin")
-wk.register({
-	f = {
-		name = "find",
-		g = { ":Telescope file_browser <CR>", "file browser" },
-		f = { builtin.find_files, "files" },
-		l = { builtin.lsp_document_symbols, "lsp" },
-		b = { builtin.current_buffer_fuzzy_find, "buffer" },
-		h = { builtin.help_tags, "help" },
-		t = { builtin.tags, "tags" },
-		d = { builtin.grep_string, "grep string" },
-		p = { builtin.live_grep, "live grep" },
-		o = {
-			function()
-				builtin.tags({ only_current_buffer = true })
-			end,
-			"current buffer",
-		},
-		s = {
-			function()
-				builtin.current_buffer_fuzzy_find({ fuzzy = false, case_mode = "ignore_case" })
-			end,
-			"current buffer",
-		},
-		c = { builtin.commands, "commands" },
-		-- ? = {[[<cmd>lua require('builtin').oldfiles()<CR>]],"old files"},
-	},
-	["<space>"] = { builtin.buffers, "buffers" },
-}, { prefix = "<leader>" })
 -- local neogit = require("neogit")
 -- wk.register({
 -- 	g = {
@@ -107,11 +77,7 @@ wk.register({
 -- 	},
 -- }, { prefix = "<leader>" })
 -- local refactoring = require("refactoring")
-wk.register({
-	r = { telescope.extensions.refactoring.refactors, "refactors" },
-}, { prefix = "<leader>", mode = "v" })
 
-telescope.load_extension("dap")
 -- vim.api.nvim_set_keymap(
 -- 	"v",
 -- 	"<Leader>te",

@@ -6,23 +6,9 @@ vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-local wk = require("which-key")
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
-	wk.register({
-		l = {
-			name = "lsp",
-			d = { vim.lsp.buf.type_definition, "type definition" },
-			r = { vim.lsp.buf.rename, "rename" },
-			a = { "<cmd>CodeActionMenu<CR>", "code actions" },
-			f = { vim.lsp.buf.formatting, "format" },
-			q = { vim.lsp.buf.hover, "documentation" },
-			i = { vim.lsp.buf.implementation, "implementation" },
-			c = { vim.lsp.buf.incoming_calls, "incoming calls" },
-			o = { vim.lsp.buf.outgoing_calls, "outgoing calls" },
-		},
-	}, { prefix = "<leader>" })
 	-- vim.keymap.set("v", "<leader>la", vim.lsp.buf.range_code_action)
 
 	-- Enable completion triggered by <c-x><c-o>

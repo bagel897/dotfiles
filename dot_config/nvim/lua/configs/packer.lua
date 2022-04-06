@@ -265,10 +265,10 @@ return require("packer").startup({
 		})
 		use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 		use({
-			"akinsho/toggleterm.nvim",
+			"akinsho/toggleterm.nvim", branch ="main",
 			config = function()
 				require("toggleterm").setup({})
-			end,
+			end, commands=":ToggleTerm"
 		})
 		-- use({
 		-- 	"neomake/neomake",

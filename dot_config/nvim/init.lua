@@ -7,6 +7,7 @@ require("configs/telescope")
 require("configs/cmp")
 require("configs/splits")
 require("configs/legendary")
+require("configs/keymaps")
 --Set highlight on search
 vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"

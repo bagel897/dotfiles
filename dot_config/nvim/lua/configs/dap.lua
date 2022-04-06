@@ -10,30 +10,8 @@
 -- 	dap_install.config(debugger)
 -- end
 -- local opts = { noremap = false, silent = true }
-local wk = require("which-key")
-local dap = require("dap")
-wk.register({
-	d = {
-		name = "debug",
-		n = { dap.step_over, "step over" },
-		s = { dap.step_into, "step into" },
-		o = { dap.step_out, "step out" },
-		u = { dap.run_to_cursor, "run to cursor" },
-		b = { dap.toggle_breakpoint, "breakpoint" },
-		c = { dap.continue, "continue" },
-		r = { dap.run_last, "run_last" },
-		q = {
-			function()
-				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-			end,
-			"conditional",
-		},
-		x = { dap.terminate, "terminate" },
-		e = { require("dapui").close, "close" },
-		p = { dap.pause, "pause" },
-	},
-}, { prefix = "<leader>" })
 require("dap-python").setup("python")
+local dap = require("dap")
 -- local dap_install = require("dap-install")
 dap.adapters.lldb = {
 	type = "executable",
@@ -49,7 +27,7 @@ dap.configurations.cpp = {
 		cwd = "${workspaceFolder}",
 		args = { "<input1" },
 		runInTerminal = true,
-		postRunCommands = {'process handle -p true -s false -n false SIGWINCH'}
+		postRunCommands = { "process handle -p true -s false -n false SIGWINCH" },
 	},
 	{
 		name = "test2",
@@ -59,7 +37,7 @@ dap.configurations.cpp = {
 		cwd = "${workspaceFolder}",
 		args = { "<input2" },
 		runInTerminal = true,
-		postRunCommands = {'process handle -p true -s false -n false SIGWINCH'}
+		postRunCommands = { "process handle -p true -s false -n false SIGWINCH" },
 	},
 	{
 		name = "Launch",
