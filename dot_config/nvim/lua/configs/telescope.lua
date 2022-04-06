@@ -42,6 +42,7 @@ wk.register({
 		name = "find",
 		g = { ":Telescope file_browser <CR>", "file browser" },
 		f = { builtin.find_files, "files" },
+		l = { builtin.lsp_document_symbols, "lsp" },
 		b = { builtin.current_buffer_fuzzy_find, "buffer" },
 		h = { builtin.help_tags, "help" },
 		t = { builtin.tags, "tags" },
