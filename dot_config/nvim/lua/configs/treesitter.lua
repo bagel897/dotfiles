@@ -14,9 +14,9 @@ require("nvim-treesitter.configs").setup({
 			node_decremental = "grm",
 		},
 	},
-	-- indent = {
-	-- 	enable = true,
-	-- },
+	indent = {
+		enable = true,
+	},
 	ensure_installed = "maintained",
 	ignore_install = {"tlaplus", "php","norg"},
 	textobjects = {

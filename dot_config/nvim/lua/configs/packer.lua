@@ -59,7 +59,6 @@ return require("packer").startup({
 		use({
 			"mrjones2014/smart-splits.nvim",
 		})
-		use("tpope/vim-sleuth")
 		use({
 			"j-hui/fidget.nvim",
 			config = function()
