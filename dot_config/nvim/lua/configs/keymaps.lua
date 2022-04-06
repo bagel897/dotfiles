@@ -65,14 +65,7 @@ wk.register({
 wk.register({
 	l = {
 		name = "lsp",
-		d = { vim.lsp.buf.type_definition, "type definition" },
-		r = { vim.lsp.buf.rename, "rename" },
 		a = { "<CMD> :CodeActionMenu <CR>", "range code actions" },
-		f = { vim.lsp.buf.range_format, "range format" },
-		q = { vim.lsp.buf.hover, "documentation" },
-		i = { vim.lsp.buf.implementation, "implementation" },
-		c = { vim.lsp.buf.incoming_calls, "incoming calls" },
-		o = { vim.lsp.buf.outgoing_calls, "outgoing calls" },
 	},
 	r = { telescope.extensions.refactoring.refactors, "refactors" },
 }, { prefix = "<leader>", mode = "v" })
