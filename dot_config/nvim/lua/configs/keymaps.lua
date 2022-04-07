@@ -61,6 +61,7 @@ wk.register({
 	},
 	["<space>"] = { builtin.buffers, "buffers" },
 	t = { "<CMD>:ToggleTerm<CR>", "Toggle Terminal" },
+	s = { "<CMD>:SymbolsOutline <CR>", "symbols outline" },
 }, { prefix = "<leader>" })
 wk.register({
 	l = {

@@ -1,18 +1,5 @@
--- local dap_install = require("dap-install")
---
--- dap_install.setup({
--- 	installation_path = vim.fn.stdpath("data") .. "/dapinstall/",
--- })
--- local dap_install = require("dap-install")
--- local dbg_list = require("dap-install.api.debuggers").get_installed_debuggers()
---
--- for _, debugger in ipairs(dbg_list) do
--- 	dap_install.config(debugger)
--- end
--- local opts = { noremap = false, silent = true }
 require("dap-python").setup("python")
 local dap = require("dap")
--- local dap_install = require("dap-install")
 dap.adapters.lldb = {
 	type = "executable",
 	command = "/usr/bin/lldb-vscode", -- adjust as needed
@@ -93,7 +80,7 @@ dap.configurations.c = dap.configurations.cpp
 --   },
 -- }
 
-require("dap.ext.vscode").load_launchjs()
+require("dap.ext.vscode").load_launchjs(nil, {lldb = {'c', 'cpp'}})
 require("dapui").setup({
 	tray = {
 		-- elements = { "repl" },
