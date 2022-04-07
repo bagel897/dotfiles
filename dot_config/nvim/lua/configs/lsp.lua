@@ -65,7 +65,8 @@ require("lspconfig").pylsp.setup({
 		pylsp = {
 			plugins = {
 				pycodestyle = { enabled = true, maxLineLength = 88 },
-				pydocstyle = {enabled=true},
+				pydocstyle = { enabled = true },
+				rope_autoimport = { enabled = true },
 				-- pylint = { enabled = true, args = {"--disable C0301"}},
 			},
 		},

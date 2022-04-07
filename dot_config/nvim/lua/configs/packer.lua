@@ -28,6 +28,9 @@ packer.init({
 })
 return require("packer").startup({
 	function(use)
+        use {'shaeinst/penvim', config = function ()
+            require("penvim").setup()
+        end}
 		use({
 			"ellisonleao/glow.nvim",
 			ft = { "markdown" },
