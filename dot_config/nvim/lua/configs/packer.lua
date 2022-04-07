@@ -28,9 +28,7 @@ packer.init({
 })
 return require("packer").startup({
 	function(use)
-        use {'shaeinst/penvim', config = function ()
-            require("penvim").setup()
-        end}
+		use({"tpope/vim-sleuth"})
 		use({
 			"ellisonleao/glow.nvim",
 			ft = { "markdown" },
