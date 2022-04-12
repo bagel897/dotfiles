@@ -1,4 +1,5 @@
 require("dap-python").setup("python")
+require('dap-python').test_runner = 'pytest'
 local dap = require("dap")
 dap.adapters.lldb = {
 	type = "executable",

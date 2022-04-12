@@ -20,8 +20,10 @@ wk.register({
 			"conditional",
 		},
 		x = { dap.terminate, "terminate" },
-		e = { require("dapui").close, "close" },
 		p = { dap.pause, "pause" },
+		f = { require("dap-python").test_method, "test method python" },
+		t = { require("dap-python").test_class, "test class python" },
+		ds = { require("dap-python").debug_selection, "debug selection python" },
 	},
 	l = {
 		name = "lsp",
