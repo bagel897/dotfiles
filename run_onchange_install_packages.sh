@@ -27,6 +27,8 @@ if ! type -P fzf > /dev/null; then
 fi
 if ! type -P rg > /dev/null; then 
 	cargo install ripgrep
+fiif ! type -P delta > /dev/null; then 
+	cargo install git-delta
 fi
 if ! type -P fisher > /dev/null; then
 	if type -P fish > /dev/null; then
