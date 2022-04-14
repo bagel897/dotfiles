@@ -3,6 +3,7 @@ local wk = require("which-key")
 local dap = require("dap")
 local builtin = require("telescope.builtin")
 local telescope = require("telescope")
+local neogit = require("neogit")
 wk.register({
 	d = {
 		name = "debug",
@@ -62,6 +63,7 @@ wk.register({
 		-- ? = {[[<cmd>lua require('builtin').oldfiles()<CR>]],"old files"},
 	},
 	["<space>"] = { builtin.buffers, "buffers" },
+	g = {neogit.open, "Git" },
 	t = { "<CMD>:ToggleTerm<CR>", "Toggle Terminal" },
 	s = { "<CMD>:SymbolsOutline <CR>", "symbols outline" },
 }, { prefix = "<leader>" })
