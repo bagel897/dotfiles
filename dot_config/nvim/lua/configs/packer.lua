@@ -28,7 +28,7 @@ packer.init({
 })
 return require("packer").startup({
 	function(use)
-		use({"tpope/vim-sleuth"})
+		use({ "tpope/vim-sleuth" })
 		use({
 			"ellisonleao/glow.nvim",
 			ft = { "markdown" },
@@ -53,9 +53,6 @@ return require("packer").startup({
 				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 				"MunifTanjim/nui.nvim",
 			},
-			config = function()
-				require("configs/neo-tree")
-			end,
 		})
 		use({
 			"mrjones2014/smart-splits.nvim",
@@ -150,9 +147,6 @@ return require("packer").startup({
 			"nvim-treesitter/nvim-treesitter",
 			require = { "nvim-treesitter/nvim-treesitter-textobjects" },
 			run = ":TSUpdate",
-			config = function()
-				require("configs/treesitter")
-			end,
 		})
 		use({
 			"hrsh7th/cmp-nvim-lsp",
@@ -160,8 +154,10 @@ return require("packer").startup({
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/cmp-nvim-lsp-document-symbol",
 			"hrsh7th/nvim-cmp",
 			"L3MON4D3/LuaSnip",
+			"davidsierradz/cmp-conventionalcommits",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind-nvim",
 		})
@@ -242,21 +238,9 @@ return require("packer").startup({
 			},
 		})
 		use("simrat39/rust-tools.nvim")
-		-- use({
-		-- 	"kyazdani42/nvim-tree.lua",
-		-- 	requires = {
-		-- 		"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		-- 	},
-		-- 	config = function()
-		-- 		require("configs/tree")
-		-- 	end,
-		-- })
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
-			config = function()
-				require("configs/trouble")
-			end,
 		})
 		use({
 			"luukvbaal/stabilize.nvim",
@@ -266,10 +250,12 @@ return require("packer").startup({
 		})
 		use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 		use({
-			"akinsho/toggleterm.nvim", branch ="main",
+			"akinsho/toggleterm.nvim",
+			branch = "main",
 			config = function()
 				require("toggleterm").setup({})
-			end, commands=":ToggleTerm"
+			end,
+			commands = ":ToggleTerm",
 		})
 		-- use({
 		-- 	"neomake/neomake",

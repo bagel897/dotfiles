@@ -1,5 +1,5 @@
 require("dap-python").setup("python")
-require('dap-python').test_runner = 'pytest'
+require("dap-python").test_runner = "pytest"
 local dap = require("dap")
 dap.adapters.lldb = {
 	type = "executable",
@@ -81,7 +81,7 @@ dap.configurations.c = dap.configurations.cpp
 --   },
 -- }
 
-require("dap.ext.vscode").load_launchjs(nil, {lldb = {'c', 'cpp'}})
+require("dap.ext.vscode").load_launchjs(nil, { lldb = { "c", "cpp" } })
 require("dapui").setup({
 	tray = {
 		-- elements = { "repl" },

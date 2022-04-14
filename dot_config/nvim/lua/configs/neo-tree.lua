@@ -130,5 +130,4 @@ require("neo-tree").setup({
 		},
 	},
 })
-vim.keymap.set('n','\\' , "<cmd> :Neotree reveal<cr>")
-vim.keymap.set('n','<C-n>' , "<cmd> :Neotree toggle<cr>")
+vim.keymap.set("n", "<C-n>", "<cmd> :Neotree toggle<cr>")

@@ -12,6 +12,7 @@ local has_words_before = function()
 end
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menu,menuone,noselect"
+
 require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup({
 	formatting = {
@@ -22,18 +23,13 @@ cmp.setup({
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	window = {
-		completion = {
-			border = "single",
-		},
-		documentation = {
-			border = "single",
-		},
-	},
-	mapping = {
-		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+	-- window = {
+	-- 	completion = cmp.config.window.bordered(),
+	-- },
+	mapping = cmp.mapping.preset.insert({
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4)),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4)),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete()),
 		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
@@ -51,7 +47,7 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end),
 
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -61,7 +57,7 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end),
 		["<Up>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
@@ -70,35 +66,34 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
-	},
+		end),
+	}),
+
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" }, -- For luasnip users.
-		{ name = "buffer" },
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "path" },
 		{ name = "nvim_lua" },
+	}, {
+		{ name = "buffer" },
 	}),
-	menu = {
-		buffer = "[Buffer]",
-		nvim_lsp = "[LSP]",
-		luasnip = "[LuaSnip]",
-		nvim_lua = "[Lua]",
-		latex_symbols = "[Latex]",
-	},
 })
 cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
+		{ name = "conventionalcommits" },
+	}, {
 		{ name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
 	}, {
 		{ name = "buffer" },
 	}),
 })
 cmp.setup.cmdline("/", {
-	sources = {
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp_document_symbol" },
+	}, {
 		{ name = "buffer" },
-	},
+	}),
 })
 
 cmp.setup.cmdline(":", {
