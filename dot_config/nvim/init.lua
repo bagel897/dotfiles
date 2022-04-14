@@ -83,3 +83,4 @@ require("configs/treesitter")
 require("configs/neo-tree")
 require("configs/trouble")
 require("configs/cmp")
+vim.o.mouse = "a"
