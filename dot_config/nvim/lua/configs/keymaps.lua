@@ -4,6 +4,8 @@ local dap = require("dap")
 local builtin = require("telescope.builtin")
 local telescope = require("telescope")
 local neogit = require("neogit")
+local trouble = require("trouble")
+
 wk.register({
 	d = {
 		name = "debug",
@@ -63,9 +65,43 @@ wk.register({
 		-- ? = {[[<cmd>lua require('builtin').oldfiles()<CR>]],"old files"},
 	},
 	["<space>"] = { builtin.buffers, "buffers" },
-	g = {neogit.open, "Git" },
+	g = { neogit.open, "Git" },
 	t = { "<CMD>:ToggleTerm<CR>", "Toggle Terminal" },
 	s = { "<CMD>:SymbolsOutline <CR>", "symbols outline" },
+	x = {
+		name = "Trouble",
+		x = { trouble.open, "Trouble" },
+		w = {
+			function()
+				trouble.open({ mode = "workspace_diagnostics" })
+			end,
+			"Workplace Diagnostics",
+		},
+		d = {
+			function()
+				trouble.open({ mode = "document_diagnostics" })
+			end,
+			"Document Diagnostics",
+		},
+		l = {
+			function()
+				trouble.open({ mode = "loclist" })
+			end,
+			"Loclist",
+		},
+		q = {
+			function()
+				trouble.open({ mode = "quickfix" })
+			end,
+			"Quickfix",
+		},
+		r = {
+			function()
+				trouble.open("lsp_references")
+			end,
+			"Lsp references",
+		},
+	},
 }, { prefix = "<leader>" })
 wk.register({
 	l = {

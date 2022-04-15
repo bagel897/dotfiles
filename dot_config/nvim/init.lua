@@ -40,7 +40,6 @@ vim.cmd([[colorscheme tokyonight]])
 vim.api.nvim_set_keymap("n", "k", "v:count == 1 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
 vim.api.nvim_set_keymap("n", "j", "v:count == 1 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 
-
 --Map blankline
 vim.g.indent_blankline_char = "┊"
 vim.g.indent_blankline_filetype_exclude = { "help", "packer", "dashboard" }
@@ -65,7 +64,7 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 --   disable_closing_prompt = true
 -- }
 -- sidebar.setup(opts)
-vim.api.nvim_set_keymap("n", "q", [[<cmd>q<CR>]], { noremap = true, silent = true })
+vim.keymap.set("n", "q", [[<cmd>q<CR>]])
 
 -- local util = require("perfanno.util")
 -- local bgcolor = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui")
