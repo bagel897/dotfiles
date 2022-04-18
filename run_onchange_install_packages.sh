@@ -12,7 +12,7 @@ else
 	if ! type -P cargo > /dev/null; then
 		curl https://sh.rustup.rs -sSf | sh
 	fi
-	if ! type -P nix > /dev/null; then
+	if ! type -P nix-user-chroot > /dev/null; then
 		cargo install nix-user-chroot
 		mkdir -m 0755 ~/.nix
 		nix-user-chroot ~/.nix bash -c "curl -L https://nixos.org/nix/install | bash"
