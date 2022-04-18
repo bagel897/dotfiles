@@ -15,6 +15,7 @@ if type -P pyenv > /dev/null; then
 	eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 fi
-if type -P fish > /dev/null; then
-	fish 
+if type -P nix-user-chroot > /dev/null; then
+	. ~/.nix-profile/etc/profile.d/nix.sh
+	nix-user-chroot ~/.nix fish -l
 fi
