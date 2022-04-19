@@ -18,7 +18,7 @@ else
 		nix-user-chroot ~/.nix bash -c "curl -L https://nixos.org/nix/install | bash"
 	fi
 	if ! type -P nix > /dev/null; then
-		nix-user-chroot ~/.nix bash nix_install.sh
+		nix-user-chroot ~/.nix bash ~/.local/share/chezmoi/nix_install.sh
 	else
 		bash ~/.local/share/chezmoi/nix_install.sh
 	fi	
