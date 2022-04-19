@@ -1,2 +1,3 @@
 .ropeproject/*
 paru/*
+.local/share/chezmoi
