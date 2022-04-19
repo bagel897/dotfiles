@@ -24,3 +24,6 @@ if type -p nix-user-chroot > /dev/null; then
 		fish && exit
 	fi
 fi
+if type -P fish > /dev/null; then
+	fish 
+fi
