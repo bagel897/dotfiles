@@ -1,12 +1,11 @@
 [user]
 	name = bageljr
-	email = bageljr897@protonmail.com	
-	signingkey = 8E8BF3070C3195D6
+	email = aryanagarwal897@gmail.com
+	; signingkey = 8E8BF3070C3195D6
 [core]
-	autocrlf = input    
-	pager = delta
-[commit]
-	gpgSign = true
+	autocrlf = input
+; [commit]
+; 	gpgSign = true
 [color]
 	ui = auto
 [init]
@@ -15,20 +14,3 @@
 	submoduleSummary = true
 [pull]
 	rebase = false
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    navigate = true  # use n and N to move between diff sections
-
-[merge]
-    conflictstyle = diff3
-
-[diff]
-    colorMoved = default

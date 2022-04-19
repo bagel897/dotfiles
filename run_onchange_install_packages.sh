@@ -17,10 +17,10 @@ else
 		mkdir -m 0755 ~/.nix
 		nix-user-chroot ~/.nix bash -c "curl -L https://nixos.org/nix/install | bash"
 	fi
-	nix-user-chroot ~/.nix bash nix-install.sh 
-fi
-if ! type -P fisher > /dev/null; then
-	if type -P fish > /dev/null; then
+	if ! type -P nix > /dev/null; then
+		nix-user-chroot ~/.nix bash nix_install.sh
+	else
+		bash ~/.local/share/chezmoi/nix_install.sh
+	fi	
 		fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
-	fi
 fi
