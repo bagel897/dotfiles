@@ -1,5 +1,5 @@
 . ~/.nix-profile/etc/profile.d/nix.sh
-nix-env -iA nixpkgs.neovim nixpkgs.fd nixpkgs.exa nixpkgs.fzf nixpkgs.ripgrep nixpkgs.delta nixpkgs.fish 
+nix-env -iA nixpkgs.neovim nixpkgs.fd nixpkgs.exa nixpkgs.fzf nixpkgs.ripgrep nixpkgs.delta nixpkgs.fish nixpkgs.git
 nix-env -iA nixpkgs.nodePackages.bash-language-server
 nix-env -iA nixpkgs.python310Packages.python-lsp-server
 nix-env -iA nixpkgs.python310Packages.pylsp-mypy
