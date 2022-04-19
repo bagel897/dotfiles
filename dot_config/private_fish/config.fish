@@ -2,6 +2,7 @@
 set fish_greeting
 set -g VDPAU_DRIVER radeonsi
 set -g LIBVA_DRIVER_NAME radeonsi
+set -ga NIX_PATH "REPEAT=/dev/null"
 set fzf_preview_dir_cmd exa --all --color=always
 alias 'vim'=$EDITOR
 alias 'ls'=exa
