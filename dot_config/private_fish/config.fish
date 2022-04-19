@@ -56,6 +56,3 @@ function vimdiff
     nvim -d $1
 end
 set -g DIFFPROG "nvim -d $1"
-
-status is-login; and pyenv init --path | source
-status is-interactive; and pyenv init - | source 
