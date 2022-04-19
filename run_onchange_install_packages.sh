@@ -17,7 +17,7 @@ else
 		mkdir -m 0755 ~/.nix
 		nix-user-chroot ~/.nix bash -c "curl -L https://nixos.org/nix/install | bash"
 	fi
-	nix-user-chroot ~/.nix bash -c nix-env -iA nixpkgs.neovim nixpkgs.python3.10-pylsp-mypy nixpkgs.python3.10-python-lsp-server nixpkgs.fd nixpkgs.exa nixpkgs.fzf nixpkgs.ripgrep nixpkgs.delta nixpkgs.fish 
+	nix-user-chroot ~/.nix bash nix-install.sh 
 fi
 if ! type -P fisher > /dev/null; then
 	if type -P fish > /dev/null; then
