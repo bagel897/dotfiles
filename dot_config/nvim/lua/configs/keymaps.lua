@@ -6,7 +6,28 @@ local telescope = require("telescope")
 local neogit = require("neogit")
 local trouble = require("trouble")
 
+local opts = { noremap = true, silent = true }
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 wk.register({
+	w = {
+		name = "workspace",
+		a = { vim.lsp.buf.add_workspace_folder, "add workspace folder" },
+		r = { vim.lsp.buf.remove_workspace_folder, "remove workspace folder" },
+		l = {
+			function()
+				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+			end,
+			"list workspace folders",
+		},
+	},
 	d = {
 		name = "debug",
 		n = { dap.step_over, "step over" },
@@ -57,7 +78,8 @@ wk.register({
 		},
 		s = {
 			function()
-				builtin.current_buffer_fuzzy_find({ fuzzy = false, case_mode = "ignore_case" })
+				local sopts = { fuzzy = false, case_mode = "ignore_case" }
+				builtin.current_buffer_fuzzy_find(sopts)
 			end,
 			"current buffer",
 		},

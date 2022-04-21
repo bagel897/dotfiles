@@ -1,33 +1,7 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.g.coq_settings = { auto_start = "shut-up" }
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-local on_attach = function(client, bufnr)
-	-- vim.keymap.set("v", "<leader>la", vim.lsp.buf.range_code_action)
-
-	-- Enable completion triggered by <c-x><c-o>
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- Mappings.
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-	vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-	vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-	vim.keymap.set("n", "<space>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, opts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-	-- vim.cmd([[:SymbolsOutlineOpen]])
-end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
@@ -52,7 +26,6 @@ local servers = {
 -- local coq = require("coq")
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
-		on_attach = on_attach,
 		capabilities = capabilities,
 		-- flags = {
 		-- 	debounce_text_changes = 150,
@@ -60,7 +33,6 @@ for _, lsp in pairs(servers) do
 	})
 end
 require("lspconfig").pylsp.setup({
-	on_attach = on_attach,
 	settings = {
 		pylsp = {
 			plugins = {
@@ -74,7 +46,6 @@ require("lspconfig").pylsp.setup({
 	capabilities = capabilities,
 })
 require("lspconfig").texlab.setup({
-	on_attach == on_attach,
 	settings = {
 		texlab = {
 			auxDirectory = ".",
@@ -107,7 +78,6 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 require("clangd_extensions").setup({
 	server = {
-		on_attach = on_attach,
 		cmd = {
 			"clangd",
 			"--background-index",
@@ -142,7 +112,6 @@ require("lspconfig").sumneko_lua.setup({
 			-- Do not send telemetry data containing a randomized but unique identifier
 		},
 	},
-	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
@@ -159,7 +128,6 @@ local sources = {
 }
 require("null-ls").setup({
 	sources = sources,
-	on_attach = on_attach,
 })
 
 -- require('rust-tools'--[[ ).setup( ]]{})

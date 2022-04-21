@@ -22,7 +22,7 @@ vim.o.mouse = "a"
 -- vim.o.filetype = "on"
 --Save undo history
 vim.opt.undofile = true
-vim.o.autowrite = true
+vim.o.autowriteall = true
 --Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true

@@ -46,6 +46,10 @@ return require("packer").startup({
 			end,
 		})
 		use({
+			"mfussenegger/nvim-jdtls",
+		})
+		use ({"rcarriga/nvim-notify", config = function() vim.notify = require("notify")end})
+		use({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
 			requires = {
@@ -246,7 +250,7 @@ return require("packer").startup({
 				require("stabilize").setup({ nested = "QuickFixCmdPost,DiagnosticChanged *" })
 			end,
 		})
-		-- use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
+		use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 		use({
 			"akinsho/toggleterm.nvim",
 			branch = "main",
