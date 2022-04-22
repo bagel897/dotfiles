@@ -1,12 +1,14 @@
--- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
+--                                               ^^
+-- string concattenation in Lua- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
 	-- The command that starts the language server
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	cmd = {
 		"jdtls",
+		"-data",
+		require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }) .. "/.jdtls",
 	},
 
-	-- 💀
 	-- This is the default if not provided, you can remove it. Or adjust as needed.
 	-- One dedicated LSP server & client will be started per unique root_dir
 	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
