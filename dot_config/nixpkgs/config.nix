@@ -15,6 +15,7 @@
 		pkgs.mypy
 		pkgs.git
 		pkgs.fish
+		pkgs.bat
 		# pkgs.pip
 		pkgs.chezmoi
 		pkgs.poetry
