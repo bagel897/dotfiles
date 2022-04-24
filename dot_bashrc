@@ -8,12 +8,15 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 export PATH=$PATH:~/.local/bin:~/.cargo/bin/
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
 . "$HOME/.cargo/env"
-if type -P pyenv > /dev/null; then
-	eval "$(pyenv init --path)"
-	eval "$(pyenv init -)"
+if type -p nix-user-chroot > /dev/null; then
+	if ! type -p nix > /dev/null; then 
+		nix-user-chroot ~/.nix bash -l && exit
+	fi
+	. ~/.nix-profile/etc/profile.d/nix.sh
+	if shopt -q login_shell; then
+		fish && exit
+	fi
 fi
 if type -P fish > /dev/null; then
 	fish 
