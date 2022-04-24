@@ -1,12 +1,12 @@
 [user]
 	name = bageljr
 	email = bageljr897@protonmail.com	
-	signingkey = 8E8BF3070C3195D6
+	; signingkey = 8E8BF3070C3195D6
 [core]
 	autocrlf = input    
 	pager = delta
-[commit]
-	gpgSign = true
+; [commit]
+; 	gpgSign = true
 [color]
 	ui = auto
 [init]

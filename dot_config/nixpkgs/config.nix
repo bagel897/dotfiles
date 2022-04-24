@@ -18,6 +18,7 @@
 		# pkgs.pip
 		pkgs.chezmoi
 		pkgs.poetry
+		pkgs.tree-sitter.allGrammars
 		# pkgs.python310Packages.pylsp-mypy
 		pkgs.python310Packages.python-lsp-black
                 pkgs.python310Packages.pyls-isort
