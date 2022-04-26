@@ -22,6 +22,8 @@ Host cs
 Host hart2
     Hostname 146.6.20.198
 Host hart
+  Hostname 146.6.20.207
+Host hart3
   Hostname 146.6.20.199
 Host rocket
   Hostname 10.157.95.31 

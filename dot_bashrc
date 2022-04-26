@@ -13,11 +13,10 @@ if type -p nix-user-chroot > /dev/null; then
 	if ! type -p nix > /dev/null; then 
 		nix-user-chroot ~/.nix bash -l && exit
 	fi
-	. ~/.nix-profile/etc/profile.d/nix.sh
-	if shopt -q login_shell; then
-		fish && exit
-	fi
 fi
-if type -P fish > /dev/null; then
-	fish 
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; 
+	then . ~/.nix-profile/etc/profile.d/nix.sh; 
+fi # added by Nix installer
+if shopt -q login_shell; then
+	fish && exit
 fi
