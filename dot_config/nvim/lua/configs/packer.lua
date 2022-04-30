@@ -29,6 +29,8 @@ packer.init({
 return require("packer").startup({
 	function(use)
 		use({ "tpope/vim-sleuth" })
+
+		use({ "vladdoster/remember.nvim" })
 		use({
 			"ellisonleao/glow.nvim",
 			ft = { "markdown" },
@@ -48,7 +50,12 @@ return require("packer").startup({
 		use({
 			"mfussenegger/nvim-jdtls",
 		})
-		use ({"rcarriga/nvim-notify", config = function() vim.notify = require("notify")end})
+		use({
+			"rcarriga/nvim-notify",
+			config = function()
+				vim.notify = require("notify")
+			end,
+		})
 		use({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
@@ -195,25 +202,8 @@ return require("packer").startup({
 		use({
 			"windwp/nvim-autopairs",
 			config = function()
-				local Rule = require("nvim-autopairs.rule")
 				local npairs = require("nvim-autopairs")
-
-				npairs.setup({
-					check_ts = true,
-					ts_config = {
-						lua = { "string" }, -- it will not add a pair on that treesitter node
-						javascript = { "template_string" },
-						java = false, -- don't check treesitter on java
-					},
-				})
-
-				local ts_conds = require("nvim-autopairs.ts-conds")
-
-				-- press % => %% only while inside a comment or string
-				npairs.add_rules({
-					Rule("%", "%", "lua"):with_pair(ts_conds.is_ts_node({ "string", "comment" })),
-					Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node({ "function" })),
-				})
+				npairs.setup({})
 			end,
 		})
 
