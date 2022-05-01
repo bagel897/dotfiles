@@ -29,8 +29,10 @@ packer.init({
 return require("packer").startup({
 	function(use)
 		use({ "tpope/vim-sleuth" })
-
-		use({ "vladdoster/remember.nvim" })
+		use({"ethanholz/nvim-lastplace", config = function ()
+			require'nvim-lastplace'.setup{}
+			
+		end})
 		use({
 			"ellisonleao/glow.nvim",
 			ft = { "markdown" },
@@ -288,12 +290,6 @@ return require("packer").startup({
 			"nathom/filetype.nvim",
 			config = function()
 				require("filetype").setup({})
-			end,
-		})
-		use({
-			"karb94/neoscroll.nvim",
-			config = function()
-				require("neoscroll").setup()
 			end,
 		})
 		use({
