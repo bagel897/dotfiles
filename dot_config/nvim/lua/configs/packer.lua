@@ -29,8 +29,6 @@ packer.init({
 return require("packer").startup({
 	function(use)
 		use({ "tpope/vim-sleuth" })
-
-		use({ "vladdoster/remember.nvim" })
 		use({
 			"ellisonleao/glow.nvim",
 			ft = { "markdown" },
@@ -50,12 +48,7 @@ return require("packer").startup({
 		use({
 			"mfussenegger/nvim-jdtls",
 		})
-		use({
-			"rcarriga/nvim-notify",
-			config = function()
-				vim.notify = require("notify")
-			end,
-		})
+		use ({"rcarriga/nvim-notify", config = function() vim.notify = require("notify")end})
 		use({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
@@ -203,7 +196,10 @@ return require("packer").startup({
 			"windwp/nvim-autopairs",
 			config = function()
 				local npairs = require("nvim-autopairs")
-				npairs.setup({})
+
+				npairs.setup({
+				})
+
 			end,
 		})
 
@@ -274,12 +270,6 @@ return require("packer").startup({
 			"nathom/filetype.nvim",
 			config = function()
 				require("filetype").setup({})
-			end,
-		})
-		use({
-			"karb94/neoscroll.nvim",
-			config = function()
-				require("neoscroll").setup()
 			end,
 		})
 		use({

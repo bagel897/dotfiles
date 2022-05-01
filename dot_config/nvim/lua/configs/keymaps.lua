@@ -53,7 +53,7 @@ wk.register({
 		name = "lsp",
 		d = { vim.lsp.buf.type_definition, "type definition" },
 		r = { vim.lsp.buf.rename, "rename" },
-		a = { "<cmd>CodeActionMenu<CR>", "code actions" },
+		a = { function() require("code_action_menu").open_code_action_menu() end, "code actions" },
 		f = { vim.lsp.buf.formatting, "format" },
 		q = { vim.lsp.buf.hover, "documentation" },
 		i = { vim.lsp.buf.implementation, "implementation" },
@@ -62,7 +62,6 @@ wk.register({
 	},
 	f = {
 		name = "find",
-		g = { ":Telescope file_browser <CR>", "file browser" },
 		f = { builtin.find_files, "files" },
 		l = { builtin.lsp_document_symbols, "lsp" },
 		b = { builtin.current_buffer_fuzzy_find, "buffer" },
@@ -90,6 +89,12 @@ wk.register({
 	g = { neogit.open, "Git" },
 	t = { "<CMD>:ToggleTerm<CR>", "Toggle Terminal" },
 	s = { "<CMD>:SymbolsOutline <CR>", "symbols outline" },
+	u = {
+		function()
+			require("packer").sync()
+		end,
+		"Update",
+	},
 	x = {
 		name = "Trouble",
 		x = { trouble.open, "Trouble" },
@@ -122,6 +127,21 @@ wk.register({
 				trouble.open("lsp_references")
 			end,
 			"Lsp references",
+		},
+	},
+	c = {
+		name = "competitive",
+		r = {
+			function()
+				require("cphelper.receive").receive()
+			end,
+			"receive",
+		},
+		t = {
+			function()
+				require("cphelper.process_tests").process()
+			end,
+			"run tests",
 		},
 	},
 }, { prefix = "<leader>" })
