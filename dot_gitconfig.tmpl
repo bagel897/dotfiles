@@ -1,12 +1,14 @@
 [user]
 	name = bageljr
 	email = bageljr897@protonmail.com	
-	; signingkey = 8E8BF3070C3195D6
+	signingkey = 8E8BF3070C3195D6
 [core]
 	autocrlf = input    
 	pager = delta
-; [commit]
-; 	gpgSign = true
+{{if or (eq .chezmoi.hostname "Bagel-Max") (eq .chezmoi.hostname "Bagel-Mini")}}
+[commit]
+	gpgSign = true
+{{end}}
 [color]
 	ui = auto
 [init]
