@@ -1,5 +1,5 @@
 #zoxide init  fish | source
-set -g PATH = /home/bageljr/.local/bin:$PATH
+set -ga PATH = /home/bageljr/.local/bin
 set fish_greeting
 set -g VDPAU_DRIVER radeonsi
 set -g LIBVA_DRIVER_NAME radeonsi
