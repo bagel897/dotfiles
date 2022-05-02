@@ -56,8 +56,38 @@ dap.adapters.lldb = function(on_adapter)
 	end, 500)
 end
 dap.configurations.cpp = {
+	-- {
+	-- 	name = "competitive test",
+	-- 	type = "lldb",
+	-- 	request = "launch",
+	-- 	program = "${workspaceFolder}/solution",
+	-- 	cwd = "${workspaceFolder}",
+	-- 	stdio = {
+	-- 		function()
+	-- 			choices = require("plenary.scandir").scan_dir(vim.fn.getcwd())
+	-- 			vim.ui.select(choices({ prompt = "select a test case" }), function(choice)
+	-- 				return choices[choice]
+	-- 			end)
+	-- 			return
+	-- 		end,
+	-- 		nil,
+	-- 		nil,
+	-- 	},
+	-- 	args = {},
+	-- },
+	-- {
+	-- 	name = "competitive test case",
+	-- 	type = "lldb",
+	-- 	request = "launch",
+	-- 	program = "${workspaceFolder}/solution",
+	-- 	cwd = "${workspaceFolder}",
+	-- 	stdio = function()
+	-- 		return { "${workspaceFolder}/input" .. vim.ui.input("which case number"), nil, nil }
+	-- 	end,
+	-- 	args = {},
+	-- },
 	{
-		name = "test1",
+		name = "competitive test case 1",
 		type = "lldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
@@ -66,7 +96,7 @@ dap.configurations.cpp = {
 		args = {},
 	},
 	{
-		name = "test2",
+		name = "competitive test case 2",
 		type = "lldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
@@ -75,7 +105,7 @@ dap.configurations.cpp = {
 		args = {},
 	},
 	{
-		name = "test3",
+		name = "competitive test case 3",
 		type = "lldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
@@ -84,12 +114,21 @@ dap.configurations.cpp = {
 		args = {},
 	},
 	{
-		name = "test4",
+		name = "competitive test case 4",
 		type = "lldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
 		stdio = { "${workspaceFolder}/input4", nil, nil },
+		args = {},
+	},
+	{
+		name = "competitive test case 5",
+		type = "lldb",
+		request = "launch",
+		program = "${workspaceFolder}/solution",
+		cwd = "${workspaceFolder}",
+		stdio = { "${workspaceFolder}/input5", nil, nil },
 		args = {},
 	},
 	{
