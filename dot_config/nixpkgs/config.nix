@@ -16,6 +16,7 @@
 		pkgs.git
 		pkgs.fish
 		pkgs.bat
+		pkgs.sccache
 		# pkgs.pip
 		pkgs.chezmoi
 		pkgs.poetry

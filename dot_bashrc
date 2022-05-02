@@ -4,20 +4,19 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 export PATH=$PATH:~/.local/bin:~/.cargo/bin/
-if [ -e ~/.cargo/env]; then 
+if [ -e ~/.cargo/env ]; then
 	. "$HOME/.cargo/env"
 fi
 if type -P nix-user-chroot > /dev/null; then
-	if ! type -P nix > /dev/null; then 
+	if ! [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
 		nix-user-chroot ~/.nix bash -l && exit
 	fi
 fi
-if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; 
-	then . ~/.nix-profile/etc/profile.d/nix.sh; 
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ];then 
+	. ~/.nix-profile/etc/profile.d/nix.sh;
 fi # added by Nix installer
 if shopt -q login_shell; then
 	fish && exit
