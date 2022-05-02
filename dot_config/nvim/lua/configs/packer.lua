@@ -29,24 +29,17 @@ packer.init({
 return require("packer").startup({
 	function(use)
 		use({ "tpope/vim-sleuth" })
-		use({"ethanholz/nvim-lastplace", config = function ()
-			require'nvim-lastplace'.setup{}
-			
-		end})
+		use({
+			"ethanholz/nvim-lastplace",
+			config = function()
+				require("nvim-lastplace").setup({})
+			end,
+		})
 		use({
 			"ellisonleao/glow.nvim",
 			ft = { "markdown" },
 			config = function()
 				vim.keymap.set("n", "<leader>p", ":Glow<CR>")
-			end,
-		})
-		use({
-			"AckslD/nvim-neoclip.lua",
-			requires = {
-				{ "nvim-telescope/telescope.nvim" },
-			},
-			config = function()
-				require("neoclip").setup()
 			end,
 		})
 		use({
@@ -66,9 +59,6 @@ return require("packer").startup({
 				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 				"MunifTanjim/nui.nvim",
 			},
-		})
-		use({
-			"mrjones2014/smart-splits.nvim",
 		})
 		use({
 			"j-hui/fidget.nvim",
@@ -167,6 +157,7 @@ return require("packer").startup({
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-nvim-lsp-document-symbol",
 			"hrsh7th/nvim-cmp",
+			"rcarriga/cmp-dap",
 			"L3MON4D3/LuaSnip",
 			"davidsierradz/cmp-conventionalcommits",
 			"saadparwaiz1/cmp_luasnip",
@@ -249,12 +240,6 @@ return require("packer").startup({
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
-		})
-		use({
-			"luukvbaal/stabilize.nvim",
-			config = function()
-				require("stabilize").setup({ nested = "QuickFixCmdPost,DiagnosticChanged *" })
-			end,
 		})
 		use({
 			"akinsho/toggleterm.nvim",

@@ -22,18 +22,19 @@ cmp.setup({
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
 		end,
-	},    sorting = {
-        comparators = {
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
-            cmp.config.compare.recently_used,
-            require("clangd_extensions.cmp_scores"),
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
-        },
-    },
+	},
+	sorting = {
+		comparators = {
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.recently_used,
+			require("clangd_extensions.cmp_scores"),
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
+			cmp.config.compare.order,
+		},
+	},
 	-- window = {
 	-- 	completion = cmp.config.window.bordered(),
 	-- },
@@ -105,6 +106,15 @@ cmp.setup.cmdline(":", {
 	}, {
 		{ name = "cmdline" },
 	}),
+})
+cmp.setup({
+	-- nvim-cmp by defaults disables autocomplete for prompt buffers
+	enabled = function()
+		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+	end,
+	sources = {
+		{ name = "dap" },
+	},
 })
 require("cmp_git").setup()
 require("luasnip.loaders.from_snipmate").lazy_load()

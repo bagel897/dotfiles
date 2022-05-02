@@ -94,6 +94,7 @@ dap.configurations.cpp = {
 		cwd = "${workspaceFolder}",
 		stdio = { "${workspaceFolder}/input1", nil, nil },
 		args = {},
+		stopOnEntry = false,
 	},
 	{
 		name = "competitive test case 2",
@@ -103,6 +104,7 @@ dap.configurations.cpp = {
 		cwd = "${workspaceFolder}",
 		stdio = { "${workspaceFolder}/input2", nil, nil },
 		args = {},
+		stopOnEntry = false,
 	},
 	{
 		name = "competitive test case 3",
@@ -112,6 +114,7 @@ dap.configurations.cpp = {
 		cwd = "${workspaceFolder}",
 		stdio = { "${workspaceFolder}/input3", nil, nil },
 		args = {},
+		stopOnEntry = false,
 	},
 	{
 		name = "competitive test case 4",
@@ -121,6 +124,7 @@ dap.configurations.cpp = {
 		cwd = "${workspaceFolder}",
 		stdio = { "${workspaceFolder}/input4", nil, nil },
 		args = {},
+		stopOnEntry = false,
 	},
 	{
 		name = "competitive test case 5",
@@ -130,6 +134,7 @@ dap.configurations.cpp = {
 		cwd = "${workspaceFolder}",
 		stdio = { "${workspaceFolder}/input5", nil, nil },
 		args = {},
+		stopOnEntry = false,
 	},
 	{
 		name = "Launch",
@@ -141,7 +146,6 @@ dap.configurations.cpp = {
 		cwd = "${workspaceFolder}",
 		stopOnEntry = false,
 		args = {},
-		runInTerminal = false,
 	},
 	{
 		-- If you get an "Operation not permitted" error using this, try disabling YAMA:
@@ -202,11 +206,9 @@ dap.listeners.after.event_initialized["dapui_config"] = function()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
 	dapui.close()
-	require("trouble").open()
 	-- require("dap").repl.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
-	require("trouble").open()
 end
 require("nvim-dap-virtual-text").setup()
