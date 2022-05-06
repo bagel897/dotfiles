@@ -15,6 +15,9 @@ vim.o.completeopt = "menu,menuone,noselect"
 
 require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup({
+	enabled = function()
+		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+	end,
 	formatting = {
 		format = lspkind.cmp_format({ mode = "symbol_text" }),
 	},
@@ -72,6 +75,7 @@ cmp.setup({
 	}),
 
 	sources = cmp.config.sources({
+		{ name = "dap" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" }, -- For luasnip users.
 		{ name = "nvim_lsp_signature_help" },
@@ -107,14 +111,6 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
-cmp.setup({
-	-- nvim-cmp by defaults disables autocomplete for prompt buffers
-	enabled = function()
-		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
-	end,
-	sources = {
-		{ name = "dap" },
-	},
-})
+
 require("cmp_git").setup()
 require("luasnip.loaders.from_snipmate").lazy_load()
