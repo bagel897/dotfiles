@@ -150,6 +150,12 @@ return require("packer").startup({
 			run = ":TSUpdate",
 		})
 		use({
+			"luukvbaal/stabilize.nvim",
+			config = function()
+				require("stabilize").setup()
+			end,
+		})
+		use({
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
