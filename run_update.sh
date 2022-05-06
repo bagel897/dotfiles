@@ -6,5 +6,5 @@ if type -P nix-user-chroot > /dev/null; then
 		bash ~/.local/share/chezmoi/nix_update.sh
 	fi
 else 
-	fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+	fish -c "fisher update > /dev/null"
 fi
