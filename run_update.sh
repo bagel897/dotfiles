@@ -6,5 +6,5 @@ if type -P nix-user-chroot > /dev/null; then
 		bash ~/.local/share/chezmoi/nix_update.sh
 	fi
 else 
-	fish -c "fisher update > /dev/null"
+	fish -c "fundle update > /dev/null"
 fi
