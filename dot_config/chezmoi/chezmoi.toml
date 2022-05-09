@@ -1,3 +1,6 @@
 [git]
-	autoCommit = true
-	autoPush = true
+autoCommit = true 
+autoPush = true
+encryption = "gpg"
+[gpg]
+recipient="7EA05E98F57A033E697530984F87FC65FECAD605"
