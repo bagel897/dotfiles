@@ -9,8 +9,10 @@ if type -P pacman > /dev/null; then
 	fi
 	paru -S --needed neovim python-lsp-all fd exa fzf ripgrep git-delta fisher
 else 
+	export PATH=$PATH:~/.local/bin:~/.cargo/bin/
 	if ! type -P cargo > /dev/null; then
 		curl https://sh.rustup.rs -sSf | sh
+		source $HOME/.cargo/env 	
 	fi
 	if ! type -P nix-user-chroot > /dev/null; then
 		cargo install nix-user-chroot
@@ -22,5 +24,4 @@ else
 	else
 		bash ~/.local/share/chezmoi/nix_install.sh
 	fi	
-		fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
 fi
