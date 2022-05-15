@@ -5,12 +5,10 @@ fundle plugin "2m/fish-history-merge"
 fundle plugin "IlanCosman/tide"
 fundle plugin "PatrickF1/fzf.fish"
 fundle plugin "sentriz/fish-pipenv"
-fundle plugin "wfxr/forgit"
 fundle init
 export DENO_INSTALL="/home/bageljr/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 set -ga PATH  /home/bageljr/.local/bin
-set -ga PATH  $FORGIT_INSTALL_DIR/bin
 set fish_greeting
 set -g VDPAU_DRIVER radeonsi
 set -g LIBVA_DRIVER_NAME radeonsi
