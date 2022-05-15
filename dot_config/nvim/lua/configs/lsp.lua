@@ -5,6 +5,9 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
+vim.g.markdown_fenced_languages = {
+	"ts=typescript",
+}
 local servers = {
 	-- "texlab",
 	"ltex",
@@ -21,8 +24,14 @@ local servers = {
 	"dockerls",
 	-- "pylsp",
 	-- "pyright",
+	"gdscript",
 }
-
+require("lspconfig").denols.setup({
+	init_options = {
+		lint = true,
+	},
+	capabilities=capabilities
+})
 -- local coq = require("coq")
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
