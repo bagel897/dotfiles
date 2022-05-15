@@ -18,7 +18,7 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 	ensure_installed = "all",
-	ignore_install = { "tlaplus", "php", "norg", "cooklang", "hack" },
+	ignore_install = { "tlaplus", "php", "norg", "cooklang", "hack", "phpdoc"},
 	textobjects = {
 		select = {
 			enable = true,
