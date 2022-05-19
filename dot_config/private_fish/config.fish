@@ -23,6 +23,7 @@ alias 'find'=fd
 alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 #alias 'cd'=z
+eval "$(pdm --pep582 fish)"
 function java-gui
     java --module-path /usr/lib/jvm/java-11-openjfx/lib --add-modules javafx.controls,javafx.fxml,javafx.web $argv
 end
