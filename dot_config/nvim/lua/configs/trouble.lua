@@ -4,4 +4,5 @@ trouble.setup({
 	auto_close = true,
 	-- auto_fold = true,
 	use_diagnostic_signs = true,
+	mode = "document_diagnostics",
 })
