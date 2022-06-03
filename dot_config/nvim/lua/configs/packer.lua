@@ -286,6 +286,28 @@ return require("packer").startup({
 		use({
 			"simrat39/symbols-outline.nvim",
 		})
+		use {
+			'pwntester/octo.nvim',
+			requires = {
+				'nvim-lua/plenary.nvim',
+				'nvim-telescope/telescope.nvim',
+				'kyazdani42/nvim-web-devicons',
+			},
+			config = function()
+				require "octo".setup()
+			end
+		}
+		use {
+			"someone-stole-my-name/yaml-companion.nvim",
+			requires = {
+				{ "neovim/nvim-lspconfig" },
+				{ "nvim-lua/plenary.nvim" },
+				{ "nvim-telescope/telescope.nvim" },
+			},
+			config = function()
+				require("telescope").load_extension("yaml_schema")
+			end,
+		}
 		if packer_bootstrap then
 			require("packer").sync()
 		end

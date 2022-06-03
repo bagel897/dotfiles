@@ -26,18 +26,21 @@ cmp.setup({
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	sorting = {
-		comparators = {
-			cmp.config.compare.offset,
-			cmp.config.compare.exact,
-			cmp.config.compare.recently_used,
-			require("clangd_extensions.cmp_scores"),
-			cmp.config.compare.kind,
-			cmp.config.compare.sort_text,
-			cmp.config.compare.length,
-			cmp.config.compare.order,
-		},
-	},
+	-- sorting = {
+	-- 	comparators = {
+	-- 		cmp.config.compare.offset,
+	-- 		cmp.config.compare.exact,
+	-- 		cmp.config.compare.score,
+	-- 		cmp.config.compare.recently_used,
+	-- 		require("clangd_extensions.cmp_scores"),
+	-- 		cmp.config.compare.kind,
+	-- 		cmp.config.compare.sort_text,
+	-- 		cmp.config.compare.length,
+	-- 		cmp.config.compare.order,
+	-- 		cmp.config.compare.locality,
+	-- 		cmp.config
+	-- 	},
+	-- },
 	-- window = {
 	-- 	completion = cmp.config.window.bordered(),
 	-- },
@@ -89,10 +92,22 @@ cmp.setup.filetype("gitcommit", {
 	sources = cmp.config.sources({
 		{ name = "conventionalcommits" },
 	}, {
-		{ name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
+		{ name = "git" }, -- You can specify the `cmp_git` source if you were installed it.
 	}, {
 		{ name = "buffer" },
 	}),
+	sorting = {
+		comparators = {
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.score,
+			cmp.config.compare.recently_used,
+			cmp.config.compare.kind,
+			cmp.config.compare.length,
+			cmp.config.compare.order,
+		},
+	},
 })
 cmp.setup.cmdline("/", {
 	mapping = cmp.mapping.preset.cmdline(),

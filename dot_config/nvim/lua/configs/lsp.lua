@@ -1,6 +1,10 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.g.coq_settings = { auto_start = "shut-up" }
+require("nvim-lsp-installer").setup {
+  automatic_installation = true
+}
+
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -12,7 +16,6 @@ local servers = {
 	-- "texlab",
 	"ltex",
 	"rust_analyzer",
-	"yamlls",
 	-- "prosemd_lsp",
 	-- "ccls",
 	-- "clangd",
@@ -21,6 +24,7 @@ local servers = {
 	-- "sumneko_lua",
 	"jsonls",
 	"cmake",
+	"esbonio",
 	"dockerls",
 	-- "pylsp",
 	-- "pyright",
@@ -30,7 +34,7 @@ require("lspconfig").denols.setup({
 	init_options = {
 		lint = true,
 	},
-	capabilities=capabilities
+	capabilities = capabilities,
 })
 -- local coq = require("coq")
 for _, lsp in pairs(servers) do
@@ -46,8 +50,14 @@ require("lspconfig").pylsp.setup({
 		pylsp = {
 			plugins = {
 				pycodestyle = { enabled = true, maxLineLength = 88 },
-				pydocstyle = { enabled = true },
+				-- pydocstyle = { enabled = true },
 				rope_autoimport = { enabled = true },
+				pylsp_mypy = {
+					enabled = true,
+					live_mode = false,
+					dmypy = true,
+					strict = false,
+				},
 				-- pylint = { enabled = true, args = {"--disable C0301"}},
 			},
 		},
@@ -128,6 +138,7 @@ local null_ls = require("null-ls")
 local sources = {
 	-- null_ls.builtins.formatting.clang_format,
 	null_ls.builtins.formatting.stylua,
+	null_ls.builtins.diagnostics.rstcheck,
 	-- null_ls.builtins.diagnostics.gitlint,
 	-- null_ls.builtins.diagnostics.luacheck,
 	-- null_ls.builtins.diagnostics.pylint,
@@ -138,7 +149,48 @@ local sources = {
 require("null-ls").setup({
 	sources = sources,
 })
+local cfg = require("yaml-companion").setup({
+	{
+		-- Built in file matchers
+		builtin_matchers = {
+			-- Detects Kubernetes files based on content
+			kubernetes = { enabled = true },
+		},
 
+		-- Additional schemas available in Telescope picker
+		schemas = {
+			result = {
+				--{
+				--  name = "Kubernetes 1.22.4",
+				--  uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone-strict/all.json",
+				--},
+			},
+		},
+
+		-- Pass any additional options that will be merged in the final LSP config
+		lspconfig = {
+			flags = {
+				debounce_text_changes = 150,
+			},
+			settings = {
+				redhat = { telemetry = { enabled = false } },
+				yaml = {
+					validate = true,
+					format = { enable = true },
+					hover = true,
+					schemaStore = {
+						enable = true,
+						url = "https://www.schemastore.org/api/json/catalog.json",
+					},
+					schemaDownload = { enable = true },
+					schemas = {},
+					trace = { server = "debug" },
+				},
+			},
+		},
+	},
+})
+require("lspconfig")["yamlls"].setup(cfg)
 -- require('rust-tools'--[[ ).setup( ]]{})
 -- require('rust-tools.inlay_hints').set_inlay_hints()
 
