@@ -105,10 +105,19 @@ wk.register({
 	t = { "<CMD>:ToggleTerm<CR>", "Toggle Terminal" },
 	s = { "<CMD>:SymbolsOutline <CR>", "symbols outline" },
 	r = {
-		function()
-			require("neotest").run.run(vim.fn.expand("%"))
-		end,
-		"Run file",
+		r = {
+			function()
+				require("neotest").run.run(vim.fn.expand("%"))
+			end,
+			"Run file",
+		},
+		s = {
+			function()
+				require("neotest").summary.toggle()
+			end,
+			"Summary",
+		},
+		name = "test",
 	},
 	u = {
 		function()
