@@ -286,18 +286,18 @@ return require("packer").startup({
 		use({
 			"simrat39/symbols-outline.nvim",
 		})
-		use {
-			'pwntester/octo.nvim',
+		use({
+			"pwntester/octo.nvim",
 			requires = {
-				'nvim-lua/plenary.nvim',
-				'nvim-telescope/telescope.nvim',
-				'kyazdani42/nvim-web-devicons',
+				"nvim-lua/plenary.nvim",
+				"nvim-telescope/telescope.nvim",
+				"kyazdani42/nvim-web-devicons",
 			},
 			config = function()
-				require "octo".setup()
-			end
-		}
-		use {
+				require("octo").setup()
+			end,
+		})
+		use({
 			"someone-stole-my-name/yaml-companion.nvim",
 			requires = {
 				{ "neovim/nvim-lspconfig" },
@@ -307,7 +307,29 @@ return require("packer").startup({
 			config = function()
 				require("telescope").load_extension("yaml_schema")
 			end,
-		}
+		})
+		use({
+			"nvim-neotest/neotest",
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"nvim-treesitter/nvim-treesitter",
+				"antoinemadec/FixCursorHold.nvim",
+				"nvim-neotest/neotest-python"
+			},
+			config = function()
+				require("neotest").setup({
+					adapters = {
+						require("neotest-python")({
+							dap = { justMyCode = false },
+						}),
+						-- require("neotest-plenary"),
+						-- require("neotest-vim-test")({
+						-- 	ignore_file_types = { "python", "vim", "lua" },
+						-- }),
+					},
+				})
+			end,
+		})
 		if packer_bootstrap then
 			require("packer").sync()
 		end

@@ -45,15 +45,30 @@ wk.register({
 		},
 		x = { dap.terminate, "terminate" },
 		p = { dap.pause, "pause" },
-		f = { require("dap-python").test_method, "test method python" },
-		t = { require("dap-python").test_class, "test class python" },
+		f = {
+			function()
+				require("neotest").run.run({ strategy = "dap" })
+			end,
+			"test method",
+		},
+		t = {
+			function()
+				require("neotest").run.run()
+			end,
+			"test nearest",
+		},
 		ds = { require("dap-python").debug_selection, "debug selection python" },
 	},
 	l = {
 		name = "lsp",
 		d = { vim.lsp.buf.type_definition, "type definition" },
 		r = { vim.lsp.buf.rename, "rename" },
-		a = { function() require("code_action_menu").open_code_action_menu() end, "code actions" },
+		a = {
+			function()
+				require("code_action_menu").open_code_action_menu()
+			end,
+			"code actions",
+		},
 		f = { vim.lsp.buf.formatting, "format" },
 		q = { vim.lsp.buf.hover, "documentation" },
 		i = { vim.lsp.buf.implementation, "implementation" },
@@ -89,6 +104,12 @@ wk.register({
 	g = { neogit.open, "Git" },
 	t = { "<CMD>:ToggleTerm<CR>", "Toggle Terminal" },
 	s = { "<CMD>:SymbolsOutline <CR>", "symbols outline" },
+	r = {
+		function()
+			require("neotest").run.run(vim.fn.expand("%"))
+		end,
+		"Run file",
+	},
 	u = {
 		function()
 			require("packer").sync()
