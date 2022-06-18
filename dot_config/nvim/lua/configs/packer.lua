@@ -302,12 +302,6 @@ return require("packer").startup({
 		use({ "lewis6991/impatient.nvim" })
 		use({ "nvim-lua/popup.nvim", requires = { "nvim-lua/plenary.nvim" } })
 		use({
-			"nathom/filetype.nvim",
-			config = function()
-				require("filetype").setup({})
-			end,
-		})
-		use({
 			"simrat39/symbols-outline.nvim",
 		})
 		use({
@@ -353,7 +347,10 @@ return require("packer").startup({
 					},
 				})
 			end,
-		})
+		})use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig"
+}
 		if packer_bootstrap then
 			require("packer").sync()
 		end

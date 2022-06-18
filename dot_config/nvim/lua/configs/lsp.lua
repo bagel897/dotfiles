@@ -6,7 +6,10 @@ vim.g.coq_settings = { auto_start = "shut-up" }
 -- }
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
+local navic = require("nvim-navic")
+local on_attach = function(client, bufnr)
+	navic.attach(client, bufnr)
+end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 vim.g.markdown_fenced_languages = {
@@ -35,6 +38,7 @@ require("lspconfig").denols.setup({
 		lint = true,
 	},
 	capabilities = capabilities,
+	on_attach = on_attach,
 })
 -- local coq = require("coq")
 for _, lsp in pairs(servers) do
@@ -63,6 +67,7 @@ require("lspconfig").pylsp.setup({
 		},
 	},
 	capabilities = capabilities,
+	on_attach = on_attach,
 })
 require("lspconfig").texlab.setup({
 	settings = {
@@ -91,6 +96,7 @@ require("lspconfig").texlab.setup({
 		},
 	},
 	capabilities = capabilities,
+	on_attach = on_attach,
 })
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
@@ -109,6 +115,7 @@ require("clangd_extensions").setup({
 			"--pch-storage=memory",
 		},
 		capabilities = capabilities,
+		on_attach = on_attach,
 	},
 })
 require("lspconfig").sumneko_lua.setup({
@@ -132,6 +139,7 @@ require("lspconfig").sumneko_lua.setup({
 		},
 	},
 	capabilities = capabilities,
+	on_attach = on_attach,
 })
 
 local null_ls = require("null-ls")

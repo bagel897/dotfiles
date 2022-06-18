@@ -1,9 +1,7 @@
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-require("configs/packer")
-require("impatient")
-
+vim.g.do_filetype_lua = 1
 --Set highlight on search
 vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"
@@ -30,9 +28,9 @@ vim.o.smartcase = true
 --Decrease update time
 vim.o.updatetime = 251
 vim.wo.signcolumn = "yes"
+require("configs/packer")
+require("impatient")
 
---Set colorscheme
-vim.o.termguicolors = true
 vim.cmd([[colorscheme tokyonight]])
 
 --Remap space as leader key
@@ -81,4 +79,3 @@ require("configs/treesitter")
 require("configs/neo-tree")
 require("configs/trouble")
 require("configs/cmp")
-vim.o.mouse = "a"
