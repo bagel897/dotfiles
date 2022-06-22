@@ -192,11 +192,6 @@ dap.configurations.rust = dap.configurations.cpp
 
 require("dap.ext.vscode").load_launchjs(nil, { lldb = { "c", "cpp" } })
 require("dapui").setup({
-	tray = {
-		-- elements = { "repl" },
-		-- size = 10,
-		-- position = "bottom", -- Can be "left", "right", "top", "bottom"
-	},
 })
 local dapui = require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()

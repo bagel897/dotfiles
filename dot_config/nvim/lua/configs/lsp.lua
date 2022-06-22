@@ -31,6 +31,7 @@ local servers = {
 	"dockerls",
 	-- "pylsp",
 	-- "pyright",
+	-- "jedi_language_server",
 	"gdscript",
 }
 require("lspconfig").denols.setup({
@@ -47,6 +48,7 @@ for _, lsp in pairs(servers) do
 		-- flags = {
 		-- 	debounce_text_changes = 150,
 		-- },
+		on_attach = on_attach,
 	})
 end
 require("lspconfig").pylsp.setup({
@@ -67,7 +69,7 @@ require("lspconfig").pylsp.setup({
 		},
 	},
 	capabilities = capabilities,
-	on_attach = on_attach,
+	-- on_attach = on_attach,
 })
 require("lspconfig").texlab.setup({
 	settings = {
@@ -195,6 +197,7 @@ local cfg = require("yaml-companion").setup({
 					trace = { server = "debug" },
 				},
 			},
+			on_attach = on_attach,
 		},
 	},
 })
@@ -207,6 +210,6 @@ vim.diagnostic.config({
 	virtual_text = true,
 	signs = true,
 	underline = true,
-	update_in_insert = false,
-	severity_sort = false,
+	update_in_insert = true,
+	severity_sort = true,
 })

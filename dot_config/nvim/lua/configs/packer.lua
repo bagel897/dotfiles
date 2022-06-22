@@ -78,6 +78,9 @@ return require("packer").startup({
 		use({
 			"romgrk/barbar.nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
+			config = function()
+				require("bufferline").setup({  auto_hide = true,})
+			end,
 		})
 		use({
 			"glepnir/dashboard-nvim",
@@ -139,13 +142,16 @@ return require("packer").startup({
 		use({
 			"nvim-lualine/lualine.nvim",
 			config = function()
+				local navic = require("nvim-navic")
 				require("lualine").setup({
 					options = {
 						theme = "tokyonight",
 						globalstatus = true,
 					},
 					extensions = { "nvim-tree", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
-					sections = { lualine_c = { { "filename", path = 1 } } },
+					sections = {
+						lualine_c = { { "filename", path = 1 }, { navic.get_location, cond = navic.is_available } },
+					},
 				})
 			end,
 		})
@@ -347,10 +353,15 @@ return require("packer").startup({
 					},
 				})
 			end,
-		})use {
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig"
-}
+		})
+		use({
+			"SmiteshP/nvim-navic",
+			requires = "neovim/nvim-lspconfig",
+			config = function()
+				local navic = require("nvim-navic")
+				navic.setup({ highlight = true })
+			end,
+		})
 		if packer_bootstrap then
 			require("packer").sync()
 		end
