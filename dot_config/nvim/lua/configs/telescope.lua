@@ -29,7 +29,6 @@ telescope.setup({
 })
 -- Enable telescope fzf native
 telescope.load_extension("fzf")
-telescope.load_extension("refactoring")
 telescope.load_extension("file_browser")
 telescope.load_extension("dap")
 telescope.load_extension("lsp_handlers")

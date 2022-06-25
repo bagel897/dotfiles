@@ -8,7 +8,9 @@ vim.g.coq_settings = { auto_start = "shut-up" }
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local navic = require("nvim-navic")
 local on_attach = function(client, bufnr)
+	require("lsp_signature").on_attach()
 	navic.attach(client, bufnr)
+	require("lsp-format").on_attach(client)
 end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
@@ -69,7 +71,7 @@ require("lspconfig").pylsp.setup({
 		},
 	},
 	capabilities = capabilities,
-	-- on_attach = on_attach,
+	on_attach = on_attach,
 })
 require("lspconfig").texlab.setup({
 	settings = {
@@ -158,6 +160,7 @@ local sources = {
 }
 require("null-ls").setup({
 	sources = sources,
+	on_attach = on_attach,
 })
 local cfg = require("yaml-companion").setup({
 	{
@@ -205,7 +208,6 @@ require("lspconfig")["yamlls"].setup(cfg)
 -- require('rust-tools'--[[ ).setup( ]]{})
 -- require('rust-tools.inlay_hints').set_inlay_hints()
 
-require("refactoring").setup({})
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = true,

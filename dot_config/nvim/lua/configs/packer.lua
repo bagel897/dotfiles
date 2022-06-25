@@ -251,13 +251,10 @@ return require("packer").startup({
 			end,
 		})
 		-- use({ "sidebar-nvim/sidebar.nvim", "sidebar-nvim/sections-dap" })
-		use({
-			"ThePrimeagen/refactoring.nvim",
-			requires = {
-				{ "nvim-lua/plenary.nvim" },
-				{ "nvim-treesitter/nvim-treesitter" },
-			},
-		})
+use {"lukas-reineke/lsp-format.nvim", config=function ()
+require("lsp-format").setup {}
+	
+end}
 		use({
 			"simrat39/rust-tools.nvim",
 			config = function()
@@ -359,9 +356,11 @@ return require("packer").startup({
 			requires = "neovim/nvim-lspconfig",
 			config = function()
 				local navic = require("nvim-navic")
-				navic.setup({ highlight = true })
+				navic.setup({ highlight = true })vim.g.navic_silence = true
 			end,
-		})
+		})use {
+  "ray-x/lsp_signature.nvim",
+}
 		if packer_bootstrap then
 			require("packer").sync()
 		end

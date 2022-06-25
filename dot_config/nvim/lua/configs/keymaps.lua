@@ -180,5 +180,4 @@ wk.register({
 		name = "lsp",
 		a = { "<CMD> :CodeActionMenu <CR>", "range code actions" },
 	},
-	r = { telescope.extensions.refactoring.refactors, "refactors" },
 }, { prefix = "<leader>", mode = "v" })
