@@ -5,6 +5,7 @@ vim.g.do_filetype_lua = 1
 --Set highlight on search
 vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"
+vim.o.guifont = "FiraCode NF"
 --Make line numbers default
 vim.wo.number = true
 

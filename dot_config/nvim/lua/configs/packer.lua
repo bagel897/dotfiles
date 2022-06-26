@@ -79,7 +79,7 @@ return require("packer").startup({
 			"romgrk/barbar.nvim",
 			requires = { "kyazdani42/nvim-web-devicons" },
 			config = function()
-				require("bufferline").setup({  auto_hide = true,})
+				require("bufferline").setup({ auto_hide = true })
 			end,
 		})
 		use({
@@ -251,10 +251,18 @@ return require("packer").startup({
 			end,
 		})
 		-- use({ "sidebar-nvim/sidebar.nvim", "sidebar-nvim/sections-dap" })
-use {"lukas-reineke/lsp-format.nvim", config=function ()
-require("lsp-format").setup {}
-	
-end}
+		use({
+			"lukas-reineke/lsp-format.nvim",
+			config = function()
+				require("lsp-format").setup({})
+			end,
+		})
+		use({
+			"ggandor/leap.nvim",
+			config = function()
+				require("leap").set_default_keymaps()
+			end,
+		})
 		use({
 			"simrat39/rust-tools.nvim",
 			config = function()
@@ -356,11 +364,13 @@ end}
 			requires = "neovim/nvim-lspconfig",
 			config = function()
 				local navic = require("nvim-navic")
-				navic.setup({ highlight = true })vim.g.navic_silence = true
+				navic.setup({ highlight = true })
+				vim.g.navic_silence = true
 			end,
-		})use {
-  "ray-x/lsp_signature.nvim",
-}
+		})
+		use({
+			"ray-x/lsp_signature.nvim",
+		})
 		if packer_bootstrap then
 			require("packer").sync()
 		end
