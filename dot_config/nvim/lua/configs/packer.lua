@@ -59,6 +59,9 @@ return require("packer").startup({
 				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 				"MunifTanjim/nui.nvim",
 			},
+			config = function()
+				require("configs/neo-tree")
+			end,
 		})
 		use({
 			"j-hui/fidget.nvim",
@@ -74,6 +77,9 @@ return require("packer").startup({
 		})
 		use({
 			"mrjones2014/legendary.nvim",
+			config = function() 
+				require("configs/legendary")
+			end,
 		})
 		use({
 			"romgrk/barbar.nvim",
@@ -120,7 +126,18 @@ return require("packer").startup({
 				require("neogit").setup({ integrations = { diffview = true } })
 			end,
 		})
-		use("t-troebst/perfanno.nvim")
+		use({
+			"t-troebst/perfanno.nvim",
+			config = function()
+				local util = require("perfanno.util")
+				local bgcolor = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui")
+				require("perfanno").setup({
+					line_highlights = util.make_bg_highlights(bgcolor, "#CC3300", 10),
+					vt_highlight = util.make_fg_highlight("#CC3300"),
+				})
+			end,
+			disable = true,
+		})
 		use({
 			"numToStr/Comment.nvim",
 			config = function()
@@ -131,12 +148,16 @@ return require("packer").startup({
 			"nvim-telescope/telescope.nvim",
 			"gbrlsnchs/telescope-lsp-handlers.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
+			config = function()
+				require("configs/telescope")
+			end,
 			requires = { { "nvim-lua/plenary.nvim" } },
 		})
 		use({
 			"folke/tokyonight.nvim",
 			config = function()
 				vim.g.tokyonight_style = "night"
+				vim.cmd([[colorscheme tokyonight]])
 			end,
 		})
 		use({
@@ -163,6 +184,11 @@ return require("packer").startup({
 					show_current_context = true,
 					show_current_context_start = true,
 				})
+				--Map blankline
+				vim.g.indent_blankline_char = "┊"
+				vim.g.indent_blankline_filetype_exclude = { "help", "packer", "dashboard" }
+				vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
+				vim.g.indent_blankline_show_trailing_blankline_indent = false
 			end,
 		})
 		-- Add git reoptionslated info in the signs columns and popups
@@ -178,6 +204,9 @@ return require("packer").startup({
 			"nvim-treesitter/nvim-treesitter",
 			require = { "nvim-treesitter/nvim-treesitter-textobjects" },
 			run = ":TSUpdate",
+			config = function()
+				require("configs/treesitter")
+			end,
 		})
 		use({
 			"luukvbaal/stabilize.nvim",
@@ -198,27 +227,37 @@ return require("packer").startup({
 			"davidsierradz/cmp-conventionalcommits",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind-nvim",
+			"petertriho/cmp-git",
+			requires = { "nvim-lua/plenary.nvim", "rafamadriz/friendly-snippets" },
+			config = function()
+				require("configs/cmp")
+			end,
 		})
-		use("rafamadriz/friendly-snippets")
-		use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
 		use({
-			"neovim/nvim-lspconfig",
+ 			"neovim/nvim-lspconfig",
+			"williamboman/nvim-lsp-installer",
 			"jose-elias-alvarez/null-ls.nvim",
 			"p00f/clangd_extensions.nvim",
-			-- "ms-jpq/coq_nvim",
-			-- "ms-jpq/coq.artifacts",
-			-- "ms-jpq/coq.thirdparty",
 			"kosayoda/nvim-lightbulb",
-			-- config = function()
-			-- 	vim.g.coq_settings = { auto_start = "shut-up", xdg = true }
-			-- 	require("coq_3p")({
-			--
-			-- 		{ src = "nvimlua", short_name = "nLUA", conf_only = true },
-			-- 		{ src = "dap" },
-			-- 	})
-			-- end,
-			-- run = ":COQDeps",
+			config = function ()
+				require("configs/lsp")
+			end
 		})
+		-- use({
+		--
+		-- 	"ms-jpq/coq_nvim",
+		-- 	"ms-jpq/coq.artifacts",
+		-- 	"ms-jpq/coq.thirdparty",
+		-- 	config = function()
+		-- 		vim.g.coq_settings = { auto_start = "shut-up", xdg = true }
+		-- 		require("coq_3p")({
+		--
+		-- 			{ src = "nvimlua", short_name = "nLUA", conf_only = true },
+		-- 			{ src = "dap" },
+		-- 		})
+		-- 	end,
+		-- 	run = ":COQDeps",
+		-- })
 		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({
@@ -227,6 +266,9 @@ return require("packer").startup({
 			"nvim-telescope/telescope-dap.nvim",
 			"theHamsta/nvim-dap-virtual-text",
 			"mfussenegger/nvim-dap-python",
+			config = function()
+				require("configs/dap")
+			end
 		})
 		use({
 			"windwp/nvim-autopairs",
@@ -281,6 +323,9 @@ return require("packer").startup({
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("configs/trouble")
+			end,
 		})
 		use({
 			"akinsho/toggleterm.nvim",

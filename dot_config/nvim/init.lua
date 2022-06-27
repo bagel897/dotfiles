@@ -32,18 +32,10 @@ vim.wo.signcolumn = "yes"
 require("configs/packer")
 require("impatient")
 
-vim.cmd([[colorscheme tokyonight]])
-
 --Remap space as leader key
 --Remap for dealing with word wrap
 vim.api.nvim_set_keymap("n", "k", "v:count == 1 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
 vim.api.nvim_set_keymap("n", "j", "v:count == 1 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
-
---Map blankline
-vim.g.indent_blankline_char = "┊"
-vim.g.indent_blankline_filetype_exclude = { "help", "packer", "dashboard" }
-vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
-vim.g.indent_blankline_show_trailing_blankline_indent = false
 
 -- local sidebar = require("sidebar-nvim")
 -- local opts = {
@@ -65,18 +57,6 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- sidebar.setup(opts)
 vim.keymap.set("n", "q", [[<cmd>q<CR>]])
 
--- local util = require("perfanno.util")
--- local bgcolor = vim.fn.synIDattr(vim.fn.hlID("Normal"), "bg", "gui")
--- require("perfanno").setup({
--- 	line_highlights = util.make_bg_highlights(bgcolor, "#CC3300", 10),
--- 	vt_highlight = util.make_fg_highlight("#CC3300"),
--- })
 require("configs/lsp")
-require("configs/dap")
-require("configs/telescope")
-require("configs/legendary")
-require("configs/keymaps")
-require("configs/treesitter")
-require("configs/neo-tree")
-require("configs/trouble")
 require("configs/cmp")
+require("configs/keymaps")

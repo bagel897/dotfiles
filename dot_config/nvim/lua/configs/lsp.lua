@@ -1,9 +1,9 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.g.coq_settings = { auto_start = "shut-up" }
--- require("nvim-lsp-installer").setup {
---   automatic_installation = true
--- }
+require("nvim-lsp-installer").setup({
+	automatic_installation = true,
+})
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local navic = require("nvim-navic")
@@ -151,6 +151,7 @@ local sources = {
 	-- null_ls.builtins.formatting.clang_format,
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.diagnostics.rstcheck,
+	null_ls.builtins.code_actions.gitsigns,
 	-- null_ls.builtins.diagnostics.gitlint,
 	-- null_ls.builtins.diagnostics.luacheck,
 	-- null_ls.builtins.diagnostics.pylint,
