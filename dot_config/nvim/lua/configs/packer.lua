@@ -77,7 +77,7 @@ return require("packer").startup({
 		})
 		use({
 			"mrjones2014/legendary.nvim",
-			config = function() 
+			config = function()
 				require("configs/legendary")
 			end,
 		})
@@ -234,14 +234,14 @@ return require("packer").startup({
 			end,
 		})
 		use({
- 			"neovim/nvim-lspconfig",
+			"neovim/nvim-lspconfig",
 			"williamboman/nvim-lsp-installer",
 			"jose-elias-alvarez/null-ls.nvim",
 			"p00f/clangd_extensions.nvim",
 			"kosayoda/nvim-lightbulb",
-			config = function ()
+			config = function()
 				require("configs/lsp")
-			end
+			end,
 		})
 		-- use({
 		--
@@ -268,7 +268,7 @@ return require("packer").startup({
 			"mfussenegger/nvim-dap-python",
 			config = function()
 				require("configs/dap")
-			end
+			end,
 		})
 		use({
 			"windwp/nvim-autopairs",
@@ -357,6 +357,12 @@ return require("packer").startup({
 		})
 		use({ "lewis6991/impatient.nvim" })
 		use({ "nvim-lua/popup.nvim", requires = { "nvim-lua/plenary.nvim" } })
+		use({
+			"ThePrimeagen/git-worktree.nvim",
+			config = function()
+				require("telescope").load_extension("git_worktree")
+			end,
+		})
 		use({
 			"simrat39/symbols-outline.nvim",
 		})

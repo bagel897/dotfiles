@@ -102,9 +102,6 @@ require("lspconfig").texlab.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
-local runtime_path = vim.split(package.path, ";")
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
 require("clangd_extensions").setup({
 	server = {
 		cmd = {
@@ -124,12 +121,14 @@ require("clangd_extensions").setup({
 })
 require("lspconfig").sumneko_lua.setup({
 	settings = {
+		completion_style = {
+			call_snipped = "Replace",
+		},
 		Lua = {
 			runtime = {
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 				version = "LuaJIT",
 				-- Setup your lua path
-				path = runtime_path,
 			},
 			diagnostics = {
 				-- Get the language server to recognize the `vim` global
@@ -140,6 +139,9 @@ require("lspconfig").sumneko_lua.setup({
 				library = vim.api.nvim_get_runtime_file("", true),
 			},
 			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
 		},
 	},
 	capabilities = capabilities,
@@ -151,7 +153,7 @@ local sources = {
 	-- null_ls.builtins.formatting.clang_format,
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.diagnostics.rstcheck,
-	null_ls.builtins.code_actions.gitsigns,
+	-- null_ls.builtins.code_actions.gitsigns,
 	-- null_ls.builtins.diagnostics.gitlint,
 	-- null_ls.builtins.diagnostics.luacheck,
 	-- null_ls.builtins.diagnostics.pylint,

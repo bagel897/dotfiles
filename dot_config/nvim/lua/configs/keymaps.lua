@@ -18,7 +18,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 wk.register({
 	w = {
-		name = "workspace",
+		name = "workspace/worktree",
 		a = { vim.lsp.buf.add_workspace_folder, "add workspace folder" },
 		r = { vim.lsp.buf.remove_workspace_folder, "remove workspace folder" },
 		l = {
@@ -26,6 +26,18 @@ wk.register({
 				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 			end,
 			"list workspace folders",
+		},
+		c = {
+			function()
+				require("telescope").extensions.git_worktree.create_git_worktree()
+			end,
+			"create git worktree",
+		},
+		s = {
+			function()
+				require("telescope").extensions.git_worktree.git_worktrees()
+			end,
+			"switch git worktrees",
 		},
 	},
 	d = {
@@ -101,32 +113,32 @@ wk.register({
 		-- ? = {[[<cmd>lua require('builtin').oldfiles()<CR>]],"old files"},
 	},
 	["<space>"] = { builtin.buffers, "buffers" },
-	g = { neogit.open, "Git" },      
+	g = { neogit.open, "Git" },
 	h = {
-        name = "Git",
-        j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-        k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-        p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-        r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-        R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-        s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-        u = {
-          "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-          "Undo Stage Hunk",
-        },
-        o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-        c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-        C = {
-          "<cmd>Telescope git_bcommits<cr>",
-          "Checkout commit(for current file)",
-        },
-        d = {
-          "<cmd>Gitsigns diffthis HEAD<cr>",
-          "Git Diff",
-        },
-      },
+		name = "Git",
+		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+		u = {
+			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+			"Undo Stage Hunk",
+		},
+		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+		C = {
+			"<cmd>Telescope git_bcommits<cr>",
+			"Checkout commit(for current file)",
+		},
+		d = {
+			"<cmd>Gitsigns diffthis HEAD<cr>",
+			"Git Diff",
+		},
+	},
 	t = { "<CMD>:ToggleTerm<CR>", "Toggle Terminal" },
 	s = { "<CMD>:SymbolsOutline <CR>", "symbols outline" },
 	r = {
