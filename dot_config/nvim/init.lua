@@ -56,7 +56,11 @@ vim.api.nvim_set_keymap("n", "j", "v:count == 1 ? 'gj' : 'j'", { noremap = true,
 -- }
 -- sidebar.setup(opts)
 vim.keymap.set("n", "q", [[<cmd>q<CR>]])
-
+vim.o.autoread = true
+vim.cmd([[autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif]])
+vim.cmd(
+	[[autocmd FileChangedShellPost *\ echohl WarningMsg | lua vim.notify("File changed on disk. Buffer reloaded.") | echohl None]]
+)
 require("configs/lsp")
 require("configs/cmp")
 require("configs/keymaps")

@@ -228,10 +228,8 @@ return require("packer").startup({
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind-nvim",
 			"petertriho/cmp-git",
-			requires = { "nvim-lua/plenary.nvim", "rafamadriz/friendly-snippets" },
-			config = function()
-				require("configs/cmp")
-			end,
+			"rafamadriz/friendly-snippets",
+			requires = { "nvim-lua/plenary.nvim" },
 		})
 		use({
 			"neovim/nvim-lspconfig",
@@ -243,6 +241,17 @@ return require("packer").startup({
 				require("configs/lsp")
 			end,
 		})
+		use({
+			"nvim-treesitter/nvim-tree-docs",
+			requires = "nvim-treesitter/nvim-treesitter",
+			config = function()
+				require("nvim-treesitter.configs").setup({
+					tree_docs = { enable = true },
+				})
+			end,
+			disabled = true,
+		})
+		use({})
 		-- use({
 		--
 		-- 	"ms-jpq/coq_nvim",

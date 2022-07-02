@@ -64,7 +64,6 @@ require("lspconfig").pylsp.setup({
 					enabled = true,
 					live_mode = false,
 					dmypy = true,
-					strict = false,
 				},
 				-- pylint = { enabled = true, args = {"--disable C0301"}},
 			},
@@ -73,6 +72,7 @@ require("lspconfig").pylsp.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
+local lspconfig = require("lspconfig")
 require("lspconfig").texlab.setup({
 	settings = {
 		texlab = {
