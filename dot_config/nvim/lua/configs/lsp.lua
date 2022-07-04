@@ -1,10 +1,9 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.g.coq_settings = { auto_start = "shut-up" }
--- require("nvim-lsp-installer").setup({
--- 	automatic_installation = true,
---
--- })
+require("nvim-lsp-installer").setup({
+	automatic_installation = true,
+})
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local navic = require("nvim-navic")
