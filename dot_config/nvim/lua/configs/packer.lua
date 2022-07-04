@@ -448,11 +448,6 @@ return require("packer").startup({
 				require("spellsitter").setup()
 			end,
 		})
-		use({
-			-- Optional but recommended
-			-- 'nvim-treesitter/nvim-treesitter',
-			"lewis6991/spellsitter.nvim",
-		})
 		if packer_bootstrap then
 			require("packer").sync()
 		end
