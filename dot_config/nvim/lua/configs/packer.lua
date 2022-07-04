@@ -28,6 +28,12 @@ packer.init({
 })
 return require("packer").startup({
 	function(use)
+		use({
+			"kyazdani42/nvim-web-devicons",
+			config = function()
+				require("nvim-web-devicons").setup({ default = true })
+			end,
+		})
 		use({ "tpope/vim-sleuth" })
 		use({
 			"ethanholz/nvim-lastplace",
@@ -251,7 +257,6 @@ return require("packer").startup({
 			end,
 			disabled = true,
 		})
-		use({})
 		-- use({
 		--
 		-- 	"ms-jpq/coq_nvim",
@@ -432,10 +437,15 @@ return require("packer").startup({
 			"ray-x/lsp_signature.nvim",
 		})
 		use({
-			"pixelneo/vim-python-docstring",
+			"lewis6991/spellsitter.nvim",
 			config = function()
-				vim.g.python_style = "google"
+				require("spellsitter").setup()
 			end,
+		})
+		use({
+			-- Optional but recommended
+			-- 'nvim-treesitter/nvim-treesitter',
+			"lewis6991/spellsitter.nvim",
 		})
 		if packer_bootstrap then
 			require("packer").sync()
