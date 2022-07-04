@@ -52,6 +52,12 @@ return require("packer").startup({
 			"mfussenegger/nvim-jdtls",
 		})
 		use({
+			"pixelneo/vim-python-docstring",
+			config = function()
+				vim.g.python_style = "google"
+			end,
+		})
+		use({
 			"rcarriga/nvim-notify",
 			config = function()
 				vim.notify = require("notify")
