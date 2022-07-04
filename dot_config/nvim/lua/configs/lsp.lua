@@ -1,9 +1,10 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.g.coq_settings = { auto_start = "shut-up" }
-require("nvim-lsp-installer").setup({
-	automatic_installation = true,
-})
+-- require("nvim-lsp-installer").setup({
+-- 	automatic_installation = true,
+--
+-- })
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local navic = require("nvim-navic")
@@ -59,7 +60,7 @@ require("lspconfig").pylsp.setup({
 			plugins = {
 				pycodestyle = { enabled = true, maxLineLength = 88 },
 				-- pydocstyle = { enabled = true },
-				rope_autoimport = { enabled = true },
+				rope_autoimport = { enabled = true, memory = false },
 				pylsp_mypy = {
 					enabled = true,
 					live_mode = false,

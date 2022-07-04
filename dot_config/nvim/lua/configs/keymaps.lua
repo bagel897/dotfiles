@@ -73,7 +73,8 @@ wk.register({
 	},
 	l = {
 		name = "lsp",
-		d = { vim.lsp.buf.type_definition, "type definition" },
+		d = { "<CMD> :Docstring <CR>", "Docstring" },
+		t = { vim.lsp.buf.type_definition, "type definition" },
 		r = { vim.lsp.buf.rename, "rename" },
 		a = {
 			function()

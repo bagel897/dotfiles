@@ -431,6 +431,12 @@ return require("packer").startup({
 		use({
 			"ray-x/lsp_signature.nvim",
 		})
+		use({
+			"pixelneo/vim-python-docstring",
+			config = function()
+				vim.g.python_style = "google"
+			end,
+		})
 		if packer_bootstrap then
 			require("packer").sync()
 		end
