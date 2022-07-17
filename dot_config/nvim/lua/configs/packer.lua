@@ -166,11 +166,10 @@ return require("packer").startup({
 			requires = { { "nvim-lua/plenary.nvim" } },
 		})
 		use({
+			"Mofiqul/adwaita.nvim",
 			"folke/tokyonight.nvim",
-			config = function()
-				vim.g.tokyonight_style = "night"
-				vim.cmd([[colorscheme tokyonight]])
-			end,
+			"olimorris/onedarkpro.nvim",
+			config = function() end,
 		})
 		use({
 			"nvim-lualine/lualine.nvim",
@@ -178,7 +177,6 @@ return require("packer").startup({
 				local navic = require("nvim-navic")
 				require("lualine").setup({
 					options = {
-						theme = "tokyonight",
 						globalstatus = true,
 					},
 					extensions = { "nvim-tree", "quickfix", "fugitive", "toggleterm", "symbols-outline" },

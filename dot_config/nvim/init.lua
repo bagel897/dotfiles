@@ -1,11 +1,25 @@
 vim.opt.termguicolors = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.do_filetype_lua = 1
 --Set highlight on search
 vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"
 vim.o.guifont = "FiraCode NF"
+vim.g.adwaita_darker = true
+vim.g.tokyonight_style = "night"
+vim.cmd([[colorscheme tokyonight]])
+-- require("onedarkpro").setup({
+-- 	dark_theme = "onedark_dark",
+-- 	options = {
+-- 		bold = true,
+-- 		italic = true,
+-- 		underline = true,
+-- 		undercurl = true,
+-- 		cursorline = true,
+-- 		terminal_colors = true,
+-- 	},
+-- })
+-- require("onedarkpro").load()
 --Make line numbers default
 vim.wo.number = true
 
@@ -18,7 +32,6 @@ vim.o.mouse = "a"
 -- vim.o.shiftwidth = 4
 -- vim.o.expandtab = true
 -- vim.o.cindent = true
--- vim.o.filetype = "on"
 --Save undo history
 vim.opt.undofile = true
 vim.o.autowriteall = true

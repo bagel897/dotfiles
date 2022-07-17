@@ -5,10 +5,14 @@ fundle plugin "2m/fish-history-merge"
 fundle plugin "IlanCosman/tide"
 fundle plugin "PatrickF1/fzf.fish"
 fundle plugin "sentriz/fish-pipenv"
+# fundle plugin "gazorby/fifc"
 fundle init
 export DENO_INSTALL="/home/bageljr/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-set -ga PATH  /home/bageljr/.local/bin
+
+set -Ux fifc_editor $EDITOR
+set -U fifc_fd_opts --hidden
+set -gp PATH  /home/bageljr/.local/bin
 set fish_greeting
 set -g VDPAU_DRIVER radeonsi
 set -g LIBVA_DRIVER_NAME radeonsi
