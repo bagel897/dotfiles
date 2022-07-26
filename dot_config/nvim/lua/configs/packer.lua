@@ -242,8 +242,13 @@ return require("packer").startup({
 			requires = { "nvim-lua/plenary.nvim" },
 		})
 		use({
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			run = ":MasonToolsUpdate",
+		})
+		use({
 			"neovim/nvim-lspconfig",
-			"williamboman/nvim-lsp-installer",
 			"jose-elias-alvarez/null-ls.nvim",
 			"p00f/clangd_extensions.nvim",
 			"kosayoda/nvim-lightbulb",

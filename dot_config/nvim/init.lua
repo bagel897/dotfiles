@@ -74,6 +74,19 @@ vim.cmd([[autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c'
 vim.cmd(
 	[[autocmd FileChangedShellPost *\ echohl WarningMsg | lua vim.notify("File changed on disk. Buffer reloaded.") | echohl None]]
 )
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mason-tool-installer").setup({
+	auto_update = true,
+	ensure_installed = {
+		"codelldb",
+		"flake8",
+		"debugpy",
+		"prettier",
+		"stylua",
+		-- "glow",
+	},
+})
 require("configs/lsp")
 require("configs/cmp")
 require("configs/keymaps")
