@@ -31,7 +31,6 @@ local servers = {
 	"cmake",
 	"esbonio",
 	"dockerls",
-	"sourcery",
 	-- "pylsp",
 	-- "pyright",
 	-- "jedi_language_server",
@@ -54,6 +53,15 @@ for _, lsp in pairs(servers) do
 		on_attach = on_attach,
 	})
 end
+-- require("lspconfig").sourcery.setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- 	init_options = {
+-- 		editor_version = "vim",
+-- 		extension_version = "vim.lsp",
+--
+-- 	},
+-- })
 require("lspconfig").pylsp.setup({
 	settings = {
 		pylsp = {
