@@ -31,6 +31,7 @@ local servers = {
 	"cmake",
 	"esbonio",
 	"dockerls",
+	"sourcery",
 	-- "pylsp",
 	-- "pyright",
 	-- "jedi_language_server",
@@ -153,7 +154,7 @@ local sources = {
 	-- null_ls.builtins.formatting.clang_format,
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.diagnostics.rstcheck,
-	null_ls.builtins.formatting.prettier
+	null_ls.builtins.formatting.prettier,
 	-- null_ls.builtins.code_actions.gitsigns,
 	-- null_ls.builtins.diagnostics.gitlint,
 	-- null_ls.builtins.diagnostics.luacheck,
