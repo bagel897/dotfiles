@@ -181,8 +181,9 @@ return require("packer").startup({
 					},
 					extensions = { "nvim-tree", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
 					sections = {
-						lualine_c = { { "filename", path = 1 }, { navic.get_location, cond = navic.is_available } },
+						lualine_c = { { "filename", path = 1 } },
 					},
+					winbar = { lualine_a = { { navic.get_location, cond = navic.is_available } } },
 				})
 			end,
 		})
