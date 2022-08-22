@@ -18,6 +18,7 @@ vim.g.markdown_fenced_languages = {
 	"ts=typescript",
 }
 local servers = {
+	"taplo",
 	"clojure_lsp",
 	-- "texlab",
 	"ltex",
