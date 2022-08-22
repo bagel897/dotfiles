@@ -18,7 +18,7 @@ vim.g.markdown_fenced_languages = {
 	"ts=typescript",
 }
 local servers = {
-	"clojure",
+	"clojure_lsp",
 	-- "texlab",
 	"ltex",
 	"rust_analyzer",
