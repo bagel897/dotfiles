@@ -182,3 +182,8 @@ wk.register({
 		a = { "<cmd><C-U>Lspsaga range_code_action<CR>", "range code actions" },
 	},
 }, { prefix = "<leader>", mode = "v" })
+vim.api.nvim_set_keymap(
+	"v",
+	"<leader>lb",
+	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",{}
+)

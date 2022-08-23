@@ -57,6 +57,23 @@ return require("packer").startup({
 			end,
 		})
 		use({
+			"clojure-vim/acid.nvim",
+			run = "<CMD> :UpdateRemotePlugins <CR>",
+		})
+		use({
+			"ThePrimeagen/refactoring.nvim",
+			requires = {
+				{ "nvim-lua/plenary.nvim" },
+				{ "nvim-treesitter/nvim-treesitter" },
+			},
+			config = function()
+				require("refactoring").setup({})
+				require("telescope").load_extension("refactoring")
+
+				-- remap to open the Telescope refactoring menu in visual mode
+			end,
+		})
+		use({
 			"rcarriga/nvim-notify",
 			config = function()
 				vim.notify = require("notify")
