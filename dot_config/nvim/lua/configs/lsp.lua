@@ -224,7 +224,7 @@ require("lspconfig")["yamlls"].setup(cfg)
 -- require('rust-tools.inlay_hints').set_inlay_hints()
 
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 	signs = true,
 	underline = true,
 	update_in_insert = false,

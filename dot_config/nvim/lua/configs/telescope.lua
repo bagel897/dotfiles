@@ -1,16 +1,13 @@
 local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
 -- Telescope
 local telescope = require("telescope")
 telescope.setup({
 	defaults = {
 		mappings = {
 			i = {
-				["<c-t>"] = trouble.open_with_trouble,
 				["<C-d>"] = false,
 				["<C-h>"] = "which_key",
 			},
-			n = { ["<c-t>"] = trouble.open_with_trouble },
 		},
 	},
 	extensions = {

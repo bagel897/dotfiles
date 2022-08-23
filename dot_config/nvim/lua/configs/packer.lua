@@ -102,11 +102,13 @@ return require("packer").startup({
 		use({
 			"nvim-neorg/neorg",
 			config = function()
-				require("neorg").setup({load={
-					["core.defaults"] = {},
-					["core.norg.concealer"] = {},
-					["core.integrations.nvim-cmp"] = {},
-				}})
+				require("neorg").setup({
+					load = {
+						["core.defaults"] = {},
+						["core.norg.concealer"] = {},
+						["core.integrations.nvim-cmp"] = {},
+					},
+				})
 			end,
 			requires = "nvim-lua/plenary.nvim",
 		})
@@ -194,7 +196,6 @@ return require("packer").startup({
 					sections = {
 						lualine_c = { { "filename", path = 1 } },
 					},
-					winbar = { lualine_a = { { navic.get_location, cond = navic.is_available } } },
 				})
 			end,
 		})
@@ -266,10 +267,21 @@ return require("packer").startup({
 			end,
 		})
 		use({
+			"glepnir/lspsaga.nvim",
+			branch = "main",
+			config = function()
+				local saga = require("lspsaga")
+
+				saga.init_lsp_saga({
+					symbol_in_winbar = { enable = true },
+					-- your configuration
+				})
+			end,
+		})
+		use({
 			"neovim/nvim-lspconfig",
 			"jose-elias-alvarez/null-ls.nvim",
 			"p00f/clangd_extensions.nvim",
-			"kosayoda/nvim-lightbulb",
 			config = function()
 				require("configs/lsp")
 			end,
@@ -299,7 +311,6 @@ return require("packer").startup({
 		-- 	end,
 		-- 	run = ":COQDeps",
 		-- })
-		use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 		use({
 			"mfussenegger/nvim-dap",
@@ -318,7 +329,12 @@ return require("packer").startup({
 				npairs.setup({})
 			end,
 		})
-
+		use({
+			"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+			config = function()
+				require("lsp_lines").setup()
+			end,
+		})
 		use({
 			"folke/which-key.nvim",
 			config = function()
@@ -326,7 +342,11 @@ return require("packer").startup({
 			end,
 			opt = false,
 		})
-
+		use({
+			"mrbjarksen/neo-tree-diagnostics.nvim",
+			requires = "nvim-neo-tree/neo-tree.nvim",
+			module = "neo-tree.sources.diagnostics", -- if wanting to lazyload
+		})
 		use({
 			"petertriho/nvim-scrollbar",
 			config = function()
@@ -362,13 +382,6 @@ return require("packer").startup({
 			end,
 		})
 		use({
-			"folke/trouble.nvim",
-			requires = "kyazdani42/nvim-web-devicons",
-			config = function()
-				require("configs/trouble")
-			end,
-		})
-		use({
 			"akinsho/toggleterm.nvim",
 			branch = "main",
 			config = function()
@@ -389,13 +402,13 @@ return require("packer").startup({
 				vim.g.cpp_compile_command = "g++ -g solution.cpp -o solution"
 			end,
 		})
-		use({
-			"narutoxy/dim.lua",
-			requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-			config = function()
-				require("dim").setup({})
-			end,
-		})
+		-- use({
+		-- 	"narutoxy/dim.lua",
+		-- 	requires = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
+		-- 	config = function()
+		-- 		require("dim").setup({})
+		-- 	end,
+		-- })
 		use({ "lewis6991/impatient.nvim" })
 		use({ "nvim-lua/popup.nvim", requires = { "nvim-lua/plenary.nvim" } })
 		use({
@@ -403,9 +416,6 @@ return require("packer").startup({
 			config = function()
 				require("telescope").load_extension("git_worktree")
 			end,
-		})
-		use({
-			"simrat39/symbols-outline.nvim",
 		})
 		use({
 			"pwntester/octo.nvim",
@@ -462,6 +472,10 @@ return require("packer").startup({
 		})
 		use({
 			"ray-x/lsp_signature.nvim",
+			config = function()
+				local cfg = {} -- add you config here
+				require("lsp_signature").setup(cfg)
+			end,
 		})
 		use({
 			"lewis6991/spellsitter.nvim",

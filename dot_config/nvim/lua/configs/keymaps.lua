@@ -4,7 +4,6 @@ local dap = require("dap")
 local builtin = require("telescope.builtin")
 local telescope = require("telescope")
 local neogit = require("neogit")
-local trouble = require("trouble")
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -75,15 +74,13 @@ wk.register({
 		name = "lsp",
 		d = { "<CMD> :Docstring <CR>", "Docstring" },
 		t = { vim.lsp.buf.type_definition, "type definition" },
-		r = { vim.lsp.buf.rename, "rename" },
+		r = { "<cmd>Lspsaga rename<CR>", "rename" },
 		a = {
-			function()
-				require("code_action_menu").open_code_action_menu()
-			end,
+			"<cmd>Lspsaga code_action<CR>",
 			"code actions",
 		},
 		f = { vim.lsp.buf.formatting, "format" },
-		q = { vim.lsp.buf.hover, "documentation" },
+		q = { "<cmd>Lspsaga hover_doc<CR>", "documentation" },
 		i = { vim.lsp.buf.implementation, "implementation" },
 		c = { vim.lsp.buf.incoming_calls, "incoming calls" },
 		o = { vim.lsp.buf.outgoing_calls, "outgoing calls" },
@@ -141,7 +138,7 @@ wk.register({
 		},
 	},
 	t = { "<CMD>:ToggleTerm<CR>", "Toggle Terminal" },
-	s = { "<CMD>:SymbolsOutline <CR>", "symbols outline" },
+	s = { "<cmd>LSoutlineToggle<CR>", "symbols outline" },
 	r = {
 		r = {
 			function()
@@ -163,40 +160,6 @@ wk.register({
 		end,
 		"Update",
 	},
-	x = {
-		name = "Trouble",
-		x = { trouble.open, "Trouble" },
-		w = {
-			function()
-				trouble.open({ mode = "workspace_diagnostics" })
-			end,
-			"Workplace Diagnostics",
-		},
-		d = {
-			function()
-				trouble.open({ mode = "document_diagnostics" })
-			end,
-			"Document Diagnostics",
-		},
-		l = {
-			function()
-				trouble.open({ mode = "loclist" })
-			end,
-			"Loclist",
-		},
-		q = {
-			function()
-				trouble.open({ mode = "quickfix" })
-			end,
-			"Quickfix",
-		},
-		r = {
-			function()
-				trouble.open("lsp_references")
-			end,
-			"Lsp references",
-		},
-	},
 	c = {
 		name = "competitive",
 		r = {
@@ -216,6 +179,6 @@ wk.register({
 wk.register({
 	l = {
 		name = "lsp",
-		a = { "<CMD> :CodeActionMenu <CR>", "range code actions" },
+		a = { "<cmd><C-U>Lspsaga range_code_action<CR>", "range code actions" },
 	},
 }, { prefix = "<leader>", mode = "v" })
