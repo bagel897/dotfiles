@@ -84,6 +84,7 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "nvim_lua" },
 		{ name = "neorg" },
+		{ name = "conjure" },
 	}, { { name = "treesitter" } }, {
 		{ name = "buffer" },
 	}),

@@ -57,10 +57,6 @@ return require("packer").startup({
 			end,
 		})
 		use({
-			"clojure-vim/acid.nvim",
-			run = "<CMD> :UpdateRemotePlugins <CR>",
-		})
-		use({
 			"ThePrimeagen/refactoring.nvim",
 			requires = {
 				{ "nvim-lua/plenary.nvim" },
@@ -103,6 +99,7 @@ return require("packer").startup({
 				require("dressing").setup({})
 			end,
 		})
+		use({ "Olical/conjure", "PaterJason/cmp-conjure" })
 		use({
 			"mrjones2014/legendary.nvim",
 			config = function()
