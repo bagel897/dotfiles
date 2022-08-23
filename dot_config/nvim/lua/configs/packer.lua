@@ -42,10 +42,9 @@ return require("packer").startup({
 			end,
 		})
 		use({
-			"ellisonleao/glow.nvim",
-			ft = { "markdown" },
-			config = function()
-				vim.keymap.set("n", "<leader>p", ":Glow<CR>")
+			"iamcco/markdown-preview.nvim",
+			run = function()
+				vim.fn["mkdp#util#install"]()
 			end,
 		})
 		use({
@@ -99,6 +98,17 @@ return require("packer").startup({
 			config = function()
 				require("bufferline").setup({ auto_hide = true })
 			end,
+		})
+		use({
+			"nvim-neorg/neorg",
+			config = function()
+				require("neorg").setup({load={
+					["core.defaults"] = {},
+					["core.norg.concealer"] = {},
+					["core.integrations.nvim-cmp"] = {},
+				}})
+			end,
+			requires = "nvim-lua/plenary.nvim",
 		})
 		use({
 			"glepnir/dashboard-nvim",
@@ -178,6 +188,7 @@ return require("packer").startup({
 				require("lualine").setup({
 					options = {
 						globalstatus = true,
+						colorscheme = "tokyonight",
 					},
 					extensions = { "nvim-tree", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
 					sections = {
@@ -240,13 +251,19 @@ return require("packer").startup({
 			"onsails/lspkind-nvim",
 			"petertriho/cmp-git",
 			"rafamadriz/friendly-snippets",
+			"ray-x/cmp-treesitter",
 			requires = { "nvim-lua/plenary.nvim" },
 		})
 		use({
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			run = ":MasonToolsUpdate",
+
+			run = function()
+				vim.cmd("PylspInstall pyls-isort pylsp-rope pylsp-mypy python-lsp-black")
+
+				vim.cmd(":MasonToolsUpdate <CR>")
+			end,
 		})
 		use({
 			"neovim/nvim-lspconfig",
