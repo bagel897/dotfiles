@@ -7,7 +7,7 @@ if type -P pacman > /dev/null; then
 		cd paru
 		makepkg -si
 	fi
-	paru -S --needed neovim fd exa fzf ripgrep git-delta python-pipx
+	paru -S --needed neovim fd exa fzf ripgrep git-delta python-pipx stylua
 else 
 	export PATH=$PATH:~/.local/bin:~/.cargo/bin/
 	if ! type -P cargo > /dev/null; then
