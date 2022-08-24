@@ -18,6 +18,7 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 	ensure_installed = "all",
+	ignore_install = { "phpdoc", "d" },
 	textobjects = {
 		select = {
 			enable = true,
