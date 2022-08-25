@@ -1,7 +1,12 @@
 Host bagelpi
 	User bageljr
 	Port 6389
-	Hostname bageljr.com
+	Hostname 100.96.192.103
+	Ciphers aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+	ControlMaster auto
+	ControlPersist yes
+	ControlPath ~/.ssh/sockets/socket-%r@%h:%p
+
 Host bagelpilocal
     Port 6389
     Hostname 192.168.3.129
@@ -34,4 +39,3 @@ Host bagelzero
 	Port 6389
 Host bagelmax
 	Hostname 100.87.126.14
-	
