@@ -83,7 +83,6 @@ require("mason-tool-installer").setup({
 		"debugpy",
 		"prettier",
 		"stylua",
-		"joker",
 		-- "glow",
 	},
 })
@@ -91,3 +90,5 @@ require("configs/lsp")
 require("configs/cmp")
 require("configs/keymaps")
 require("configs/treesitter")
+vim.cmd("set spell")
+-- this is a comment with a baaad word

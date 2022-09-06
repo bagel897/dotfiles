@@ -494,12 +494,6 @@ return require("packer").startup({
 				require("lsp_signature").setup(cfg)
 			end,
 		})
-		use({
-			"lewis6991/spellsitter.nvim",
-			config = function()
-				require("spellsitter").setup()
-			end,
-		})
 		if packer_bootstrap then
 			require("packer").sync()
 		end
