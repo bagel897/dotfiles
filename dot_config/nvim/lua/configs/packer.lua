@@ -195,7 +195,9 @@ return require("packer").startup({
 			"Mofiqul/adwaita.nvim",
 			"folke/tokyonight.nvim",
 			"olimorris/onedarkpro.nvim",
-			config = function() end,
+			config = function()
+				require("tokyonight").setup({ style = "storm" })
+			end,
 		})
 		use({
 			"nvim-lualine/lualine.nvim",
@@ -228,6 +230,7 @@ return require("packer").startup({
 				vim.g.indent_blankline_show_trailing_blankline_indent = false
 			end,
 		})
+		use({ "p00f/nvim-ts-rainbow" })
 		-- Add git reoptionslated info in the signs columns and popups
 		use({
 			"lewis6991/gitsigns.nvim",
@@ -239,7 +242,7 @@ return require("packer").startup({
 		-- Highlight, edit, and navigate code using a fast incremental parsing library
 		use({
 			"nvim-treesitter/nvim-treesitter",
-			require = { "nvim-treesitter/nvim-treesitter-textobjects" },
+			"nvim-treesitter/nvim-treesitter-textobjects",
 			run = ":TSUpdate",
 			config = function()
 				require("configs/treesitter")

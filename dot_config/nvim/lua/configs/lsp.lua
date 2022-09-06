@@ -118,6 +118,8 @@ require("clangd_extensions").setup({
 		cmd = {
 			"clangd",
 			"--background-index",
+			"-j=12",
+			"--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
 			"--clang-tidy",
 			"--all-scopes-completion",
 			"--cross-file-rename",
@@ -165,6 +167,9 @@ local sources = {
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.diagnostics.rstcheck,
 	null_ls.builtins.formatting.prettier,
+	-- null_ls.builtins.formatting.joker,
+	-- null_ls.builtins.diagnostics.clj_kondo,
+	null_ls.builtins.formatting.cljstyle,
 	-- null_ls.builtins.code_actions.gitsigns,
 	-- null_ls.builtins.diagnostics.gitlint,
 	-- null_ls.builtins.diagnostics.luacheck,

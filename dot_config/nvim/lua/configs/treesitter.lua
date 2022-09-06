@@ -17,6 +17,7 @@ require("nvim-treesitter.configs").setup({
 	indent = {
 		enable = true,
 	},
+	rainbow = { enable = true },
 	ensure_installed = "all",
 	ignore_install = { "phpdoc", "d" },
 	textobjects = {
@@ -29,6 +30,11 @@ require("nvim-treesitter.configs").setup({
 				["if"] = "@function.inner",
 				["ac"] = "@class.outer",
 				["ic"] = "@class.inner",
+			},
+			selection_modes = {
+				["@parameter.outer"] = "v", -- charwise
+				["@function.outer"] = "V", -- linewise
+				["@class.outer"] = "<c-v>", -- blockwise
 			},
 		},
 		move = {
@@ -49,6 +55,14 @@ require("nvim-treesitter.configs").setup({
 			goto_previous_end = {
 				["[M"] = "@function.outer",
 				["[]"] = "@class.outer",
+			},
+		},
+		lsp_interop = {
+			enable = true,
+			border = "none",
+			peek_definition_code = {
+				["<leader>df"] = "@function.outer",
+				["<leader>dF"] = "@class.outer",
 			},
 		},
 	},
