@@ -17,6 +17,20 @@ set fish_greeting
 set -g VDPAU_DRIVER radeonsi
 set -g LIBVA_DRIVER_NAME radeonsi
 set -ga NIX_PATH "REPEAT=/dev/null"
+set -g XDG_DATA_HOME "$HOME/.local/share"
+set -g XDG_CONFIG_HOME "$HOME/.config"
+set -g AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials" 
+set -g AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config" 
+set -g BASH_COMPLETION_USER_FILE "$XDG_CONFIG_HOME"/bash-completion/bash_completion
+set -g CONDARC "$XDG_CONFIG_HOME/conda/condarc"
+set -g CARGO_HOME "$XDG_DATA_HOME/cargo"
+set -g DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
+set -g GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+set -g IPFS_PATH "$XDG_DATA_HOME"/ipfs
+set -g JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME"/jupyter
+set -g KDEHOME "$XDG_CONFIG_HOME"/kde 
+set -g _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
 set fzf_preview_dir_cmd exa --all --color=always
 alias 'vim'=$EDITOR
 alias 'ls'=exa
