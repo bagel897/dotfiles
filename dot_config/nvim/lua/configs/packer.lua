@@ -435,6 +435,20 @@ return require("packer").startup({
 			end,
 		})
 		use({
+			"jayp0521/mason-null-ls.nvim",
+			after = {
+				"null-ls.nvim",
+				"mason.nvim",
+			},
+			config = function()
+				require("mason-null-ls").setup({
+					automatic_installation = true,
+					auto_update = true,
+				})
+				require("mason-null-ls").check_install(true)
+			end,
+		})
+		use({
 			"pwntester/octo.nvim",
 			requires = {
 				"nvim-lua/plenary.nvim",

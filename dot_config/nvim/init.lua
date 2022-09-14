@@ -81,8 +81,6 @@ require("mason-tool-installer").setup({
 		"codelldb",
 		"flake8",
 		"debugpy",
-		"prettier",
-		"stylua",
 		-- "glow",
 	},
 })
