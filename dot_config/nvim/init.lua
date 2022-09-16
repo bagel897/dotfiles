@@ -6,6 +6,7 @@ vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"
 vim.o.guifont = "FiraCode NF"
 vim.g.adwaita_darker = true
+vim.cmd("set spell")
 vim.cmd([[colorscheme tokyonight]])
 -- require("onedarkpro").setup({
 -- 	dark_theme = "onedark_dark",
@@ -41,8 +42,6 @@ vim.o.smartcase = true
 --Decrease update time
 vim.o.updatetime = 251
 vim.wo.signcolumn = "yes"
-require("configs/packer")
-require("impatient")
 
 --Remap space as leader key
 --Remap for dealing with word wrap
@@ -73,21 +72,10 @@ vim.cmd([[autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c'
 vim.cmd(
 	[[autocmd FileChangedShellPost *\ echohl WarningMsg | lua vim.notify("File changed on disk. Buffer reloaded.") | echohl None]]
 )
-require("mason").setup()
-require("mason-lspconfig").setup()
-require("mason-tool-installer").setup({
-	auto_update = true,
-	ensure_installed = {
-		"codelldb",
-		"flake8",
-		"debugpy",
-		-- "glow",
-	},
-})
+require("configs/packer")
 require("configs/lsp")
 require("configs/cmp")
 require("configs/keymaps")
 require("configs/treesitter")
 require("configs/dap")
-vim.cmd("set spell")
 -- this is a comment with a baaad word

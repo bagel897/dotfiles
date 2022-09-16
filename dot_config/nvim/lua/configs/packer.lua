@@ -274,9 +274,30 @@ return require("packer").startup({
 		})
 		use({
 			"williamboman/mason.nvim",
+			config = function()
+				require("mason").setup({})
+			end,
+		})
+		use({
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-
+			after = {
+				"null-ls.nvim",
+				"mason.nvim",
+				"lspconfig.nvim",
+			},
+			config = function()
+				require("mason-lspconfig").setup({ automatic_installation = true })
+				require("mason-tool-installer").setup({
+					auto_update = true,
+					ensure_installed = {
+						"codelldb",
+						"flake8",
+						"debugpy",
+						-- "glow",
+					},
+				})
+			end,
 			run = function()
 				vim.cmd("PylspInstall pyls-isort pylsp-rope pylsp-mypy python-lsp-black")
 
@@ -426,7 +447,6 @@ return require("packer").startup({
 		-- 		require("dim").setup({})
 		-- 	end,
 		-- })
-		use({ "lewis6991/impatient.nvim" })
 		use({ "nvim-lua/popup.nvim", requires = { "nvim-lua/plenary.nvim" } })
 		use({
 			"ThePrimeagen/git-worktree.nvim",
