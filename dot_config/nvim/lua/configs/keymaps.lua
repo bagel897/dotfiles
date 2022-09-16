@@ -82,7 +82,7 @@ wk.register({
 		f = { vim.lsp.buf.formatting, "format" },
 		q = { "<cmd>Lspsaga hover_doc<CR>", "documentation" },
 		i = { vim.lsp.buf.implementation, "implementation" },
-		c = { vim.lsp.buf.incoming_calls, "incoming calls" },
+		c = { "<cmd>Lspsaga lsp_finder<CR>", "incoming calls" },
 		o = { vim.lsp.buf.outgoing_calls, "outgoing calls" },
 	},
 	f = {
@@ -179,11 +179,12 @@ wk.register({
 wk.register({
 	l = {
 		name = "lsp",
-		a = { "<cmd><C-U>Lspsaga range_code_action<CR>", "range code actions" },
+		a = { "<cmd>Lspsaga code_action<CR>", "range code actions" },
 	},
 }, { prefix = "<leader>", mode = "v" })
 vim.api.nvim_set_keymap(
 	"v",
 	"<leader>lb",
-	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",{}
+	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+	{}
 )

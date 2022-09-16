@@ -7,7 +7,7 @@ dap.adapters.codelldb = {
 	port = "${port}",
 	executable = {
 		-- CHANGE THIS to your path!
-		command = "/home/bageljr/.local/share/nvim/mason/bin/codelldb",
+		command = vim.fs.normalize("$XDG_CONFIG_HOME/nvim/mason/bin/codelldb"),
 		args = { "--port", "${port}" },
 
 		-- On windows you may have to uncomment this:
@@ -15,39 +15,9 @@ dap.adapters.codelldb = {
 	},
 }
 dap.configurations.cpp = {
-	-- {
-	-- 	name = "competitive test",
-	-- 	type = "lldb",
-	-- 	request = "launch",
-	-- 	program = "${workspaceFolder}/solution",
-	-- 	cwd = "${workspaceFolder}",
-	-- 	stdio = {
-	-- 		function()
-	-- 			choices = require("plenary.scandir").scan_dir(vim.fn.getcwd())
-	-- 			vim.ui.select(choices({ prompt = "select a test case" }), function(choice)
-	-- 				return choices[choice]
-	-- 			end)
-	-- 			return
-	-- 		end,
-	-- 		nil,
-	-- 		nil,
-	-- 	},
-	-- 	args = {},
-	-- },
-	-- {
-	-- 	name = "competitive test case",
-	-- 	type = "lldb",
-	-- 	request = "launch",
-	-- 	program = "${workspaceFolder}/solution",
-	-- 	cwd = "${workspaceFolder}",
-	-- 	stdio = function()
-	-- 		return { "${workspaceFolder}/input" .. vim.ui.input("which case number"), nil, nil }
-	-- 	end,
-	-- 	args = {},
-	-- },
 	{
 		name = "competitive test case 1",
-		type = "lldb",
+		type = "codelldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
@@ -57,7 +27,7 @@ dap.configurations.cpp = {
 	},
 	{
 		name = "competitive test case 2",
-		type = "lldb",
+		type = "codelldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
@@ -67,7 +37,7 @@ dap.configurations.cpp = {
 	},
 	{
 		name = "competitive test case 3",
-		type = "lldb",
+		type = "codelldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
@@ -77,7 +47,7 @@ dap.configurations.cpp = {
 	},
 	{
 		name = "competitive test case 4",
-		type = "lldb",
+		type = "codelldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
@@ -87,7 +57,7 @@ dap.configurations.cpp = {
 	},
 	{
 		name = "competitive test case 5",
-		type = "lldb",
+		type = "codelldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",

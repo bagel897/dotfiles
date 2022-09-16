@@ -202,7 +202,6 @@ return require("packer").startup({
 		use({
 			"nvim-lualine/lualine.nvim",
 			config = function()
-				local navic = require("nvim-navic")
 				require("lualine").setup({
 					options = {
 						globalstatus = true,
@@ -510,15 +509,6 @@ return require("packer").startup({
 						-- }),
 					},
 				})
-			end,
-		})
-		use({
-			"SmiteshP/nvim-navic",
-			requires = "neovim/nvim-lspconfig",
-			config = function()
-				local navic = require("nvim-navic")
-				navic.setup({ highlight = true })
-				vim.g.navic_silence = true
 			end,
 		})
 		use({

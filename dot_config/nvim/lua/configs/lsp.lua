@@ -6,10 +6,8 @@ require("mason-lspconfig").setup({
 })
 --
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local navic = require("nvim-navic")
 local on_attach = function(client, bufnr)
 	require("lsp_signature").on_attach()
-	navic.attach(client, bufnr)
 	require("lsp-format").on_attach(client)
 end
 -- Use a loop to conveniently call 'setup' on multiple servers and
