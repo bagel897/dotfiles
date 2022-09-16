@@ -88,5 +88,6 @@ require("configs/lsp")
 require("configs/cmp")
 require("configs/keymaps")
 require("configs/treesitter")
+require("configs/dap")
 vim.cmd("set spell")
 -- this is a comment with a baaad word
