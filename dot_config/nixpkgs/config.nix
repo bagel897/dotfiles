@@ -17,6 +17,7 @@
 		pkgs.chezmoi
 		pkgs.poetry
 		pkgs.tree-sitter.allGrammars
+		pkgs.topgrade
       ];
     };
   };

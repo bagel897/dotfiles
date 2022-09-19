@@ -76,11 +76,6 @@ function ros-start
     podman-compose up -d
     ros
 end
-function update
-    paru
-    flatpak update
-    chezmoi update
-end
 function compile_cmake
   cmake -H. -BDebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
   ln -s Debug/compile_commands.json .
