@@ -7,7 +7,6 @@ require("mason-lspconfig").setup({
 --
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local on_attach = function(client, bufnr)
-	require("lsp_signature").on_attach()
 	require("lsp-format").on_attach(client)
 end
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -136,6 +135,9 @@ require("lspconfig").sumneko_lua.setup({
 			call_snipped = "Replace",
 		},
 		Lua = {
+			hint = {
+				enable = true,
+			},
 			runtime = {
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 				version = "LuaJIT",
@@ -233,3 +235,4 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
 })
+require("lsp_signature").setup({})
