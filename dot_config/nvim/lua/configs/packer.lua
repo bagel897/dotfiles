@@ -124,6 +124,7 @@ return require("packer").startup({
 					},
 				})
 			end,
+			disable = true,
 			requires = "nvim-lua/plenary.nvim",
 		})
 		use({
@@ -464,7 +465,6 @@ return require("packer").startup({
 					automatic_installation = true,
 					auto_update = true,
 				})
-				require("mason-null-ls").check_install(true)
 			end,
 		})
 		use({
