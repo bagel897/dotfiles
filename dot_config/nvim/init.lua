@@ -7,19 +7,6 @@ vim.o.clipboard = "unnamedplus"
 vim.o.guifont = "FiraCode NF"
 vim.g.adwaita_darker = true
 vim.cmd("set spell")
-vim.cmd([[colorscheme tokyonight]])
--- require("onedarkpro").setup({
--- 	dark_theme = "onedark_dark",
--- 	options = {
--- 		bold = true,
--- 		italic = true,
--- 		underline = true,
--- 		undercurl = true,
--- 		cursorline = true,
--- 		terminal_colors = true,
--- 	},
--- })
--- require("onedarkpro").load()
 --Make line numbers default
 vim.wo.number = true
 

@@ -90,7 +90,7 @@ return require("packer").startup({
 		use({
 			"j-hui/fidget.nvim",
 			config = function()
-				require("fidget").setup({ sources = { ltex = { ignore = true } } })
+				require("fidget").setup({ sources = { ltex = { ignore = true } }, window = { blend = 0 } })
 			end,
 		})
 		use({
@@ -200,13 +200,64 @@ return require("packer").startup({
 				require("tokyonight").setup({ style = "storm" })
 			end,
 		})
+
+		use({
+			"catppuccin/nvim",
+			as = "catppuccin",
+			config = function()
+				vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+				require("catppuccin").setup({
+					integrations = {
+						barbar = true,
+						dashboard = true,
+						gitsigns = true,
+						lightspeed = true,
+						neotree = true,
+						neogit = true,
+						neotest = true,
+						cmp = true,
+						notify = true,
+						treesitter = true,
+						ts_rainbow = true,
+						lsp_saga = true,
+						telescope = true,
+						which_key = true,
+						fidget = true,
+						indent_blankline = {
+							enabled = true,
+							colored_indent_levels = false,
+						},
+						dap = {
+							enabled = true,
+							enable_ui = true, -- enable nvim-dap-ui
+						},
+						native_lsp = {
+							enabled = true,
+							virtual_text = {
+								errors = { "italic" },
+								hints = { "italic" },
+								warnings = { "italic" },
+								information = { "italic" },
+							},
+							underlines = {
+								errors = { "underline" },
+								hints = { "underline" },
+								warnings = { "underline" },
+								information = { "underline" },
+							},
+						},
+					},
+				})
+				vim.api.nvim_command("colorscheme catppuccin")
+			end,
+		})
 		use({
 			"nvim-lualine/lualine.nvim",
 			config = function()
 				require("lualine").setup({
 					options = {
 						globalstatus = true,
-						colorscheme = "tokyonight",
+						theme = "catppuccin",
 					},
 					extensions = { "nvim-tree", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
 					sections = {
