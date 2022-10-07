@@ -90,8 +90,12 @@ return require("packer").startup({
 		use({
 			"j-hui/fidget.nvim",
 			config = function()
-				require("fidget").setup({ sources = { ltex = { ignore = true } }, window = { blend = 0 } })
+				require("fidget").setup({
+					sources = { ltex = { ignore = true } },
+					window = { blend = 0 },
+				})
 			end,
+			before = "catppuccin",
 		})
 		use({
 			"stevearc/dressing.nvim",
@@ -205,9 +209,9 @@ return require("packer").startup({
 			"catppuccin/nvim",
 			as = "catppuccin",
 			config = function()
-				vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+				vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
 				require("catppuccin").setup({
-					integrations = {
+					integration = {
 						barbar = true,
 						dashboard = true,
 						gitsigns = true,
