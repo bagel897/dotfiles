@@ -109,6 +109,7 @@ return require("packer").startup({
 			config = function()
 				vim.g.conjure.mapping.prefix = ",c"
 			end,
+			disable = true,
 		})
 		use({
 			"mrjones2014/legendary.nvim",
@@ -397,7 +398,6 @@ return require("packer").startup({
 					tree_docs = { enable = true },
 				})
 			end,
-			disabled = true,
 		})
 		-- use({
 		--
