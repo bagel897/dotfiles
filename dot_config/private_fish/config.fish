@@ -30,7 +30,7 @@ set -g IPFS_PATH "$XDG_DATA_HOME"/ipfs
 set -g JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME"/jupyter
 set -g KDEHOME "$XDG_CONFIG_HOME"/kde 
 set -g _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-
+set -g GIT_DISCOVERY_ACROSS_FILESYSTEM /
 set fzf_preview_dir_cmd exa --all --color=always
 alias 'vim'=$EDITOR
 alias 'ls'=exa

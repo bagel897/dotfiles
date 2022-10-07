@@ -2,6 +2,12 @@ require("dap-python").setup("python")
 require("dap-python").test_runner = "pytest"
 local dap = require("dap")
 local cmd = "/usr/bin/codelldb"
+
+local sign = vim.fn.sign_define
+
+sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 dap.adapters.codelldb = {
 	type = "server",
 	port = "${port}",

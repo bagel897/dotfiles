@@ -1,9 +1,6 @@
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.g.coq_settings = { auto_start = "shut-up" }
-require("mason-lspconfig").setup({
-	automatic_installation = true,
-})
+-- vim.g.coq_settings = { auto_start = "shut-up" }
 --
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local on_attach = function(client, bufnr)
@@ -235,4 +232,3 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
 })
-require("lsp_signature").setup({})

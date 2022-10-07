@@ -103,7 +103,13 @@ return require("packer").startup({
 				require("dressing").setup({})
 			end,
 		})
-		use({ "Olical/conjure", "PaterJason/cmp-conjure" })
+		use({
+			"Olical/conjure",
+			"PaterJason/cmp-conjure",
+			config = function()
+				vim.g.conjure.mapping.prefix = ",c"
+			end,
+		})
 		use({
 			"mrjones2014/legendary.nvim",
 			config = function()
@@ -203,6 +209,7 @@ return require("packer").startup({
 			config = function()
 				require("tokyonight").setup({ style = "storm" })
 			end,
+			disable = true,
 		})
 
 		use({
@@ -351,6 +358,9 @@ return require("packer").startup({
 						"debugpy",
 						-- "glow",
 					},
+				})
+				require("mason-lspconfig").setup({
+					automatic_installation = true,
 				})
 			end,
 			run = function()
@@ -549,7 +559,6 @@ return require("packer").startup({
 			requires = {
 				"nvim-lua/plenary.nvim",
 				"nvim-treesitter/nvim-treesitter",
-				"antoinemadec/FixCursorHold.nvim",
 				"nvim-neotest/neotest-python",
 			},
 			config = function()

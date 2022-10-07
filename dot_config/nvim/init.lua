@@ -65,4 +65,4 @@ require("configs/cmp")
 require("configs/keymaps")
 require("configs/treesitter")
 require("configs/dap")
--- this is a comment with a baaad word
+-- vim.o.splitkeep = screen
