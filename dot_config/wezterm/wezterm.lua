@@ -3,7 +3,7 @@ local wezterm = require("wezterm")
 return {
 	font = wezterm.font("FiraCode Nerd Font Mono"),
 
-	color_scheme = "tokyonight-storm",
+	color_scheme = "Catppuccin Mocha",
 	ssh_domains = {
 		{
 			name = "rocket",
