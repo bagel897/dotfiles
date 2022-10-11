@@ -103,14 +103,14 @@ return require("packer").startup({
 				require("dressing").setup({})
 			end,
 		})
-		use({
-			"Olical/conjure",
-			"PaterJason/cmp-conjure",
-			config = function()
-				vim.g.conjure.mapping.prefix = ",c"
-			end,
-			disable = true,
-		})
+		-- use({
+		-- 	"Olical/conjure",
+		-- 	"PaterJason/cmp-conjure",
+		-- 	config = function()
+		-- 		vim.g.conjure.mapping.prefix = ",c"
+		-- 	end,
+		-- 	disable = true,
+		-- })
 		use({
 			"mrjones2014/legendary.nvim",
 			config = function()
