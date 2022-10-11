@@ -586,6 +586,13 @@ return require("packer").startup({
 			end,
 		})
 		use({
+			"s1n7ax/nvim-window-picker",
+			tag = "v1.*",
+			config = function()
+				require("window-picker").setup()
+			end,
+		})
+		use({
 			"ray-x/lsp_signature.nvim",
 			config = function()
 				local cfg = {} -- add you config here
