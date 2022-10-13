@@ -15,9 +15,9 @@
 		pkgs.bat
 		pkgs.sccache
 		pkgs.chezmoi
-		pkgs.poetry
 		pkgs.tree-sitter.allGrammars
 		pkgs.topgrade
+		pkgs.difftastic
       ];
     };
   };
