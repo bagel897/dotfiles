@@ -7,7 +7,7 @@ return {
 	ssh_domains = {
 		{
 			name = "rocket",
-			remote_address = "10.157.95.31",
+			remote_address = "10.157.95.28",
 			username = "aa87445",
 			assume_shell = "Posix",
 			remote_wezterm_path = "/home/aa87445/.local/bin/wezterm",

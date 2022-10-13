@@ -30,8 +30,11 @@ Host hart
   Hostname 146.6.20.207
 Host hart3
   Hostname 146.6.20.199
-Host rocket
+Host rocketold
   Hostname 10.157.95.31 
+  User aa87445
+Host rocket
+  Hostname 10.157.95.28 
   User aa87445
 Host bagelzero
 	User bageljr
