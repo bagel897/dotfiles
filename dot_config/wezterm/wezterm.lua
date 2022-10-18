@@ -6,6 +6,11 @@ return {
 	color_scheme = "Catppuccin Mocha",
 	ssh_domains = {
 		{
+			name = "bagelpi",
+			remote_address = "100.96.192.103",
+			username = "bageljr",
+		},
+		{
 			name = "rocket",
 			remote_address = "10.157.95.28",
 			username = "aa87445",
