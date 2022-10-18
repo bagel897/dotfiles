@@ -1,5 +1,6 @@
 [python]
 use_pyenv = false
+use_venv = false
 
 [install]
 cache = true
