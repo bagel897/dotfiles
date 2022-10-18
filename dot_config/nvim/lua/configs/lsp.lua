@@ -2,7 +2,7 @@
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 -- vim.g.coq_settings = { auto_start = "shut-up" }
 --
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local on_attach = function(client, bufnr)
 	require("lsp-format").on_attach(client)
 end
