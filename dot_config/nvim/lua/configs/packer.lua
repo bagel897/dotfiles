@@ -70,12 +70,6 @@ return require("packer").startup({
 			end,
 		})
 		use({
-			"rcarriga/nvim-notify",
-			config = function()
-				vim.notify = require("notify")
-			end,
-		})
-		use({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v2.x",
 			requires = {
@@ -86,16 +80,6 @@ return require("packer").startup({
 			config = function()
 				require("configs/neo-tree")
 			end,
-		})
-		use({
-			"j-hui/fidget.nvim",
-			config = function()
-				require("fidget").setup({
-					sources = { ltex = { ignore = true } },
-					window = { blend = 0 },
-				})
-			end,
-			before = "catppuccin",
 		})
 		use({
 			"stevearc/dressing.nvim",
@@ -228,7 +212,7 @@ return require("packer").startup({
 						neogit = true,
 						neotest = true,
 						cmp = true,
-						notify = true,
+						noice = true,
 						treesitter = true,
 						ts_rainbow = true,
 						lsp_saga = true,
@@ -274,9 +258,31 @@ return require("packer").startup({
 					extensions = { "nvim-tree", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
 					sections = {
 						lualine_c = { { "filename", path = 1 } },
+						lualine_x = {
+							{
+								require("noice").api.status.message.get_hl,
+								cond = require("noice").api.status.message.has,
+							},
+							{
+								require("noice").api.status.command.get,
+								cond = require("noice").api.status.command.has,
+								color = { fg = "#ff9e64" },
+							},
+							{
+								require("noice").api.status.mode.get,
+								cond = require("noice").api.status.mode.has,
+								color = { fg = "#ff9e64" },
+							},
+							{
+								require("noice").api.status.search.get,
+								cond = require("noice").api.status.search.has,
+								color = { fg = "#ff9e64" },
+							},
+						},
 					},
 				})
 			end,
+			after = "noice.nvim",
 		})
 		-- -- Add indentation guides even on blank lines
 		use({
@@ -584,6 +590,21 @@ return require("packer").startup({
 					},
 				})
 			end,
+		})
+		use({
+			"folke/noice.nvim",
+			event = "VimEnter",
+			config = function()
+				require("noice").setup()
+			end,
+			requires = {
+				-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+				"MunifTanjim/nui.nvim",
+				-- OPTIONAL:
+				--   `nvim-notify` is only needed, if you want to use the notification view.
+				--   If not available, we use `mini` as the fallback
+				"rcarriga/nvim-notify",
+			},
 		})
 		use({
 			"s1n7ax/nvim-window-picker",
