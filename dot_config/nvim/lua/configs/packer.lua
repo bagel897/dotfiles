@@ -335,9 +335,11 @@ return require("packer").startup({
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 			config = function()
-				require("luasnip.loaders.from_vscode").lazy_load()
-				require("luasnip.loaders.from_snipmate").lazy_load()
-			end
+				require("luasnip.loaders.from_vscode").lazy_load({
+					paths = { "~/.local/share/nvim/site/pack/packer/start/friendly-snippets/" },
+				})
+			end,
+			after = { "nvim-cmp" },
 		})
 
 		use({
@@ -352,7 +354,11 @@ return require("packer").startup({
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind-nvim",
 			"ray-x/cmp-treesitter",
-			requires = { "nvim-lua/plenary.nvim" },
+			requires = { "nvim-lua/plenary.nvim", "L3MON4D3/LuaSnip" },
+			after = { "nvim-lspconfig", "nvim-autopairs" },
+			config = function()
+				require("configs/cmp.lua")
+			end,
 		})
 		use({
 			"williamboman/mason.nvim",
@@ -405,7 +411,6 @@ return require("packer").startup({
 		use({
 			"p00f/clangd_extensions.nvim",
 			config = function()
-
 				require("clangd_extensions").setup({
 					server = {
 						cmd = {
@@ -425,9 +430,7 @@ return require("packer").startup({
 						on_attach = require("lsp-format").on_attach,
 					},
 				})
-
-			end
-
+			end,
 		})
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
@@ -453,7 +456,7 @@ return require("packer").startup({
 					sources = sources,
 					on_attach = require("lsp-format").on_attach,
 				})
-			end
+			end,
 		})
 		use({
 			"neovim/nvim-lspconfig",
@@ -478,16 +481,12 @@ return require("packer").startup({
 					"ltex",
 					"rust_analyzer",
 					-- "prosemd_lsp",
-					-- "ccls",
-					-- "clangd",
 					"vimls",
 					"bashls",
-					-- "sumneko_lua",
 					"jsonls",
 					"cmake",
 					"esbonio",
 					"dockerls",
-					-- "pylsp",
 					-- "pyright",
 					-- "jedi_language_server",
 					"gdscript",
@@ -597,7 +596,6 @@ return require("packer").startup({
 					capabilities = capabilities,
 					on_attach = on_attach,
 				})
-
 
 				vim.diagnostic.config({
 					virtual_text = false,
@@ -859,6 +857,21 @@ return require("packer").startup({
 				--   If not available, we use `mini` as the fallback
 				"rcarriga/nvim-notify",
 			},
+			after = { "nvim-cmp" },
+			config = function()
+				require("noice").setup({
+					lsp = {
+						override = {
+							-- override the default lsp markdown formatter with Noice
+							["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+							-- override the lsp markdown formatter with Noice
+							["vim.lsp.util.stylize_markdown"] = true,
+							-- override cmp documentation with Noice (needs the other options to work)
+							["cmp.entry.get_documentation"] = true,
+						},
+					},
+				})
+			end,
 		})
 		use({
 			"s1n7ax/nvim-window-picker",

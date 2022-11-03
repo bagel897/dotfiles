@@ -31,7 +31,7 @@ vim.o.updatetime = 251
 vim.wo.signcolumn = "yes"
 
 vim.o.autoread = true
-vim.o.splitkeep = screen
+vim.o.splitkeep = "screen"
 --Remap space as leader key
 --Remap for dealing with word wrap
 vim.api.nvim_set_keymap("n", "k", "v:count == 1 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
@@ -66,15 +66,3 @@ require("configs/keymaps")
 require("configs/treesitter")
 require("configs/dap")
 require("configs/cmp")
-require("noice").setup({
-	lsp = {
-		override = {
-			-- override the default lsp markdown formatter with Noice
-			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-			-- override the lsp markdown formatter with Noice
-			["vim.lsp.util.stylize_markdown"] = true,
-			-- override cmp documentation with Noice (needs the other options to work)
-			["cmp.entry.get_documentation"] = true,
-		},
-	},
-})
