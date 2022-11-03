@@ -60,8 +60,7 @@ vim.cmd(
 	[[autocmd FileChangedShellPost *\ echohl WarningMsg | lua vim.notify("File changed on disk. Buffer reloaded.") | echohl None]]
 )
 require("configs/packer")
-require("configs/lsp")
-require("configs/cmp")
+vim.o.completeopt = "menu,menuone,noselect"
 require("configs/keymaps")
 require("configs/treesitter")
 require("configs/dap")

@@ -328,7 +328,6 @@ return require("packer").startup({
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-nvim-lsp-document-symbol",
 			"hrsh7th/nvim-cmp",
 			"rcarriga/cmp-dap",
@@ -340,6 +339,10 @@ return require("packer").startup({
 			"rafamadriz/friendly-snippets",
 			"ray-x/cmp-treesitter",
 			requires = { "nvim-lua/plenary.nvim" },
+			after = { "nvim-lspconfig" },
+			config = function()
+				require("configs/cmp").setup()
+			end,
 		})
 		use({
 			"williamboman/mason.nvim",
@@ -393,7 +396,7 @@ return require("packer").startup({
 			"jose-elias-alvarez/null-ls.nvim",
 			"p00f/clangd_extensions.nvim",
 			config = function()
-				require("configs/lsp")
+				require("configs/lsp").setup()
 			end,
 		})
 		use({
@@ -436,6 +439,8 @@ return require("packer").startup({
 			config = function()
 				local npairs = require("nvim-autopairs")
 				npairs.setup({})
+				local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+				require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			end,
 		})
 		use({
@@ -605,19 +610,13 @@ return require("packer").startup({
 				--   If not available, we use `mini` as the fallback
 				"rcarriga/nvim-notify",
 			},
+			after = "nvim-cmp",
 		})
 		use({
 			"s1n7ax/nvim-window-picker",
 			tag = "v1.*",
 			config = function()
 				require("window-picker").setup()
-			end,
-		})
-		use({
-			"ray-x/lsp_signature.nvim",
-			config = function()
-				local cfg = {} -- add you config here
-				require("lsp_signature").setup(cfg)
 			end,
 		})
 		if packer_bootstrap then

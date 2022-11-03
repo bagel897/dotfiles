@@ -232,3 +232,7 @@ vim.diagnostic.config({
 	update_in_insert = false,
 	severity_sort = true,
 })
+vim.msg("ah")
+M = {}
+M.setup = function() vim.notify("HI") end
+return M
