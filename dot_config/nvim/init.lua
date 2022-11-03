@@ -30,6 +30,8 @@ vim.o.smartcase = true
 vim.o.updatetime = 251
 vim.wo.signcolumn = "yes"
 
+vim.o.autoread = true
+vim.o.splitkeep = screen
 --Remap space as leader key
 --Remap for dealing with word wrap
 vim.api.nvim_set_keymap("n", "k", "v:count == 1 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
@@ -54,7 +56,6 @@ vim.api.nvim_set_keymap("n", "j", "v:count == 1 ? 'gj' : 'j'", { noremap = true,
 -- }
 -- sidebar.setup(opts)
 vim.keymap.set("n", "q", [[<cmd>q<CR>]])
-vim.o.autoread = true
 vim.cmd([[autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif]])
 vim.cmd(
 	[[autocmd FileChangedShellPost *\ echohl WarningMsg | lua vim.notify("File changed on disk. Buffer reloaded.") | echohl None]]
@@ -65,15 +66,15 @@ require("configs/keymaps")
 require("configs/treesitter")
 require("configs/dap")
 require("configs/cmp")
-require("noice").setup({ lsp = {
-	override = {
-		-- override the default lsp markdown formatter with Noice
-		["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-		-- override the lsp markdown formatter with Noice
-		["vim.lsp.util.stylize_markdown"] = true,
-		-- override cmp documentation with Noice (needs the other options to work)
-		["cmp.entry.get_documentation"] = true,
+require("noice").setup({
+	lsp = {
+		override = {
+			-- override the default lsp markdown formatter with Noice
+			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+			-- override the lsp markdown formatter with Noice
+			["vim.lsp.util.stylize_markdown"] = true,
+			-- override cmp documentation with Noice (needs the other options to work)
+			["cmp.entry.get_documentation"] = true,
+		},
 	},
-}
 })
--- vim.o.splitkeep = screen
