@@ -1,19 +1,19 @@
 require("dap-python").setup("python")
 require("dap-python").test_runner = "pytest"
 local dap = require("dap")
-local cmd = "/usr/bin/codelldb"
+local cmd = "/usr/bin/lldb"
 
 local sign = vim.fn.sign_define
 
 sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
 sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
-dap.adapters.codelldb = {
+dap.adapters.lldb = {
 	type = "server",
 	port = "${port}",
 	executable = {
 		-- CHANGE THIS to your path!
-		command = vim.fs.normalize("$XDG_CONFIG_HOME/nvim/mason/bin/codelldb"),
+		command = vim.fs.normalize("$XDG_CONFIG_HOME/nvim/mason/bin/lldb"),
 		args = { "--port", "${port}" },
 
 		-- On windows you may have to uncomment this:
@@ -23,7 +23,7 @@ dap.adapters.codelldb = {
 dap.configurations.cpp = {
 	{
 		name = "competitive test case 1",
-		type = "codelldb",
+		type = "lldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
@@ -33,7 +33,7 @@ dap.configurations.cpp = {
 	},
 	{
 		name = "competitive test case 2",
-		type = "codelldb",
+		type = "lldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
@@ -43,7 +43,7 @@ dap.configurations.cpp = {
 	},
 	{
 		name = "competitive test case 3",
-		type = "codelldb",
+		type = "lldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
@@ -53,7 +53,7 @@ dap.configurations.cpp = {
 	},
 	{
 		name = "competitive test case 4",
-		type = "codelldb",
+		type = "lldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
@@ -63,7 +63,7 @@ dap.configurations.cpp = {
 	},
 	{
 		name = "competitive test case 5",
-		type = "codelldb",
+		type = "lldb",
 		request = "launch",
 		program = "${workspaceFolder}/solution",
 		cwd = "${workspaceFolder}",
@@ -73,7 +73,7 @@ dap.configurations.cpp = {
 	},
 	{
 		name = "Launch",
-		type = "codelldb",
+		type = "lldb",
 		request = "launch",
 		program = function()
 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
@@ -86,7 +86,7 @@ dap.configurations.cpp = {
 		-- If you get an "Operation not permitted" error using this, try disabling YAMA:
 		--  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 		name = "Attach to process",
-		type = "codelldb", -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+		type = "lldb", -- Adjust this to match your adapter name (`dap.adapters.<name>`)
 		request = "attach",
 		pid = require("dap.utils").pick_process,
 		args = {},
@@ -125,7 +125,7 @@ dap.configurations.rust = dap.configurations.cpp
 --   },
 -- }
 
-require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "c", "cpp" } })
+require("dap.ext.vscode").load_launchjs(nil, { lldb = { "c", "cpp" } })
 require("dapui").setup({})
 local dapui = require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()

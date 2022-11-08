@@ -367,7 +367,16 @@ return require("packer").startup({
 				require("mason").setup({})
 			end,
 		})
-
+		use({
+			"jayp0521/mason-nvim-dap.nvim",
+			requires = {
+				"mfussenegger/nvim-dap",
+				"williamboman/mason.nvim",
+			},
+			config = function()
+				require("mason-nvim-dap").setup({ automatic_installation = true, automatic_setup = true })
+			end,
+		})
 		use({
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -381,10 +390,7 @@ return require("packer").startup({
 				require("mason-tool-installer").setup({
 					auto_update = true,
 					ensure_installed = {
-						"codelldb",
 						"flake8",
-						"debugpy",
-						-- "glow",
 					},
 				})
 				require("mason-lspconfig").setup({
@@ -739,6 +745,13 @@ return require("packer").startup({
 			end,
 		})
 		use({
+			"RubixDev/mason-update-all",
+			config = function()
+				require("mason-update-all").setup()
+			end,
+			run = ":MasonUpdateAll",
+		})
+		use({
 			"jayp0521/mason-null-ls.nvim",
 			after = {
 				"null-ls.nvim",
@@ -747,7 +760,6 @@ return require("packer").startup({
 			config = function()
 				require("mason-null-ls").setup({
 					automatic_installation = true,
-					auto_update = true,
 					automatic_setup = true,
 				})
 			end,
