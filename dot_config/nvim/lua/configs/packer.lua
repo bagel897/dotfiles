@@ -381,21 +381,13 @@ return require("packer").startup({
 			end,
 		})
 		use({
+
 			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			after = {
-				"null-ls.nvim",
 				"mason.nvim",
-				"lspconfig.nvim",
+				"nvim-lspconfig",
 			},
 			config = function()
-				require("mason-lspconfig").setup({ automatic_installation = true })
-				require("mason-tool-installer").setup({
-					auto_update = true,
-					ensure_installed = {
-						"flake8",
-					},
-				})
 				require("mason-lspconfig").setup({
 					automatic_installation = true,
 				})
@@ -403,6 +395,20 @@ return require("packer").startup({
 			run = function()
 				vim.cmd("PylspInstall pyls-isort pylsp-rope pylsp-mypy python-lsp-black")
 
+				vim.cmd(":MasonToolsUpdate <CR>")
+			end,
+		})
+		use({
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			after = {
+				"mason.nvim",
+			},
+			config = function()
+				require("mason-tool-installer").setup({
+					auto_update = true,
+				})
+			end,
+			run = function()
 				vim.cmd(":MasonToolsUpdate <CR>")
 			end,
 		})
@@ -444,6 +450,9 @@ return require("packer").startup({
 		})
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
+			requires = {
+				"lukas-reineke/lsp-format.nvim",
+			},
 			config = function()
 				local null_ls = require("null-ls")
 				local sources = {
