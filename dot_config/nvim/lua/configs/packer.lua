@@ -720,6 +720,7 @@ return require("packer").startup({
 
 				require("rust-tools").setup(opts)
 			end,
+			ft = "rust",
 		})
 		use({
 			"akinsho/toggleterm.nvim",
