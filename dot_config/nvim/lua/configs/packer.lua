@@ -688,9 +688,46 @@ return require("packer").startup({
 			module = "neo-tree.sources.diagnostics", -- if wanting to lazyload
 		})
 		use({
+			"kevinhwang91/nvim-hlslens",
+			config = function()
+				require("hlslens").setup()
+
+				local kopts = { noremap = true, silent = true }
+
+				vim.api.nvim_set_keymap(
+					"n",
+					"n",
+					[[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+					kopts
+				)
+				vim.api.nvim_set_keymap(
+					"n",
+					"N",
+					[[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+					kopts
+				)
+				vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+				vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+				vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+				vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+
+				vim.api.nvim_set_keymap("n", "<Leader>l", ":noh<CR>", kopts)
+			end,
+		})
+		use({
 			"petertriho/nvim-scrollbar",
+			requires = {
+
+				"kevinhwang91/nvim-hlslens",
+				"lewis6991/gitsigns.nvim",
+			},
 			config = function()
 				require("scrollbar").setup()
+				require("scrollbar.handlers.search").setup({
+					-- hlslens config overrides
+				})
+
+				require("scrollbar.handlers.gitsigns").setup()
 			end,
 		})
 		-- use({ "sidebar-nvim/sidebar.nvim", "sidebar-nvim/sections-dap" })
