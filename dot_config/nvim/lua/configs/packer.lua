@@ -443,7 +443,7 @@ return require("packer").startup({
 							"--pch-storage=memory",
 						},
 						capabilities = require("cmp_nvim_lsp").default_capabilities(),
-						on_attach = require("lsp-format").on_attach,
+						on_attach = require("configs.on_attach"),
 					},
 				})
 			end,
@@ -473,7 +473,7 @@ return require("packer").startup({
 				}
 				require("null-ls").setup({
 					sources = sources,
-					on_attach = require("lsp-format").on_attach,
+					on_attach = require("configs.on_attach"),
 				})
 			end,
 		})
@@ -485,9 +485,7 @@ return require("packer").startup({
 				-- vim.g.coq_settings = { auto_start = "shut-up" }
 				--
 				local capabilities = require("cmp_nvim_lsp").default_capabilities()
-				local on_attach = function(client, bufnr)
-					require("lsp-format").on_attach(client)
-				end
+				local on_attach = require("configs.on_attach")
 				-- Use a loop to conveniently call 'setup' on multiple servers and
 				-- map buffer local keybindings when the language server attaches
 				vim.g.markdown_fenced_languages = {
@@ -714,6 +712,7 @@ return require("packer").startup({
 				vim.api.nvim_set_keymap("n", "<Leader>l", ":noh<CR>", kopts)
 			end,
 		})
+		use({ "joechrisellis/lsp-format-modifications.nvim", requires = { "nvim-lua/plenary.nvim" } })
 		use({
 			"petertriho/nvim-scrollbar",
 			requires = {
@@ -871,7 +870,7 @@ return require("packer").startup({
 									trace = { server = "debug" },
 								},
 							},
-							on_attach = require("lsp-format").on_attach,
+							on_attach = require("configs.on_attach"),
 						},
 					},
 				})
