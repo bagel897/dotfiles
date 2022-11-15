@@ -3,74 +3,62 @@ require("dap-python").test_runner = "pytest"
 local dap = require("dap")
 local cmd = "/usr/bin/lldb"
 
+				require("mason-nvim-dap").setup_handlers()
 local sign = vim.fn.sign_define
-
 sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
 sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
-dap.adapters.lldb = {
-	type = "server",
-	port = "${port}",
-	executable = {
-		-- CHANGE THIS to your path!
-		command = vim.fs.normalize("$XDG_CONFIG_HOME/nvim/mason/bin/lldb"),
-		args = { "--port", "${port}" },
-
-		-- On windows you may have to uncomment this:
-		-- detached = false,
-	},
-}
 dap.configurations.cpp = {
-	{
-		name = "competitive test case 1",
-		type = "lldb",
-		request = "launch",
-		program = "${workspaceFolder}/solution",
-		cwd = "${workspaceFolder}",
-		stdio = { "${workspaceFolder}/input1", nil, nil },
-		args = {},
-		stopOnEntry = false,
-	},
-	{
-		name = "competitive test case 2",
-		type = "lldb",
-		request = "launch",
-		program = "${workspaceFolder}/solution",
-		cwd = "${workspaceFolder}",
-		stdio = { "${workspaceFolder}/input2", nil, nil },
-		args = {},
-		stopOnEntry = false,
-	},
-	{
-		name = "competitive test case 3",
-		type = "lldb",
-		request = "launch",
-		program = "${workspaceFolder}/solution",
-		cwd = "${workspaceFolder}",
-		stdio = { "${workspaceFolder}/input3", nil, nil },
-		args = {},
-		stopOnEntry = false,
-	},
-	{
-		name = "competitive test case 4",
-		type = "lldb",
-		request = "launch",
-		program = "${workspaceFolder}/solution",
-		cwd = "${workspaceFolder}",
-		stdio = { "${workspaceFolder}/input4", nil, nil },
-		args = {},
-		stopOnEntry = false,
-	},
-	{
-		name = "competitive test case 5",
-		type = "lldb",
-		request = "launch",
-		program = "${workspaceFolder}/solution",
-		cwd = "${workspaceFolder}",
-		stdio = { "${workspaceFolder}/input5", nil, nil },
-		args = {},
-		stopOnEntry = false,
-	},
+	-- {
+	-- 	name = "competitive test case 1",
+	-- 	type = "lldb",
+	-- 	request = "launch",
+	-- 	program = "${workspaceFolder}/solution",
+	-- 	cwd = "${workspaceFolder}",
+	-- 	stdio = { "${workspaceFolder}/input1", nil, nil },
+	-- 	args = {},
+	-- 	stopOnEntry = false,
+	-- },
+	-- {
+	-- 	name = "competitive test case 2",
+	-- 	type = "lldb",
+	-- 	request = "launch",
+	-- 	program = "${workspaceFolder}/solution",
+	-- 	cwd = "${workspaceFolder}",
+	-- 	stdio = { "${workspaceFolder}/input2", nil, nil },
+	-- 	args = {},
+	-- 	stopOnEntry = false,
+	-- },
+	-- {
+	-- 	name = "competitive test case 3",
+	-- 	type = "lldb",
+	-- 	request = "launch",
+	-- 	program = "${workspaceFolder}/solution",
+	-- 	cwd = "${workspaceFolder}",
+	-- 	stdio = { "${workspaceFolder}/input3", nil, nil },
+	-- 	args = {},
+	-- 	stopOnEntry = false,
+	-- },
+	-- {
+	-- 	name = "competitive test case 4",
+	-- 	type = "lldb",
+	-- 	request = "launch",
+	-- 	program = "${workspaceFolder}/solution",
+	-- 	cwd = "${workspaceFolder}",
+	-- 	stdio = { "${workspaceFolder}/input4", nil, nil },
+	-- 	args = {},
+	-- 	stopOnEntry = false,
+	-- },
+	-- {
+	-- 	name = "competitive test case 5",
+	-- 	type = "lldb",
+	-- 	request = "launch",
+	-- 	program = "${workspaceFolder}/solution",
+	-- 	cwd = "${workspaceFolder}",
+	-- 	stdio = { "${workspaceFolder}/input5", nil, nil },
+	-- 	args = {},
+	-- 	stopOnEntry = false,
+	-- },
 	{
 		name = "Launch",
 		type = "lldb",
@@ -79,8 +67,6 @@ dap.configurations.cpp = {
 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 		end,
 		cwd = "${workspaceFolder}",
-		stopOnEntry = false,
-		args = {},
 	},
 	{
 		-- If you get an "Operation not permitted" error using this, try disabling YAMA:

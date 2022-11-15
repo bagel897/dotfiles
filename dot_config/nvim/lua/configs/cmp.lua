@@ -5,15 +5,13 @@ local lspkind = require("lspkind")
 -- add a lisp filetype (wrap my-function), FYI: Hardcoded = { "clojure", "clojurescript", "fennel", "janet" }
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0
-	    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 -- Set completeopt to have a better completion experience
 
 cmp.setup({
 	enabled = function()
-		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
-		    or require("cmp_dap").is_dap_buffer()
+		return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
 	end,
 	formatting = {
 		format = lspkind.cmp_format({ mode = "symbol_text" }),
