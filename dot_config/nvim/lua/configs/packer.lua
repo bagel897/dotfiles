@@ -500,14 +500,15 @@ return require("packer").startup({
 					-- "pyright",
 					-- "jedi_language_server",
 					"gdscript",
+					"tsserver",
 				}
-				require("lspconfig").denols.setup({
-					init_options = {
-						lint = true,
-					},
-					capabilities = capabilities,
-					on_attach = on_attach,
-				})
+				-- require("lspconfig").denols.setup({
+				-- 	init_options = {
+				-- 		lint = true,
+				-- 	},
+				-- 	capabilities = capabilities,
+				-- 	on_attach = on_attach,
+				-- })
 				-- local coq = require("coq")
 				for _, lsp in pairs(servers) do
 					require("lspconfig")[lsp].setup({
