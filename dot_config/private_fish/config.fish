@@ -5,6 +5,7 @@ fundle plugin "2m/fish-history-merge"
 fundle plugin "IlanCosman/tide"
 fundle plugin "PatrickF1/fzf.fish"
 fundle plugin "sentriz/fish-pipenv"
+fundle plugin "franciscolourenco/done"
 # fundle plugin "gazorby/fifc"
 fundle init
 export DENO_INSTALL="/home/bageljr/.deno"
