@@ -137,8 +137,6 @@ wk.register({
 			"Git Diff",
 		},
 	},
-	t = { "<CMD>:ToggleTerm<CR>", "Toggle Terminal" },
-	s = { "<cmd>LSoutlineToggle<CR>", "symbols outline" },
 	r = {
 		r = {
 			function()
@@ -153,12 +151,6 @@ wk.register({
 			"Summary",
 		},
 		name = "test",
-	},
-	u = {
-		function()
-			require("packer").sync()
-		end,
-		"Update",
 	},
 	c = {
 		name = "competitive",
