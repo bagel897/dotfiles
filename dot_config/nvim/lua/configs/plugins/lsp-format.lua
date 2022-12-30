@@ -3,4 +3,5 @@ return {
 	config = function()
 		require("lsp-format").setup({})
 	end,
+	event = "VeryLazy",
 }

@@ -11,5 +11,5 @@ end
 return {
 	"folke/trouble.nvim",
 	config = cfg,
-	enabled = false,
+	enabled = true,
 }

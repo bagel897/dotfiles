@@ -4,4 +4,5 @@ return {
 	config = function()
 		require("cmp_git").setup()
 	end,
+	ft = { "gitcommit", "octo" },
 }

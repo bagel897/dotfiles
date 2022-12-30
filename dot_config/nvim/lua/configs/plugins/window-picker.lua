@@ -3,4 +3,5 @@ return {
 	config = function()
 		require("window-picker").setup()
 	end,
+	lazy = true,
 }

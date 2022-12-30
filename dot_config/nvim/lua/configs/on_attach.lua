@@ -1,12 +1,5 @@
 local is_git = function()
-	local absolute_pathstr = vim.fn.fnamemodify(pathstr, ":p")
-	local git_cwd = vim.fn.fnamemodify(pathstr, ":h")
-
-	local result = cmd({
-		command = "git",
-		cwd = git_cwd,
-		args = { "rev-parse", "--show-toplevel" },
-	})
+	local result = io.popen("git rev-parse --is-inside-work-tree").close
 	return result.exitcode ~= 0
 end
 local on_attach = function(client, bufnr)

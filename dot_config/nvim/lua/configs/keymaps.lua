@@ -26,18 +26,6 @@ wk.register({
 			end,
 			"list workspace folders",
 		},
-		c = {
-			function()
-				require("telescope").extensions.git_worktree.create_git_worktree()
-			end,
-			"create git worktree",
-		},
-		s = {
-			function()
-				require("telescope").extensions.git_worktree.git_worktrees()
-			end,
-			"switch git worktrees",
-		},
 	},
 	d = {
 		name = "debug",

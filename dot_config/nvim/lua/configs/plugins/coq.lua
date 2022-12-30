@@ -1,8 +1,10 @@
 return {
 
 	"ms-jpq/coq_nvim",
-	"ms-jpq/coq.artifacts",
-	"ms-jpq/coq.thirdparty",
+	dependencies = {
+		"ms-jpq/coq.artifacts",
+		"ms-jpq/coq.thirdparty",
+	},
 	config = function()
 		vim.g.coq_settings = { auto_start = "shut-up", xdg = true }
 		require("coq_3p")({
