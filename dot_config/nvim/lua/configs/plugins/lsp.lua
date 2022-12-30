@@ -27,6 +27,7 @@ local cfg = function()
 		-- "jedi_language_server",
 		"gdscript",
 		"tsserver",
+		"groovyls",
 	}
 	-- require("lspconfig").denols.setup({
 	-- 	init_options = {
