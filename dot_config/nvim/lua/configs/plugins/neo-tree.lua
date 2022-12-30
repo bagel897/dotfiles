@@ -153,10 +153,12 @@ local opts = {
 		show_unloaded = true, -- show diagnostics from unloaded buffers
 	},
 }
-vim.keymap.set("n", "<C-n>", "<cmd> :Neotree toggle<cr>")
 return {
 
 	"nvim-neo-tree/neo-tree.nvim",
+	keys = {
+		{ "<C-n>", "<cmd> :Neotree toggle<cr>", desc = "Open Neo-tree" },
+	},
 	branch = "v2.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",

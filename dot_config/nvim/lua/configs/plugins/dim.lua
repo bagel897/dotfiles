@@ -4,4 +4,5 @@ return {
 	config = function()
 		require("dim").setup({})
 	end,
+	event = "VeryLazy",
 }

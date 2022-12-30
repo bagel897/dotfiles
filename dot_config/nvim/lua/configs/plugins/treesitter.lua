@@ -18,8 +18,19 @@ local opts = {
 		enable = true,
 	},
 	rainbow = { enable = true },
-	ensure_installed = "all",
-	ignore_install = { "phpdoc", "d" },
+	auto_install = true,
+	context_commentstring = {
+		enable = true,
+	},
+	textsubjects = {
+		enable = true,
+		prev_selection = ",", -- (Optional) keymap to select the previous selection
+		keymaps = {
+			["."] = "textsubjects-smart",
+			[";"] = "textsubjects-container-outer",
+			["i;"] = "textsubjects-container-inner",
+		},
+	},
 	textobjects = {
 		select = {
 			enable = true,
@@ -61,8 +72,7 @@ local opts = {
 			enable = true,
 			border = "none",
 			peek_definition_code = {
-				["<leader>df"] = "@function.outer",
-				["<leader>dF"] = "@class.outer",
+				["<leader>dF"] = "@function.outer",
 			},
 		},
 	},
@@ -74,6 +84,8 @@ return {
 		dependencies = {
 			"p00f/nvim-ts-rainbow",
 			"nvim-treesitter/nvim-treesitter-textobjects",
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			"RRethy/nvim-treesitter-textsubjects",
 		},
 		event = "BufReadPost",
 		config = function()

@@ -3,4 +3,5 @@ return {
 	config = function()
 		vim.g.python_style = "google"
 	end,
+	ft = "python",
 }

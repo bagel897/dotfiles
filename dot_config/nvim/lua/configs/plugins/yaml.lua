@@ -5,6 +5,7 @@ return {
 		{ "nvim-lua/plenary.nvim" },
 		{ "nvim-telescope/telescope.nvim" },
 	},
+	ft = "yaml",
 	config = function()
 		local cfg = require("yaml-companion").setup({
 			{

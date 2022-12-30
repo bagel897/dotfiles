@@ -8,4 +8,5 @@ return {
 	config = function()
 		require("octo").setup()
 	end,
+	cmd = "Octo",
 }

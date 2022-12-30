@@ -11,7 +11,8 @@ return {
 	end,
 	keys = { {
 		"<leader>s",
-		"<cmd>LSoutlineToggle<CR>",
+		"<cmd>Lspsaga outline<CR>",
 		desc = "symbols outline",
 	} },
+	event = "VeryLazy",
 }
