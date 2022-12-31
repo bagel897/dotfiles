@@ -9,4 +9,5 @@ return {
 
 		require("mason-nvim-dap").setup({ automatic_installation = true, automatic_setup = true })
 	end,
+	event = "VeryLazy",
 }

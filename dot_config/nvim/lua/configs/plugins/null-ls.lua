@@ -26,4 +26,5 @@ return {
 			on_attach = require("configs.on_attach"),
 		})
 	end,
+	event = "BufReadPost",
 }

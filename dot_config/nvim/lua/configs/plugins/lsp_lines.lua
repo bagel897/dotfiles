@@ -3,4 +3,5 @@ return {
 	config = function()
 		require("lsp_lines").setup()
 	end,
+	event = "BufReadPost",
 }

@@ -28,4 +28,5 @@ return {
 			},
 		})
 	end,
+	lazy=true,
 }

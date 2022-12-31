@@ -126,6 +126,6 @@ return {
 		"onsails/lspkind-nvim",
 		"ray-x/cmp-treesitter",
 	},
-	event = "VeryLazy",
+	event = "BufReadPost",
 	config = cfg,
 }

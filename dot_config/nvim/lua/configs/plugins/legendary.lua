@@ -8,4 +8,5 @@ return {
 	config = function()
 		require("legendary").setup(opts)
 	end,
+	event = "BufReadPost",
 }

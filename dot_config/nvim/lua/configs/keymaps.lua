@@ -3,7 +3,6 @@ local wk = require("which-key")
 local dap = require("dap")
 local builtin = require("telescope.builtin")
 local telescope = require("telescope")
-local neogit = require("neogit")
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -99,7 +98,6 @@ wk.register({
 		-- ? = {[[<cmd>lua require('builtin').oldfiles()<CR>]],"old files"},
 	},
 	["<space>"] = { builtin.buffers, "buffers" },
-	g = { neogit.open, "Git" },
 	h = {
 		name = "Git",
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },

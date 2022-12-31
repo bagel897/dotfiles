@@ -6,4 +6,5 @@ return {
 			tree_docs = { enable = true },
 		})
 	end,
+	lazy = true,
 }

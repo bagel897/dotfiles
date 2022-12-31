@@ -6,6 +6,7 @@ return {
 		{ "nvim-telescope/telescope.nvim" },
 	},
 	ft = "yaml",
+	event = "BufReadPost",
 	config = function()
 		local cfg = require("yaml-companion").setup({
 			{

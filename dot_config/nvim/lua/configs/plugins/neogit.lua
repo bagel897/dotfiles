@@ -4,4 +4,5 @@ return {
 	config = function()
 		require("neogit").setup({ integrations = { diffview = true } })
 	end,
+	keys = { { "<leader>g", "<cmd>:Neogit<CR>", desc = "Git" } },
 }

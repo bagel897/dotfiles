@@ -8,7 +8,5 @@ return {
 			auto_update = true,
 		})
 	end,
-	build = function()
-		vim.cmd(":MasonToolsUpdate <CR>")
-	end,
+	event = "BufReadPost",
 }

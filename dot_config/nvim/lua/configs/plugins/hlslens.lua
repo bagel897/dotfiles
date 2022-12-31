@@ -24,4 +24,5 @@ return {
 
 		vim.api.nvim_set_keymap("n", "<Leader>l", ":noh<CR>", kopts)
 	end,
+	event = "BufReadPost",
 }

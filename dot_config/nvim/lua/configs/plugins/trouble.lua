@@ -12,4 +12,5 @@ return {
 	"folke/trouble.nvim",
 	config = cfg,
 	enabled = true,
+	event = "BufReadPost",
 }

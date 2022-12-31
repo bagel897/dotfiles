@@ -4,4 +4,5 @@ return {
 	config = function()
 		require("gitsigns").setup({})
 	end,
+	event = "BufReadPost",
 }

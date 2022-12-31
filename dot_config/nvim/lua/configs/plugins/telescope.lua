@@ -1,7 +1,5 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	"gbrlsnchs/telescope-lsp-handlers.nvim",
-	"nvim-telescope/telescope-file-browser.nvim",
 	config = function()
 		local actions = require("telescope.actions")
 		-- Telescope
@@ -35,5 +33,11 @@ return {
 		telescope.load_extension("dap")
 		telescope.load_extension("lsp_handlers")
 	end,
-	dependencies = { { "nvim-lua/plenary.nvim" } },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"gbrlsnchs/telescope-lsp-handlers.nvim",
+		"nvim-telescope/telescope-file-browser.nvim",
+		"nvim-telescope/telescope-fzf-native.nvim",
+	},
+	lazy=true,
 }

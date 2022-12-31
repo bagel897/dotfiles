@@ -12,7 +12,6 @@ return {
 	end,
 	build = function()
 		vim.cmd("PylspInstall pyls-isort pylsp-rope pylsp-mypy python-lsp-black")
-
-		vim.cmd(":MasonToolsUpdate <CR>")
 	end,
+	event = "VeryLazy",
 }

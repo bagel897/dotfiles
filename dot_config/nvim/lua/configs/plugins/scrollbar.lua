@@ -13,4 +13,5 @@ return {
 
 		require("scrollbar.handlers.gitsigns").setup()
 	end,
+	event = "BufReadPost",
 }

@@ -138,5 +138,6 @@ return {
 		"theHamsta/nvim-dap-virtual-text",
 		"mfussenegger/nvim-dap-python",
 	},
+	event = "BufReadPost",
 	config = config,
 }

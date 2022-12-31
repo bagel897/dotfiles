@@ -6,5 +6,5 @@ if not vim.loop.fs_stat(lazypath) then
 	end
 end
 vim.opt.rtp:prepend(lazypath)
-local opts = {}
+local opts = { checker = { enabled = true } }
 require("lazy").setup("configs.plugins", opts)

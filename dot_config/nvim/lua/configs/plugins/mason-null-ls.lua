@@ -6,4 +6,5 @@ return {
 			automatic_setup = true,
 		})
 	end,
+	event = "BufReadPost",
 }
