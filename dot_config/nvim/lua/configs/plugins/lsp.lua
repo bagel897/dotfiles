@@ -138,5 +138,4 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	config = cfg,
-	event = "BufReadPost",
 }
