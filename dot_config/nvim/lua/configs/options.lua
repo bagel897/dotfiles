@@ -32,6 +32,8 @@ vim.wo.signcolumn = "yes"
 
 vim.o.autoread = true
 vim.o.splitkeep = "screen"
+vim.o.splitright = true
+vim.o.cursorline = true
 --Remap space as leader key
 --Remap for dealing with word wrap
 vim.api.nvim_set_keymap("n", "k", "v:count == 1 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
