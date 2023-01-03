@@ -6,6 +6,7 @@ return {
 
 		saga.init_lsp_saga({
 			symbol_in_winbar = { enable = true },
+
 			-- your configuration
 		})
 	end,

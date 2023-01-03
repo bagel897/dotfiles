@@ -5,6 +5,10 @@ local cfg = function()
 	--
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	local on_attach = require("configs.on_attach")
+	local on_attach_ih = function(c, b)
+		require("inlay-hints").on_attach(c, b)
+		on_attach(c, b)
+	end
 	-- Use a loop to conveniently call 'setup' on multiple servers and
 	-- map buffer local keybindings when the language server attaches
 	vim.g.markdown_fenced_languages = {
@@ -13,9 +17,7 @@ local cfg = function()
 	local servers = {
 		"taplo",
 		"clojure_lsp",
-		-- "texlab",
 		"ltex",
-		"rust_analyzer",
 		-- "prosemd_lsp",
 		"vimls",
 		"bashls",
@@ -26,9 +28,54 @@ local cfg = function()
 		-- "pyright",
 		-- "jedi_language_server",
 		"gdscript",
-		"tsserver",
 		"groovyls",
 	}
+	require("lspconfig").tsserver.setup({
+		capabilities = capabilities,
+		on_attach = on_attach_ih,
+		settings = {
+			javascript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
+			typescript = {
+				inlayHints = {
+					includeInlayEnumMemberValueHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayVariableTypeHints = true,
+				},
+			},
+		},
+	})
+	require("lspconfig").gopls.setup({
+		capabilities = capabilities,
+		on_attach = on_attach_ih,
+		settings = {
+			gopls = {
+				hints = {
+					assignVariableTypes = true,
+					compositeLiteralFields = true,
+					compositeLiteralTypes = true,
+					constantValues = true,
+					functionTypeParameters = true,
+					parameterNames = true,
+					rangeVariableTypes = true,
+				},
+			},
+		},
+	})
+
 	-- require("lspconfig").denols.setup({
 	-- 	init_options = {
 	-- 		lint = true,
@@ -132,7 +179,7 @@ local cfg = function()
 			},
 		},
 		capabilities = capabilities,
-		on_attach = on_attach,
+		on_attach = on_attach_ih,
 	})
 end
 return {
