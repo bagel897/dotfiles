@@ -2,7 +2,6 @@ local wk = require("which-key")
 
 local dap = require("dap")
 local builtin = require("telescope.builtin")
-local telescope = require("telescope")
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)

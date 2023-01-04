@@ -5,6 +5,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-neotest/neotest-python",
 		"haydenmeade/neotest-jest",
+		"rouge8/neotest-rust",
 	},
 	config = function()
 		require("neotest").setup({
@@ -21,6 +22,7 @@ return {
 				require("neotest-python")({
 					dap = { justMyCode = false },
 				}),
+				require("neotest-rust"),
 				-- require("neotest-plenary"),
 				-- require("neotest-vim-test")({
 				-- 	ignore_file_types = { "python", "vim", "lua" },
@@ -28,5 +30,5 @@ return {
 			},
 		})
 	end,
-	lazy=true,
+	lazy = true,
 }
