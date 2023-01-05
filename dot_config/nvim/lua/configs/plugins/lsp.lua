@@ -14,6 +14,9 @@ local cfg = function()
 	vim.g.markdown_fenced_languages = {
 		"ts=typescript",
 	}
+	require("mason-lspconfig").setup({
+		automatic_installation = true,
+	})
 	local servers = {
 		"taplo",
 		"clojure_lsp",
@@ -184,5 +187,8 @@ local cfg = function()
 end
 return {
 	"neovim/nvim-lspconfig",
+	dependencies = {
+		"mason-lspconfig.nvim",
+	},
 	config = cfg,
 }
