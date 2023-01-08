@@ -1,4 +1,5 @@
 local on_attach = require("configs.on_attach")
+local root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
 -- string concattenation in Lua- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
 	-- The command that starts the language server
@@ -6,12 +7,12 @@ local config = {
 	cmd = {
 		"jdtls",
 		"-data",
-		require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }) .. "/.jdtls",
+		root_dir .. "/.jdtls",
 	},
+	root_dir = root_dir,
 
 	-- This is the default if not provided, you can remove it. Or adjust as needed.
 	-- One dedicated LSP server & client will be started per unique root_dir
-	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
 
 	-- Here you can configure eclipse.jdt.ls specific settings
 	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
