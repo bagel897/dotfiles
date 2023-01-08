@@ -51,3 +51,9 @@ vim.diagnostic.config({
 	update_in_insert = true,
 	severity_sort = true,
 })
+vim.api.nvim_create_augroup("neogit-additions", {})
+vim.api.nvim_create_autocmd("FileType", {
+	group = "neogit-additions",
+	pattern = "NeogitCommitMessage",
+	command = "silent! set filetype=gitcommit",
+})
