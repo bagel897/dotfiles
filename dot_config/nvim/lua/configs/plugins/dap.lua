@@ -129,6 +129,7 @@ local config = function()
 	end
 	vim.cmd([[autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif]])
 	require("nvim-dap-virtual-text").setup()
+
 end
 return {
 	"mfussenegger/nvim-dap",

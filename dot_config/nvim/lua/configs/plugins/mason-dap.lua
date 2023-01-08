@@ -7,7 +7,11 @@ return {
 	config = function()
 		local dap = require("dap")
 
-		require("mason-nvim-dap").setup({ automatic_installation = true, automatic_setup = true })
+		require("mason-nvim-dap").setup({
+			ensure_installed = { "javadbg", "javatest" },
+			automatic_installation = true,
+			automatic_setup = true,
+		})
 	end,
 	event = "VeryLazy",
 }

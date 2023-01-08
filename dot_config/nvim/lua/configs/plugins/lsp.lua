@@ -15,6 +15,7 @@ local cfg = function()
 		"ts=typescript",
 	}
 	require("mason-lspconfig").setup({
+		ensure_installed = { "jdtls" },
 		automatic_installation = true,
 	})
 	local servers = {
