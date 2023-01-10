@@ -1,7 +1,7 @@
 Host bagelpi
 	User bageljr
 	Port 6389
-	Hostname 100.96.192.103
+	Hostname bageljr.com 
 
 Host bagelpilocal
     Port 6389
