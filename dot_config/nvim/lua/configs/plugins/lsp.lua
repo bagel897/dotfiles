@@ -26,6 +26,7 @@ local cfg = function()
 		"vimls",
 		"bashls",
 		"jsonls",
+		"ruff-lsp",
 		"cmake",
 		"esbonio",
 		"dockerls",
@@ -97,15 +98,6 @@ local cfg = function()
 			on_attach = on_attach,
 		})
 	end
-	-- require("lspconfig").sourcery.setup({
-	-- 	capabilities = capabilities,
-	-- 	on_attach = on_attach,
-	-- 	init_options = {
-	-- 		editor_version = "vim",
-	-- 		extension_version = "vim.lsp",
-	--
-	-- 	},
-	-- })
 	require("lspconfig").pylsp.setup({
 		settings = {
 			pylsp = {

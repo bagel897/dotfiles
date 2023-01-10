@@ -4,9 +4,8 @@ return {
 		require("mason-update-all").setup()
 		vim.api.nvim_create_user_command("MasonUpdateLSP", function()
 			vim.cmd("MasonUpdateAll")
-			vim.cmd("PylspInstall pyls-isort pylsp-rope pylsp-mypy python-lsp-black python-lsp-ruff")
+			vim.cmd("PylspInstall pyls-isort pylsp-rope pylsp-mypy python-lsp-black")
 		end, {})
 	end,
-	event = "VeryLazy",
-	cmd = "MasonUpdateAll",
+	cmd = { "MasonUpdateAll", "MasonUpdateLSP" },
 }

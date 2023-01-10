@@ -91,7 +91,7 @@ return {
 		config = function()
 			vim.o.foldmethod = "expr"
 			vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-			vim.o.foldenable = false
+			vim.o.foldenable = true
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 		build = ":TSUpdate",
