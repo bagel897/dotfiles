@@ -26,7 +26,7 @@ local cfg = function()
 		"vimls",
 		"bashls",
 		"jsonls",
-		"ruff-lsp",
+		"ruff_lsp",
 		"cmake",
 		"esbonio",
 		"dockerls",
