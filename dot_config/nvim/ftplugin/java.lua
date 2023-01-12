@@ -1,13 +1,16 @@
 local on_attach = require("configs.on_attach")
-local root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" })
+local root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1])
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+
 -- string concattenation in Lua- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
 	-- The command that starts the language server
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	cmd = {
 		"jdtls",
+		"--jvm-arg=-Dlog.level=ALL",
 		"-data",
-		root_dir .. "/.jdtls",
+		"/home/bageljr/.cache/jdtls/" .. project_name,
 	},
 	root_dir = root_dir,
 

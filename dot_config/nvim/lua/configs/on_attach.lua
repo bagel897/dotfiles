@@ -4,7 +4,7 @@ local is_git = function()
 end
 local on_attach = function(client, bufnr)
 	-- your usual configuration — options, keymaps, etc
-	-- ...
+	require("inlay-hints").on_attach(client, bufnr)
 	require("lsp-format").on_attach(client, bufnr)
 
 	-- if client.server_capabilities.documentRangeFormattingProvider then

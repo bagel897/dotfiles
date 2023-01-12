@@ -5,10 +5,6 @@ local cfg = function()
 	--
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 	local on_attach = require("configs.on_attach")
-	local on_attach_ih = function(c, b)
-		require("inlay-hints").on_attach(c, b)
-		on_attach(c, b)
-	end
 	-- Use a loop to conveniently call 'setup' on multiple servers and
 	-- map buffer local keybindings when the language server attaches
 	vim.g.markdown_fenced_languages = {
@@ -29,6 +25,8 @@ local cfg = function()
 		"ruff_lsp",
 		"cmake",
 		"esbonio",
+		"gradle_ls",
+		"marksman",
 		"dockerls",
 		-- "pyright",
 		-- "jedi_language_server",
@@ -37,7 +35,7 @@ local cfg = function()
 	}
 	require("lspconfig").tsserver.setup({
 		capabilities = capabilities,
-		on_attach = on_attach_ih,
+		on_attach = on_attach,
 		settings = {
 			javascript = {
 				inlayHints = {
@@ -65,7 +63,7 @@ local cfg = function()
 	})
 	require("lspconfig").gopls.setup({
 		capabilities = capabilities,
-		on_attach = on_attach_ih,
+		on_attach = on_attach,
 		settings = {
 			gopls = {
 				hints = {
@@ -163,7 +161,7 @@ local cfg = function()
 			},
 		},
 		capabilities = capabilities,
-		on_attach = on_attach_ih,
+		on_attach = on_attach,
 	})
 end
 return {
