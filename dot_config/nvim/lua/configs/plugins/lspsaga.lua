@@ -15,5 +15,6 @@ return {
 		"<cmd>Lspsaga outline<CR>",
 		desc = "symbols outline",
 	} },
-	event = "VeryLazy",
+	cmd = { "Lspsaga" },
+	event = "BufRead",
 }
