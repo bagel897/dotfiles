@@ -15,10 +15,16 @@ local cfg = function()
 		ensure_installed = { "jdtls" },
 		automatic_installation = true,
 	})
+	local default = {
+		capabilities = capabilities,
+		-- flags = {
+		-- 	debounce_text_changes = 150,
+		-- },
+		on_attach = on_attach_no_ih,
+	}
 	local servers = {
 		"taplo",
 		"clojure_lsp",
-		"ltex",
 		-- "prosemd_lsp",
 		"vimls",
 		"bashls",
@@ -62,6 +68,7 @@ local cfg = function()
 			},
 		},
 	})
+
 	require("lspconfig").gopls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach_ih,
@@ -89,13 +96,7 @@ local cfg = function()
 	-- })
 	-- local coq = require("coq")
 	for _, lsp in pairs(servers) do
-		require("lspconfig")[lsp].setup({
-			capabilities = capabilities,
-			-- flags = {
-			-- 	debounce_text_changes = 150,
-			-- },
-			on_attach = on_attach_no_ih,
-		})
+		require("lspconfig")[lsp].setup(default)
 	end
 	require("lspconfig").pylsp.setup({
 		settings = {
@@ -172,4 +173,5 @@ return {
 		"mason-lspconfig.nvim",
 	},
 	config = cfg,
+	event = "BufRead",
 }
