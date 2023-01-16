@@ -18,7 +18,7 @@ return {
 					"--pch-storage=memory",
 				},
 				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-				on_attach = require("configs.on_attach"),
+				on_attach = require("configs.on_attach_ih"),
 			},
 		})
 	end,

@@ -23,7 +23,7 @@ return {
 		}
 		require("null-ls").setup({
 			sources = sources,
-			on_attach = require("configs.on_attach"),
+			on_attach = require("configs.on_attach_no_ih"),
 		})
 	end,
 	event = "BufReadPost",

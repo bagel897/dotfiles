@@ -6,8 +6,7 @@ return {
 		local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
 		local on_attach = require("configs.on_attach")
 		local on_attach_ih = function(c, b)
-			require("inlay-hints").on_attach(c, b)
-			on_attach(c, b)
+			on_attach(c, b, true)
 		end
 		local opts = {
 			tools = {

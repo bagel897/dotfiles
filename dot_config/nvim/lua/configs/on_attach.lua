@@ -2,9 +2,11 @@ local is_git = function()
 	local result = io.popen("git rev-parse --is-inside-work-tree").close
 	return result.exitcode ~= 0
 end
-local on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr, ih)
 	-- your usual configuration — options, keymaps, etc
-	require("inlay-hints").on_attach(client, bufnr)
+	if ih then
+		require("inlay-hints").on_attach(client, bufnr)
+	end
 	require("lsp-format").on_attach(client, bufnr)
 
 	-- if client.server_capabilities.documentRangeFormattingProvider then

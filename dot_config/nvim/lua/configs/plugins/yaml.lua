@@ -46,7 +46,7 @@ return {
 							trace = { server = "debug" },
 						},
 					},
-					on_attach = require("configs.on_attach"),
+					on_attach = require("configs.on_attach_no_ih"),
 				},
 			},
 		})

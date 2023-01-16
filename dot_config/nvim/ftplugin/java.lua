@@ -1,4 +1,4 @@
-local on_attach = require("configs.on_attach")
+local on_attach = require("configs.on_attach_no_ih")
 local root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1])
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 

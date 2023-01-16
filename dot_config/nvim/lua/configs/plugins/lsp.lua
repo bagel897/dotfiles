@@ -4,7 +4,8 @@ local cfg = function()
 	-- vim.g.coq_settings = { auto_start = "shut-up" }
 	--
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
-	local on_attach = require("configs.on_attach")
+	local on_attach_no_ih = require("configs.on_attach_no_ih")
+	local on_attach_ih = require("configs.on_attach_ih")
 	-- Use a loop to conveniently call 'setup' on multiple servers and
 	-- map buffer local keybindings when the language server attaches
 	vim.g.markdown_fenced_languages = {
@@ -35,7 +36,7 @@ local cfg = function()
 	}
 	require("lspconfig").tsserver.setup({
 		capabilities = capabilities,
-		on_attach = on_attach,
+		on_attach = on_attach_ih,
 		settings = {
 			javascript = {
 				inlayHints = {
@@ -63,7 +64,7 @@ local cfg = function()
 	})
 	require("lspconfig").gopls.setup({
 		capabilities = capabilities,
-		on_attach = on_attach,
+		on_attach = on_attach_ih,
 		settings = {
 			gopls = {
 				hints = {
@@ -93,7 +94,7 @@ local cfg = function()
 			-- flags = {
 			-- 	debounce_text_changes = 150,
 			-- },
-			on_attach = on_attach,
+			on_attach = on_attach_no_ih,
 		})
 	end
 	require("lspconfig").pylsp.setup({
@@ -114,7 +115,7 @@ local cfg = function()
 			},
 		},
 		capabilities = capabilities,
-		on_attach = on_attach,
+		on_attach = on_attach_no_ih,
 	})
 	require("lspconfig").texlab.setup({
 		settings = {
@@ -143,7 +144,7 @@ local cfg = function()
 			},
 		},
 		capabilities = capabilities,
-		on_attach = on_attach,
+		on_attach = on_attach_no_ih,
 	})
 	require("lspconfig").sumneko_lua.setup({
 		settings = {
@@ -161,7 +162,7 @@ local cfg = function()
 			},
 		},
 		capabilities = capabilities,
-		on_attach = on_attach,
+		on_attach = on_attach_ih,
 	})
 end
 return {
