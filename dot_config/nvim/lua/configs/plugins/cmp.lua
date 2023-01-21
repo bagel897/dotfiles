@@ -125,7 +125,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind-nvim",
 		"ray-x/cmp-treesitter",
-		"hrsh7th/cmp-nvim-lua"
+		"hrsh7th/cmp-nvim-lua",
 	},
 	event = "BufReadPost",
 	config = cfg,

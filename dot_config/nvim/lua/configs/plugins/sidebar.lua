@@ -18,4 +18,4 @@ local cfg = function()
 	}
 	sidebar.setup(opts)
 end
-return { "sidebar-nvim/sidebar.nvim",dependencies = { "sidebar-nvim/sections-dap"}, enabled = false, config = cfg }
+return { "sidebar-nvim/sidebar.nvim", dependencies = { "sidebar-nvim/sections-dap" }, enabled = false, config = cfg }
