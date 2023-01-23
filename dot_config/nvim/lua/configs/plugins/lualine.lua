@@ -1,14 +1,25 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	event = "VeryLazy",
 	config = function()
 		require("lualine").setup({
 			options = {
 				globalstatus = true,
 				theme = "catppuccin",
+				disabled_filetypes = { statusline = { "dashboard", "lazy", "alpha" } },
 			},
 			extensions = { "nvim-tree", "quickfix", "fugitive", "toggleterm", "symbols-outline" },
 			sections = {
-				lualine_c = { { "filename", path = 1 } },
+				lualine_a = { "mode" },
+				lualine_b = { "branch" },
+				lualine_c = {
+					{
+						"diagnostics",
+					},
+					{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+					{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+					-- stylua: ignore
+				},
 				lualine_x = {
 					{
 						require("noice").api.status.message.get_hl,
@@ -29,6 +40,15 @@ return {
 						cond = require("noice").api.status.search.has,
 						color = { fg = "#ff9e64" },
 					},
+				},
+				lualine_y = {
+					{ "progress", separator = "", padding = { left = 1, right = 0 } },
+					{ "location", padding = { left = 0, right = 1 } },
+				},
+				lualine_z = {
+					function()
+						return " " .. os.date("%R")
+					end,
 				},
 			},
 		})

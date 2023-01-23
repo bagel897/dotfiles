@@ -1,7 +1,7 @@
 local wk = require("which-key")
 
 local dap = require("dap")
-local builtin = require("telescope.builtin")
+-- local builtin = require("telescope.builtin")
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -71,32 +71,31 @@ wk.register({
 		c = { "<cmd>Lspsaga lsp_finder<CR>", "incoming calls" },
 		o = { vim.lsp.buf.outgoing_calls, "outgoing calls" },
 	},
-	f = {
-		name = "find",
-		f = { builtin.find_files, "files" },
-		l = { builtin.lsp_document_symbols, "lsp" },
-		b = { builtin.current_buffer_fuzzy_find, "buffer" },
-		h = { builtin.help_tags, "help" },
-		t = { builtin.tags, "tags" },
-		d = { builtin.grep_string, "grep string" },
-		p = { builtin.live_grep, "live grep" },
-		o = {
-			function()
-				builtin.tags({ only_current_buffer = true })
-			end,
-			"current buffer",
-		},
-		s = {
-			function()
-				local sopts = { fuzzy = false, case_mode = "ignore_case" }
-				builtin.current_buffer_fuzzy_find(sopts)
-			end,
-			"current buffer",
-		},
-		c = { builtin.commands, "commands" },
-		-- ? = {[[<cmd>lua require('builtin').oldfiles()<CR>]],"old files"},
-	},
-	["<space>"] = { builtin.buffers, "buffers" },
+	-- f = {
+	-- 	name = "find",
+	-- 	l = { builtin.lsp_document_symbols, "lsp" },
+	-- 	b = { builtin.current_buffer_fuzzy_find, "buffer" },
+	-- 	h = { builtin.help_tags, "help" },
+	-- 	t = { builtin.tags, "tags" },
+	-- 	d = { builtin.grep_string, "grep string" },
+	-- 	p = { builtin.live_grep, "live grep" },
+	-- 	o = {
+	-- 		function()
+	-- 			builtin.tags({ only_current_buffer = true })
+	-- 		end,
+	-- 		"current buffer",
+	-- 	},
+	-- 	s = {
+	-- 		function()
+	-- 			local sopts = { fuzzy = false, case_mode = "ignore_case" }
+	-- 			builtin.current_buffer_fuzzy_find(sopts)
+	-- 		end,
+	-- 		"current buffer",
+	-- 	},
+	-- 	c = { builtin.commands, "commands" },
+	-- 	-- ? = {[[<cmd>lua require('builtin').oldfiles()<CR>]],"old files"},
+	-- },
+	-- ["<space>"] = { builtin.buffers, "buffers" },
 	h = {
 		name = "Git",
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
@@ -159,9 +158,9 @@ wk.register({
 		a = { "<cmd>Lspsaga code_action<CR>", "range code actions" },
 	},
 }, { prefix = "<leader>", mode = "v" })
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>lb",
-	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-	{}
-)
+-- vim.api.nvim_set_keymap(
+-- 	"v",
+-- 	"<leader>lb",
+-- 	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+-- 	{}
+-- )
