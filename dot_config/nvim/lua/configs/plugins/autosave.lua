@@ -6,4 +6,5 @@ return {
 			-- or just leave it empty :)
 		})
 	end,
+	ft = "tex",
 }
