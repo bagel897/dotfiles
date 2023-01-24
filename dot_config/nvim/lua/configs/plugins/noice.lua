@@ -22,6 +22,7 @@ return {
 			},
 		})
 	end,
+	event = "BufReadPre",
 	keys = {
 		{
 			"<S-Enter>",

@@ -10,5 +10,5 @@ return {
 
 		-- remap to open the Telescope refactoring menu in visual mode
 	end,
-	event = "VeryLazy",
+	lazy = true,
 }
