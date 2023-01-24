@@ -8,10 +8,10 @@ local opts = {
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "gnn",
-			node_incremental = "grn",
-			scope_incremental = "grc",
-			node_decremental = "grm",
+			init_selection = "<C-space>",
+			node_incremental = "<C-space>",
+			scope_incremental = "<nop>",
+			node_decremental = "<bs>",
 		},
 	},
 	indent = {

@@ -28,7 +28,6 @@ local cfg = function()
 		-- "prosemd_lsp",
 		"vimls",
 		"bashls",
-		"jsonls",
 		"ruff_lsp",
 		"cmake",
 		"esbonio",
@@ -165,12 +164,25 @@ local cfg = function()
 		capabilities = capabilities,
 		on_attach = on_attach_ih,
 	})
+	require("lspconfig").jsonls.setup({
+		settings = {
+			json = {
+				schemas = require("schemastore").json.schemas(),
+				validate = { enable = true },
+				format = { enable = true },
+			},
+		},
+	})
 end
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"folke/neodev.nvim",
 		"mason-lspconfig.nvim",
+		{
+			"b0o/SchemaStore.nvim",
+			version = false, -- last release is way too old
+		},
 	},
 	config = cfg,
 	event = "BufRead",
