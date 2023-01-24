@@ -73,12 +73,7 @@ wk.register({
 	},
 	-- f = {
 	-- 	name = "find",
-	-- 	l = { builtin.lsp_document_symbols, "lsp" },
-	-- 	b = { builtin.current_buffer_fuzzy_find, "buffer" },
-	-- 	h = { builtin.help_tags, "help" },
-	-- 	t = { builtin.tags, "tags" },
 	-- 	d = { builtin.grep_string, "grep string" },
-	-- 	p = { builtin.live_grep, "live grep" },
 	-- 	o = {
 	-- 		function()
 	-- 			builtin.tags({ only_current_buffer = true })
@@ -163,4 +158,5 @@ wk.register({
 -- 	"<leader>lb",
 -- 	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
 -- 	{}
+-- )
 -- )

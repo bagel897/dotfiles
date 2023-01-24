@@ -18,6 +18,6 @@ return {
 	end,
 	enabled = true,
 	ft = "norg",
-	run = ":Neorg sync-parsers", -- This is the important bit!,
+	build = ":Neorg sync-parsers", -- This is the important bit!,
 	dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter" },
 }
