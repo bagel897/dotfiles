@@ -32,6 +32,9 @@ Host rocketold
 Host rocket
   Hostname 10.157.95.28 
   User aa87445
+Host rocketduck
+  Hostname 10.157.95.28 
+  User duck 
 Host bagelzero
 	User bageljr
 	Hostname     100.83.204.100
