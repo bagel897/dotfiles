@@ -1,13 +1,14 @@
 local on_attach = require("configs.on_attach_no_ih")
 local root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1])
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-
+local lombok_path = "/home/bageljr/.local/share/nvim/mason/packages/jdtls/lombok.jar"
 -- string concattenation in Lua- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
 	-- The command that starts the language server
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 	cmd = {
 		"jdtls",
+		"--jvm-arg=-javaagent:" .. lombok_path,
 		"--jvm-arg=-Dlog.level=ALL",
 		"-data",
 		"/home/bageljr/.cache/jdtls/" .. project_name,
