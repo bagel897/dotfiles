@@ -148,8 +148,8 @@ local cfg = function()
 	})
 	require("lspconfig").sumneko_lua.setup({
 		settings = {
-			completion_style = {
-				call_snipped = "Replace",
+			completion = {
+				callSnippet = "Replace",
 			},
 			Lua = {
 				hint = {

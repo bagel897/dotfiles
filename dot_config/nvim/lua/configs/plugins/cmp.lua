@@ -11,9 +11,7 @@ local cfg = function()
 	-- Set completeopt to have a better completion experience
 
 	cmp.setup({
-		enabled = function()
-			return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
-		end,
+
 		formatting = {
 			format = lspkind.cmp_format({ mode = "symbol_text" }),
 		},
@@ -56,7 +54,6 @@ local cfg = function()
 		}),
 
 		sources = cmp.config.sources({
-			{ name = "dap" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" }, -- For luasnip users.
 			{ name = "nvim_lsp_signature_help" },
@@ -120,10 +117,9 @@ return {
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lsp-document-symbol",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
-		"rcarriga/cmp-dap",
 		"davidsierradz/cmp-conventionalcommits",
 		"saadparwaiz1/cmp_luasnip",
-		"onsails/lspkind-nvim",
+		{ "onsails/lspkind-nvim", opts = { mode = "symbol_text", preset = "codicons" } },
 		"ray-x/cmp-treesitter",
 		"hrsh7th/cmp-nvim-lua",
 	},

@@ -1,6 +1,5 @@
 local wk = require("which-key")
 
-local dap = require("dap")
 -- local builtin = require("telescope.builtin")
 
 local opts = { noremap = true, silent = true }
@@ -27,21 +26,6 @@ wk.register({
 	},
 	d = {
 		name = "debug",
-		n = { dap.step_over, "step over" },
-		s = { dap.step_into, "step into" },
-		o = { dap.step_out, "step out" },
-		u = { dap.run_to_cursor, "run to cursor" },
-		b = { dap.toggle_breakpoint, "breakpoint" },
-		c = { dap.continue, "continue" },
-		r = { dap.run_last, "run_last" },
-		q = {
-			function()
-				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-			end,
-			"conditional",
-		},
-		x = { dap.terminate, "terminate" },
-		p = { dap.pause, "pause" },
 		f = {
 			function()
 				require("neotest").run.run({ strategy = "dap" })
@@ -54,7 +38,6 @@ wk.register({
 			end,
 			"test nearest",
 		},
-		ds = { require("dap-python").debug_selection, "debug selection python" },
 	},
 	l = {
 		name = "lsp",

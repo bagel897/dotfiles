@@ -95,5 +95,9 @@ return {
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 		build = ":TSUpdate",
+		keys = {
+			{ "<c-space>", desc = "Increment selection" },
+			{ "<bs>", desc = "Schrink selection", mode = "x" },
+		},
 	},
 }
