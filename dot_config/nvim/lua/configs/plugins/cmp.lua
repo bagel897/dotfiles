@@ -1,3 +1,15 @@
+local is_dap_buffer = function(bufnr)
+	local filetype = vim.api.nvim_buf_get_option(bufnr or 0, "filetype")
+	if vim.startswith(filetype, "dapui_") then
+		return true
+	end
+	if filetype == "dap-repl" then
+		return true
+	end
+
+	return false
+end
+
 local cfg = function()
 	local luasnip = require("luasnip")
 	local cmp = require("cmp")
@@ -11,7 +23,9 @@ local cfg = function()
 	-- Set completeopt to have a better completion experience
 
 	cmp.setup({
-
+		enabled = function()
+			return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or is_dap_buffer()
+		end,
 		formatting = {
 			format = lspkind.cmp_format({ mode = "symbol_text" }),
 		},
@@ -119,7 +133,14 @@ return {
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"davidsierradz/cmp-conventionalcommits",
 		"saadparwaiz1/cmp_luasnip",
-		{ "onsails/lspkind-nvim", opts = { mode = "symbol_text", preset = "codicons" } },
+		{
+			"onsails/lspkind-nvim",
+			opts = { mode = "symbol_text", preset = "codicons" },
+			config = function(opts)
+				require("lspkind").init({ opts })
+			end,
+			dependencies = { "mortepau/codicons.nvim" },
+		},
 		"ray-x/cmp-treesitter",
 		"hrsh7th/cmp-nvim-lua",
 	},
