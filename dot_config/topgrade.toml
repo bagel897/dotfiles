@@ -2,7 +2,8 @@
 #assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["helm"]
+disable = ["helm", "github_cli_extensions"]
+
 
 # Ignore failures for these steps
 #ignore_failures = ["powershell"]
@@ -36,7 +37,8 @@ remote_topgrade_path = "topgrade"
 
 # Cleanup temporary or old files
 #cleanup = true
-
+skip_notify = true
+display_preamble = false
 [git]
 #max_concurrency = 5
 # Additional git repositories to pull
@@ -60,6 +62,7 @@ remote_topgrade_path = "topgrade"
 
 # Custom commands
 [commands]
+"fish_update_completions" = "fish_update_completions"
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
 
 [brew]
