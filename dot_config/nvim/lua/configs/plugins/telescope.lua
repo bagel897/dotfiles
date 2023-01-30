@@ -36,12 +36,14 @@ return {
 			},
 		},
 	},
-
-	-- Enable telescope fzf native
-	-- telescope.load_extension("fzf")
-	-- telescope.load_extension("file_browser")
-	-- telescope.load_extension("dap")
-	-- telescope.load_extension("lsp_handlers")
+	config = function(opts)
+		local telescope = require("telescope")
+		telescope.setup(opts)
+		-- Enable telescope fzf native
+		telescope.load_extension("fzf")
+		telescope.load_extension("file_browser")
+		telescope.load_extension("lsp_handlers")
+	end,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"gbrlsnchs/telescope-lsp-handlers.nvim",
