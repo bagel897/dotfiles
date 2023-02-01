@@ -7,10 +7,9 @@ return {
 		vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 		require("catppuccin").setup({
 			integration = {
-				barbar = true,
 				dashboard = true,
 				gitsigns = true,
-				lightspeed = true,
+				markdown = true,
 				neotree = true,
 				neogit = true,
 				neotest = true,
@@ -21,10 +20,15 @@ return {
 				lsp_saga = true,
 				telescope = true,
 				which_key = true,
-				fidget = true,
+				leap = true,
+				mason = true,
+				notify = true,
+				semantic_tokens = true,
+				trouble = true,
+				which_ke = true,
 				indent_blankline = {
 					enabled = true,
-					colored_indent_levels = false,
+					colored_indent_levels = true,
 				},
 				dap = {
 					enabled = true,
