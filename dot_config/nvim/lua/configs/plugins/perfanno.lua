@@ -8,5 +8,23 @@ return {
 			vt_highlight = util.make_fg_highlight("#CC3300"),
 		})
 	end,
-	enabled = false,
+	keys = {
+		{ "<LEADER>plf", ":PerfLoadFlat<CR>" },
+		{ "<LEADER>plg", ":PerfLoadCallGraph<CR>" },
+		{ "<LEADER>plo", ":PerfLoadFlameGraph<CR>" },
+
+		{ "<LEADER>pe", ":PerfPickEvent<CR>" },
+
+		{ "<LEADER>pa", ":PerfAnnotate<CR>" },
+		{ "<LEADER>pf", ":PerfAnnotateFunction<CR>" },
+		{ "<LEADER>pa", ":PerfAnnotateSelection<CR>" },
+
+		{ "<LEADER>pt", ":PerfToggleAnnotations<CR>" },
+
+		{ "<LEADER>ph", ":PerfHottestLines<CR>" },
+		{ "<LEADER>ps", ":PerfHottestSymbols<CR>" },
+		{ "<LEADER>pc", ":PerfHottestCallersFunction<CR>" },
+		{ "<LEADER>pc", ":PerfHottestCallersSelection<CR>" },
+	},
+	enabled = true,
 }

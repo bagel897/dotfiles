@@ -20,6 +20,11 @@ return {
 				show_buffer_close_icons = true,
 				separator_style = "slant",
 				highlights = require("catppuccin.groups.integrations.bufferline").get(),
+				hover = {
+					enabled = true,
+					delay = 200,
+					reveal = { "close" },
+				},
 			},
 		})
 	end,

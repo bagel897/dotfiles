@@ -6,6 +6,7 @@ vim.o.hlsearch = true
 vim.o.clipboard = "unnamedplus"
 vim.o.guifont = "FiraCode NF"
 vim.g.adwaita_darker = true
+vim.o.mousemoveevent = true
 vim.cmd("set spell")
 --Make line numbers default
 vim.wo.number = true

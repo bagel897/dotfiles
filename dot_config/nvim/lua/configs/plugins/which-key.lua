@@ -26,6 +26,7 @@ return {
 			["<leader>d"] = { name = "+debug" },
 			["<leader>h"] = { name = "+git" },
 			["<leader>l"] = { name = "+lsp" },
+			["<leader>p"] = { name = "+perfanno" },
 		})
 	end,
 }
