@@ -3,7 +3,7 @@ local cfg = function()
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 	-- vim.g.coq_settings = { auto_start = "shut-up" }
 	--
-	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	local capabilities = require("configs.capabilities").default_capabilities()
 	local on_attach_no_ih = require("configs.on_attach_no_ih")
 	local on_attach_ih = require("configs.on_attach_ih")
 	-- Use a loop to conveniently call 'setup' on multiple servers and

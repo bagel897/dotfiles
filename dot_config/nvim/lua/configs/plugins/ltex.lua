@@ -3,7 +3,7 @@ return {
 	dependencies = { "neovim/nvim-lspconfig" },
 	ft = { "latex", "tex", "bib", "markdown" },
 	config = function()
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local capabilities = require("configs.capabilities").default_capabilities()
 		local on_attach = require("configs.on_attach_no_ih")
 		require("ltex-ls").setup({
 			on_attach = on_attach,

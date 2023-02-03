@@ -23,9 +23,7 @@ return {
 				leap = true,
 				mason = true,
 				notify = true,
-				semantic_tokens = true,
 				trouble = true,
-				which_ke = true,
 				indent_blankline = {
 					enabled = true,
 					colored_indent_levels = true,

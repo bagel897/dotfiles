@@ -43,7 +43,6 @@ wk.register({
 		name = "lsp",
 		d = { "<CMD> :Docstring <CR>", "Docstring" },
 		t = { vim.lsp.buf.type_definition, "type definition" },
-		r = { "<cmd>Lspsaga rename<CR>", "rename" },
 		a = {
 			"<cmd>Lspsaga code_action<CR>",
 			"code actions",
