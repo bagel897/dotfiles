@@ -4,6 +4,7 @@ return {
 	ft = { "latex", "tex", "bib", "markdown" },
 	config = function()
 		local capabilities = require("configs.capabilities").default_capabilities()
+		capabilities.window.workDoneProgress = false
 		local on_attach = require("configs.on_attach_no_ih")
 		require("ltex-ls").setup({
 			on_attach = on_attach,
@@ -11,6 +12,7 @@ return {
 			use_spellfile = true,
 			settings = {
 				ltex = {
+					completionEnabled = true,
 					enabled = { "latex", "tex", "bib", "markdown" },
 					language = "en-US",
 					diagnosticSeverity = "information",
