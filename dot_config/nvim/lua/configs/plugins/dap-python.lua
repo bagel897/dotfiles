@@ -1,6 +1,9 @@
 return {
 	"mfussenegger/nvim-dap-python",
-	opts = { "python" },
+	config = function()
+		require("dap-python").setup("python")
+		require('dap-python').test_runner = 'pytest'
+	end,
 	keys = {
 		{
 			"<leader>dds",
