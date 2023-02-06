@@ -110,7 +110,7 @@ local cfg = function()
 						dmypy = true,
 						report_progress = true,
 					},
-					-- pylint = { enabled = true, args = {"--disable C0301"}},
+					pylint = { enabled = true, args = { "--disable C0301" } },
 				},
 			},
 		},

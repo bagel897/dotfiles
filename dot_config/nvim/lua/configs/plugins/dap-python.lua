@@ -1,6 +1,6 @@
 return {
 	"mfussenegger/nvim-dap-python",
-	opts = "python",
+	opts = { "python" },
 	keys = {
 		{
 			"<leader>dds",
