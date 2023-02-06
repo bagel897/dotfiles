@@ -17,7 +17,7 @@ local opts = {
 	indent = {
 		enable = true,
 	},
-	rainbow = { enable = true },
+	rainbow = { enable = true, extended_mode = true },
 	auto_install = true,
 	context_commentstring = {
 		enable = true,
