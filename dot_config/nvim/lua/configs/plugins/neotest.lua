@@ -6,6 +6,8 @@ return {
 		"nvim-neotest/neotest-python",
 		"haydenmeade/neotest-jest",
 		"rouge8/neotest-rust",
+		"nvim-neotest/neotest-vim-test",
+		"vim-test/vim-test",
 	},
 	config = function()
 		require("neotest").setup({
@@ -24,9 +26,9 @@ return {
 				}),
 				require("neotest-rust"),
 				-- require("neotest-plenary"),
-				-- require("neotest-vim-test")({
-				-- 	ignore_file_types = { "python", "vim", "lua" },
-				-- }),
+				require("neotest-vim-test")({
+					ignore_file_types = { "python", "vim", "rust" },
+				}),
 			},
 		})
 	end,
