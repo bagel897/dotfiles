@@ -4,6 +4,7 @@ local opts = {
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		use_languagetree = true,
+		additional_vim_regex_highlighting = false,
 	},
 	incremental_selection = {
 		enable = true,
@@ -16,6 +17,7 @@ local opts = {
 	},
 	indent = {
 		enable = true,
+		extended_mode = true,
 	},
 	rainbow = { enable = true, extended_mode = true },
 	auto_install = true,
