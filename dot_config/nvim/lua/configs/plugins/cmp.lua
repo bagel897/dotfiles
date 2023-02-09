@@ -131,6 +131,6 @@ return {
 		"ray-x/cmp-treesitter",
 		"hrsh7th/cmp-nvim-lua",
 	},
-	event = "BufReadPre",
+	event = { "InsertEnter" },
 	config = cfg,
 }

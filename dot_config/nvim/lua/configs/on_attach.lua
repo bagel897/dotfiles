@@ -4,6 +4,7 @@ local is_git = function()
 end
 local on_attach = function(client, bufnr, ih)
 	-- your usual configuration — options, keymaps, etc
+
 	if ih then
 		require("inlay-hints").on_attach(client, bufnr)
 	end
