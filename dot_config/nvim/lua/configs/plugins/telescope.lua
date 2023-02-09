@@ -36,7 +36,7 @@ return {
 			},
 		},
 	},
-	config = function(opts)
+	config = function(_, opts)
 		local telescope = require("telescope")
 		telescope.setup(opts)
 		-- Enable telescope fzf native

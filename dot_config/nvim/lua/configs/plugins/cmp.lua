@@ -66,7 +66,6 @@ local cfg = function()
 				end
 			end),
 		}),
-
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" }, -- For luasnip users.
@@ -124,7 +123,7 @@ return {
 		{
 			"onsails/lspkind-nvim",
 			opts = { mode = "symbol_text", preset = "codicons" },
-			config = function(opts)
+			config = function(_, opts)
 				require("lspkind").init({ opts })
 			end,
 			dependencies = { "mortepau/codicons.nvim" },
