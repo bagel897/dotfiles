@@ -147,7 +147,7 @@ local cfg = function()
 	    capabilities = capabilities,
 	    on_attach = on_attach_no_ih,
 	})
-	require("lspconfig").sumneko_lua.setup({
+	require("lspconfig").lua_ls.setup({
 	    settings = {
 	        completion = {
 	            callSnippet = "Replace",
