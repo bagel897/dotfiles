@@ -48,10 +48,22 @@ local config = function()
 			{ name = "dap" },
 		},
 	})
+	dap.configurations.typescript = {
+		{
+			name = "Debug with Firefox",
+			type = "firefox",
+			request = "launch",
+			reAttach = true,
+			url = "http://localhost:3000",
+			webRoot = "${workspaceFolder}",
+			firefoxExecutable = "/usr/bin/firefox",
+		},
+	}
 end
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
+		{ "overseer.nvim" },
 		{ "rcarriga/nvim-dap-ui", opts = true },
 		{
 			"nvim-telescope/telescope-dap.nvim",
@@ -66,7 +78,7 @@ return {
 		{
 			"jayp0521/mason-nvim-dap.nvim",
 			opts = {
-				ensure_installed = { "javadbg", "javatest", "codelldb", "python" },
+				ensure_installed = { "javadbg", "javatest", "codelldb", "python", "firefox", "node2", "chrome" },
 				automatic_installation = true,
 				automatic_setup = true,
 			},
@@ -78,7 +90,7 @@ return {
 	keys = {
 		{ "<leader>dn", "<cmd>:DapStepOver<cr>", desc = "step over" },
 		{ "<leader>ds", "<cmd>:DapStepInto<cr>", desc = "step into" },
-		{ "<leader>do", "<cmd>:DapStepOut<cr>", desc = "step out" },
+		{ "<leader>do", "<cmd>:DapStepOut<cr>",  desc = "step out" },
 		{
 			"<leader>do",
 			function()

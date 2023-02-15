@@ -9,7 +9,7 @@ return {
 			-- null_ls.builtins.formatting.clang_format,
 			null_ls.builtins.formatting.stylua,
 			null_ls.builtins.diagnostics.rstcheck,
-			null_ls.builtins.formatting.prettier,
+			null_ls.builtins.formatting.prettier.with({ disabled_filetypes = { "typescript" } }),
 			-- null_ls.builtins.formatting.joker,
 			-- null_ls.builtins.diagnostics.clj_kondo,
 			null_ls.builtins.formatting.cljstyle,
@@ -18,6 +18,7 @@ return {
 			-- null_ls.builtins.diagnostics.luacheck,
 			-- null_ls.builtins.diagnostics.pylint,
 			null_ls.builtins.code_actions.refactoring,
+			require("typescript.extensions.null-ls.code-actions"),
 			-- null_ls.builtins.formatting.black,
 			-- Black can be finnicky on the lsp side so I use Null to back it up
 		}

@@ -11,6 +11,9 @@ return {
 	},
 	config = function()
 		require("neotest").setup({
+			consumers = {
+				overseer = require("neotest.consumers.overseer"),
+			},
 			adapters = {
 				require("neotest-jest")({
 					jestCommand = "npm test --",
