@@ -60,7 +60,6 @@ local config = function()
 	dap.listeners.before.event_exited["dapui_config"] = function()
 		dapui.close()
 	end
-	vim.cmd([[autocmd TermClose * if !v:event.status | exe 'bdelete! '..expand('<abuf>') | endif]])
 	require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
 		sources = {
 			{ name = "dap" },
