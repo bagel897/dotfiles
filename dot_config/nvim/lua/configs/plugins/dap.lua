@@ -29,7 +29,7 @@ local config = function()
 	dap.configurations.rust = dap.configurations.cpp
 	require("dap.ext.vscode").json_decode = require("json5").parse
 	local mappings = { codelldb = { "c", "cpp" } }
-	mappings["pwa-chrome"] = { "typescript", "javascript" }
+
 	require("dap.ext.vscode").load_launchjs(nil, mappings)
 	local dapui = require("dapui")
 	dap.listeners.after.event_initialized["dapui_config"] = function()
