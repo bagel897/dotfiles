@@ -27,8 +27,24 @@ local config = function()
 	}
 	dap.configurations.c = dap.configurations.cpp
 	dap.configurations.rust = dap.configurations.cpp
+
+	dap.adapters.firefox = {
+		type = "executable",
+		command = "node",
+		args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js" },
+	}
+	dap.configurations.typescript = {
+		{
+			name = "Debug with Firefox",
+			type = "firefox",
+			request = "launch",
+			reAttach = true,
+			url = "http://localhost:3000",
+			webRoot = "${workspaceFolder}",
+		},
+	}
 	require("dap.ext.vscode").json_decode = require("json5").parse
-	local mappings = { codelldb = { "c", "cpp" } }
+	local mappings = { codelldb = { "c", "cpp" }, firefox = { "typescript", "javascript" } }
 
 	require("dap.ext.vscode").load_launchjs(nil, mappings)
 	local dapui = require("dapui")
@@ -50,17 +66,6 @@ local config = function()
 			{ name = "dap" },
 		},
 	})
-	dap.configurations.typescript = {
-		{
-			name = "Debug with Firefox",
-			type = "firefox",
-			request = "launch",
-			reAttach = true,
-			url = "http://localhost:3000",
-			webRoot = "${workspaceFolder}",
-			firefoxExecutable = "/usr/bin/firefox",
-		},
-	}
 end
 return {
 	"mfussenegger/nvim-dap",

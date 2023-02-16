@@ -6,7 +6,7 @@ return {
 			"microsoft/vscode-js-debug",
 			lazy = true,
 			build = "npm install --legacy-peer-deps && npm run compile",
-			tag = 'v1.74.1'
+			tag = "v1.74.1",
 		},
 	},
 	ft = { "javascript", "typescript" },
@@ -35,8 +35,9 @@ return {
 		end
 		local dap = require("dap")
 		dap.adapters.chrome = dap.adapters["pwa-chrome"]
-		local mappings = { codelldb = { "c", "cpp" }, chrome = { "typescript", "javascript" } }
-
+		local mappings = { chrome = { "typescript", "javascript" } }
+		mappings["pwa-chrome"] = mappings["chrome"]
 		require("dap.ext.vscode").load_launchjs(nil, mappings)
 	end,
+	enabled = false,
 }
