@@ -27,8 +27,10 @@ local config = function()
 	}
 	dap.configurations.c = dap.configurations.cpp
 	dap.configurations.rust = dap.configurations.cpp
-
-	require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "c", "cpp" } })
+	require("dap.ext.vscode").json_decode = require("json5").parse
+	local mappings = { codelldb = { "c", "cpp" } }
+	mappings["pwa-chrome"] = { "typescript", "javascript" }
+	require("dap.ext.vscode").load_launchjs(nil, mappings)
 	local dapui = require("dapui")
 	dap.listeners.after.event_initialized["dapui_config"] = function()
 		dapui.open()
@@ -63,6 +65,10 @@ end
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
+		{
+			"Joakker/lua-json5",
+			build = "./install.sh",
+		},
 		{ "overseer.nvim" },
 		{ "rcarriga/nvim-dap-ui", opts = true },
 		{
@@ -78,7 +84,7 @@ return {
 		{
 			"jayp0521/mason-nvim-dap.nvim",
 			opts = {
-				ensure_installed = { "javadbg", "javatest", "codelldb", "python", "firefox", "node2", "chrome" },
+				ensure_installed = { "javadbg", "javatest", "codelldb", "python", "firefox" },
 				automatic_installation = true,
 				automatic_setup = true,
 			},
@@ -90,7 +96,7 @@ return {
 	keys = {
 		{ "<leader>dn", "<cmd>:DapStepOver<cr>", desc = "step over" },
 		{ "<leader>ds", "<cmd>:DapStepInto<cr>", desc = "step into" },
-		{ "<leader>do", "<cmd>:DapStepOut<cr>",  desc = "step out" },
+		{ "<leader>do", "<cmd>:DapStepOut<cr>", desc = "step out" },
 		{
 			"<leader>do",
 			function()

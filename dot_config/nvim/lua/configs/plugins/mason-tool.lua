@@ -5,7 +5,7 @@ return {
     },
     config = function()
 	    require("mason-tool-installer").setup({
-	        ensure_installed = { "latexindent" },
+	        ensure_installed = { "latexindent", "js-debug-adapter" },
 	        auto_update = true,
 	    })
     end,
