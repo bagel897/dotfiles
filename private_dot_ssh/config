@@ -2,6 +2,7 @@ Ciphers aes128-gcm@openssh.com,aes256-gcm@openssh.com,chacha20-poly1305@openssh.
 ControlMaster auto
 ControlPersist yes
 ControlPath ~/.cache/ssh/mux/socket-%r@%h:%p
+ServerAliveInterval 120
 Host bagelpi
 	User bageljr
 	Port 6389
