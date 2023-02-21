@@ -1,5 +1,5 @@
 return {
-	"simrat39/inlay-hints.nvim",
+	"lvimuser/lsp-inlayhints.nvim",
 	lazy = true,
 	opts = true,
 }
