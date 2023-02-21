@@ -43,7 +43,6 @@ local config = function()
 			webRoot = "${workspaceFolder}",
 		},
 	}
-	require("dap.ext.vscode").json_decode = require("json5").parse
 	local mappings = { codelldb = { "c", "cpp" }, firefox = { "typescript", "javascript" } }
 
 	require("dap.ext.vscode").load_launchjs(nil, mappings)
@@ -73,6 +72,9 @@ return {
 		{
 			"Joakker/lua-json5",
 			build = "./install.sh",
+			config = function()
+				require("dap.ext.vscode").json_decode = require("json5").parse
+			end,
 		},
 		{ "overseer.nvim" },
 		{ "rcarriga/nvim-dap-ui", opts = true },
