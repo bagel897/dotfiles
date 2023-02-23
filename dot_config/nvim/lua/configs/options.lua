@@ -46,6 +46,7 @@ vim.cmd([[autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c'
 vim.cmd(
 	[[autocmd FileChangedShellPost *\ echohl WarningMsg | lua vim.notify("File changed on disk. Buffer reloaded.") | echohl None]]
 )
+vim.cmd([[autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy]])
 vim.o.completeopt = "menu,menuone,noselect"
 vim.diagnostic.config({
 	virtual_text = false,
