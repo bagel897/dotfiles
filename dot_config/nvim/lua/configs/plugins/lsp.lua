@@ -33,7 +33,6 @@ local cfg = function()
 		"cmake",
 		"esbonio",
 		"gradle_ls",
-		
 
 		"marksman",
 		"dockerls",
@@ -92,36 +91,7 @@ local cfg = function()
 		capabilities = capabilities,
 		on_attach = on_attach_no_ih,
 	})
-	require("lspconfig").texlab.setup({
-		settings = {
-			texlab = {
-				auxDirectory = ".",
-				bibtexFormatter = "texlab",
-				build = {
-					args = { "-X", "compile", "%f", "--keep-logs", "--keep-intermediates", "--synctex" },
-					executable = "tectonic",
-					forwardSearchAfter = true,
-					onSave = true,
-				},
-				chktex = {
-					onEdit = true,
-					onOpenAndSave = true,
-				},
-				diagnosticsDelay = 300,
-				formatterLineLength = 80,
-				forwardSearch = {
-					executable = "evince-synctex",
-					args = { "-f=%l", "%p", '"nvim-texlabconfig -file %f -line %l"' },
-				},
-				latexFormatter = "latexindent",
-				latexindent = {
-					modifyLineBreaks = true,
-				},
-			},
-		},
-		capabilities = capabilities,
-		on_attach = on_attach_no_ih,
-	})
+	
 	require("lspconfig").lua_ls.setup({
 		settings = {
 			completion = {
