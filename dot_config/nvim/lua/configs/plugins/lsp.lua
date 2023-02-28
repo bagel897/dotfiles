@@ -42,24 +42,6 @@ local cfg = function()
 		"groovyls",
 	}
 
-	require("lspconfig").gopls.setup({
-		capabilities = capabilities,
-		on_attach = on_attach_ih,
-		settings = {
-			gopls = {
-				hints = {
-					assignVariableTypes = true,
-					compositeLiteralFields = true,
-					compositeLiteralTypes = true,
-					constantValues = true,
-					functionTypeParameters = true,
-					parameterNames = true,
-					rangeVariableTypes = true,
-				},
-			},
-		},
-	})
-
 	-- require("lspconfig").denols.setup({
 	-- 	init_options = {
 	-- 		lint = true,
@@ -91,7 +73,7 @@ local cfg = function()
 		capabilities = capabilities,
 		on_attach = on_attach_no_ih,
 	})
-	
+
 	require("lspconfig").lua_ls.setup({
 		settings = {
 			completion = {
@@ -125,6 +107,7 @@ return {
 	dependencies = {
 		"folke/neodev.nvim",
 		"mason-lspconfig.nvim",
+		"lsp-inlayhints.nvim",
 		{
 			"b0o/SchemaStore.nvim",
 			version = false, -- last release is way too old

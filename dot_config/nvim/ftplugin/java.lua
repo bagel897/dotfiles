@@ -15,7 +15,6 @@ local config = {
 		"/home/bageljr/.cache/jdtls/" .. project_name,
 	},
 	root_dir = root_dir,
-
 	-- This is the default if not provided, you can remove it. Or adjust as needed.
 	-- One dedicated LSP server & client will be started per unique root_dir
 
@@ -25,7 +24,6 @@ local config = {
 	settings = {
 		java = {},
 	},
-
 	-- Language server `initializationOptions`
 	-- You need to extend the `bundles` with paths to jar files
 	-- if you want to use additional eclipse.jdt.ls plugins.
