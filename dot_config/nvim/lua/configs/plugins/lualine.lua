@@ -16,8 +16,20 @@ return {
 					{
 						"diagnostics",
 					},
-					{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-					{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+					{
+						"filetype",
+						icon_only = true,
+						separator = "",
+						padding = {
+							left = 1,
+							right = 0,
+						},
+					},
+					{
+						"filename",
+						path = 1,
+						symbols = { modified = "  ", readonly = "", unnamed = "" },
+					},
 					-- stylua: ignore
 				},
 				lualine_x = {
@@ -38,6 +50,11 @@ return {
 					{
 						require("noice").api.status.search.get,
 						cond = require("noice").api.status.search.has,
+						color = { fg = "#ff9e64" },
+					},
+					{
+						require("lazy.status").updates,
+						cond = require("lazy.status").has_updates,
 						color = { fg = "#ff9e64" },
 					},
 				},
