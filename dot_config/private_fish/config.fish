@@ -18,22 +18,6 @@ set fish_greeting
 set -gx VDPAU_DRIVER radeonsi
 set -gx LIBVA_DRIVER_NAME radeonsi
 set -gxa NIX_PATH "REPEAT=/dev/null"
-set -gx XDG_DATA_HOME "$HOME/.local/share"
-set -gx XDG_CONFIG_HOME "$HOME/.config"
-set -gx AWS_SHARED_CREDENTIALS_FILE "$XDG_CONFIG_HOME/aws/credentials" 
-set -gx AWS_CONFIG_FILE "$XDG_CONFIG_HOME/aws/config" 
-set -gx BASH_COMPLETION_USER_FILE "$XDG_CONFIG_HOME"/bash-completion/bash_completion
-set -gx CONDARC "$XDG_CONFIG_HOME/conda/condarc"
-set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
-set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
-set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-set -gx IPFS_PATH "$XDG_DATA_HOME"/ipfs
-set -gx JUPYTER_CONFIG_DIR "$XDG_CONFIG_HOME"/jupyter
-set -gx KDEHOME "$XDG_CONFIG_HOME"/kde 
-set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
-set -gx EDITOR nvim
-set -gx GOPATH "$XDG_DATA_HOME"/go 
-set -gx GOMODCACHE "$XDG_CACHE_HOME"/go/mod
 set fzf_preview_dir_cmd exa --all --color=always
 alias 'vim'=$EDITOR
 alias 'ls'=exa
