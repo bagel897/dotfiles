@@ -24,6 +24,7 @@ return {
 			remote_wezterm_path = "/u/bageljr/.local/bin/wezterm",
 		},
 	},
+	hide_mouse_cursor_when_typing = false,
 	hyperlink_rules = {
 		-- Linkify things that look like URLs and the host has a TLD name.
 		-- Compiled-in default. Used if you don't specify any hyperlink_rules.
