@@ -2,17 +2,11 @@ return {
 	"mxsdev/nvim-dap-vscode-js",
 	dependencies = {
 		"mfussenegger/nvim-dap",
-		{
-			"microsoft/vscode-js-debug",
-			lazy = true,
-			build = "npm install --legacy-peer-deps && npm run compile",
-			tag = "v1.74.1",
-		},
 	},
 	ft = { "javascript", "typescript" },
 	config = function()
 		require("dap-vscode-js").setup({
-			debugger_path = vim.env.HOME .. "/.local/share/nvim/lazy/vscode-js-debug",
+			debugger_cmd = { "js-debug-adapter" },
 			adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 		})
 		for _, language in ipairs({ "typescript", "javascript" }) do
