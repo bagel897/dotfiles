@@ -1,6 +1,5 @@
 local config = function()
 	local dap = require("dap")
-	require("mason-nvim-dap").setup_handlers()
 	local sign = vim.fn.sign_define
 	sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 	sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
@@ -31,7 +30,9 @@ local config = function()
 	dap.adapters.firefox = {
 		type = "executable",
 		command = "node",
-		args = { os.getenv("HOME") .. "/.local/share/nvim/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js" },
+		args = {
+			os.getenv("HOME") .. "/.local/share/nvim/mason/packages/firefox-debug-adapter/dist/adapter.bundle.js",
+		},
 	}
 	dap.configurations.typescript = {
 		{
