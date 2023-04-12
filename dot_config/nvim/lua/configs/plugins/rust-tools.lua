@@ -10,9 +10,6 @@ return {
 		end
 		local opts = {
 			tools = {
-				on_initialized = function()
-					require("inlay-hints").set_all()
-				end,
 				inlay_hints = {
 					auto = false,
 				},
@@ -25,6 +22,5 @@ return {
 
 		require("rust-tools").setup(opts)
 	end,
-	dependencies = { "inlay-hints.nvim" },
 	ft = "rust",
 }
