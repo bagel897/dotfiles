@@ -19,5 +19,8 @@ return {
 
 		require("rust-tools").setup(opts)
 	end,
+	dependencies = {
+		"nvim-dap",
+	},
 	ft = "rust",
 }
