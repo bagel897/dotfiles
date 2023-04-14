@@ -19,7 +19,7 @@ local opts = {
 		enable = true,
 		extended_mode = true,
 	},
-	rainbow = { enable = true, extended_mode = true },
+	rainbow = { enable = true },
 	auto_install = true,
 	context_commentstring = {
 		enable = true,
@@ -84,7 +84,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
-			"mrjones2014/nvim-ts-rainbow",
+			"HiPhish/nvim-ts-rainbow2",
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			"RRethy/nvim-treesitter-textsubjects",
