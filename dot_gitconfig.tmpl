@@ -5,10 +5,10 @@
 [core]
 	autocrlf = input    
 	pager = delta
-
+{{if or (eq .chezmoi.hostname "Bagel-Max") (eq .chezmoi.hostname "Bagel-Mini")}}
 [commit]
 	gpgSign = true
-
+{{end}}
 [color]
 	ui = auto
 [init]
@@ -43,9 +43,3 @@
 [safe]
 	directory = /home/bageljr/code/src-remote
 
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
