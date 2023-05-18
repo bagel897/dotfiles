@@ -27,7 +27,6 @@ return {
 		}
 		require("go").setup({ lsp_cfg = lsp_config })
 	end,
-	event = { "CmdlineEnter" },
 	ft = { "go", "gomod" },
 	build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 }
