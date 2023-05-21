@@ -5,6 +5,13 @@ return {
 	},
 	config = function()
 		local null_ls = require("null-ls")
+		-- local ts = {}
+		-- ts.filetypes = { "typescript", "javascript" }
+		-- ts.generator = {
+		-- 	fn = function(_params)
+		-- 		return require("typescript.extensions.null-ls.code-actions")
+		-- 	end,
+		-- }
 		local sources = {
 			-- null_ls.builtins.formatting.clang_format,
 			null_ls.builtins.formatting.stylua,
@@ -18,10 +25,11 @@ return {
 			-- null_ls.builtins.diagnostics.luacheck,
 			-- null_ls.builtins.diagnostics.pylint,
 			null_ls.builtins.code_actions.refactoring,
-			require("typescript.extensions.null-ls.code-actions"),
+			-- ts,
 			-- null_ls.builtins.formatting.black,
 			-- Black can be finnicky on the lsp side so I use Null to back it up
 		}
+
 		require("null-ls").setup({
 			sources = sources,
 			on_attach = require("configs.on_attach_no_ih"),

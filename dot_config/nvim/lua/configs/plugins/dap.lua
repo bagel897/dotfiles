@@ -97,7 +97,6 @@ return {
 				automatic_setup = true,
 			},
 		},
-		"mortepau/codicons.nvim",
 		"rcarriga/cmp-dap",
 		{ "Weissle/persistent-breakpoints.nvim", opts = { load_breakpoints_event = { "BufReadPost" } } },
 	},

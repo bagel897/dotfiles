@@ -26,8 +26,5 @@ return {
 			severity_sort = true,
 		})
 	end,
-	dependencies = {
-		"nvim-dap",
-	},
 	ft = "rust",
 }

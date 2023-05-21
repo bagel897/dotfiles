@@ -113,10 +113,6 @@ return {
 			"b0o/SchemaStore.nvim",
 			version = false, -- last release is way too old
 		},
-		{
-			"yioneko/nvim-type-fmt",
-			event = "BufReadPre",
-		},
 	},
 	config = cfg,
 	event = "BufRead",
