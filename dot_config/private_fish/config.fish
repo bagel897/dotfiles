@@ -1,19 +1,21 @@
 #zoxide init  fish | source
-if not functions -q fundle; eval (curl -sfL https://git.io/fundle-install); end
-fundle plugin "ryoppippi/fish-poetry"
-fundle plugin "2m/fish-history-merge"
-fundle plugin "IlanCosman/tide"
+if not functions -q fundle
+    eval (curl -sfL https://git.io/fundle-install)
+end
+fundle plugin ryoppippi/fish-poetry
+fundle plugin 2m/fish-history-merge
+fundle plugin IlanCosman/tide
 fundle plugin "PatrickF1/fzf.fish"
-fundle plugin "sentriz/fish-pipenv"
-fundle plugin "franciscolourenco/done"
+fundle plugin sentriz/fish-pipenv
+fundle plugin franciscolourenco/done
 # fundle plugin "gazorby/fifc"
 fundle init
-export DENO_INSTALL="/home/bageljr/.deno"
+export DENO_INSTALL="/home/bagel897/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 set -Ux fifc_editor $EDITOR
 set -U fifc_fd_opts --hidden
-set -gxp PATH  /home/bageljr/.local/bin
+set -gxp PATH /home/bagel897/.local/bin
 set fish_greeting
 set -gx VDPAU_DRIVER radeonsi
 set -gx LIBVA_DRIVER_NAME radeonsi
@@ -29,9 +31,9 @@ alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 #alias 'cd'=z
 if test -n "$PYTHONPATH"
-    set -x PYTHONPATH '/home/bageljr/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/pep582' $PYTHONPATH
+    set -x PYTHONPATH '/home/bagel897/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/pep582' $PYTHONPATH
 else
-    set -x PYTHONPATH '/home/bageljr/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/pep582'
+    set -x PYTHONPATH '/home/bagel897/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/pep582'
 end
 function java-gui
     java --module-path /usr/lib/jvm/java-11-openjfx/lib --add-modules javafx.controls,javafx.fxml,javafx.web $argv
@@ -64,8 +66,8 @@ function ros-start
     ros
 end
 function compile_cmake
-  cmake -H. -BDebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
-  ln -s Debug/compile_commands.json .
+    cmake -H. -BDebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
+    ln -s Debug/compile_commands.json .
 end
 function vimdiff
     nvim -d $1
