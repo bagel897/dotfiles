@@ -1,8 +1,6 @@
 local wezterm = require("wezterm")
 
 return {
-	font_dirs = { "~/.local/share/fonts/" },
-	font = wezterm.font("FiraCode Nerd Font Mono"),
 	color_scheme = "Catppuccin Mocha",
 	ssh_domains = {
 		{
