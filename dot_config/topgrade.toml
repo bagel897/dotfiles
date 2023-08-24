@@ -1,3 +1,4 @@
+[misc]
 # Don't ask for confirmations
 #assume_yes = true
 
@@ -38,7 +39,6 @@ remote_topgrade_path = "topgrade"
 # Cleanup temporary or old files
 #cleanup = true
 skip_notify = true
-display_preamble = false
 [git]
 #max_concurrency = 5
 # Additional git repositories to pull

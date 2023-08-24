@@ -21,4 +21,3 @@ fi # added by Nix installer
 if shopt -q login_shell; then
 	fish && exit
 fi
-. "/home/bagel897/.local/share/cargo/env"
