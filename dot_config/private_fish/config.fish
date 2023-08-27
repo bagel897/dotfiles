@@ -27,6 +27,7 @@ alias 'grep'=rg
 alias 'du'=dust
 alias 'cat'="bat -p -p"
 alias 'find'=fd
+alias 'man'=batman
 alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 #alias 'cd'=z
