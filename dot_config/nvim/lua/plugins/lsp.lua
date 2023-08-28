@@ -16,6 +16,9 @@ return {
         },
         severity_sort = true,
       },
+      inlay_hints = {
+        enabled = true,
+      },
       -- add any global capabilities here
       capabilities = {},
       -- Automatically format on save
@@ -36,9 +39,10 @@ return {
         vimls = {},
         bashls = {},
         ruff_lsp = {},
-        cmake = {},
         esbonio = {},
         gradle_ls = {},
+        cmake = {},
+        clangd = {},
         pylsp = {
           pylsp = {
             plugins = {
