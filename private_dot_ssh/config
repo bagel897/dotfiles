@@ -24,6 +24,7 @@ Host aur.archlinux.org
   IdentityFile ~/.ssh/aur
   User aur
 Host cs
+    User bageljr
     Hostname trix.cs.utexas.edu
 Host hart2
     Hostname 146.6.20.198
