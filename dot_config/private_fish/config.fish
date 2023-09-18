@@ -31,12 +31,6 @@ alias 'man'=batman
 alias diff='diff --color=auto'
 alias ip='ip -color=auto'
 #alias 'cd'=z
-set PYTHON_VERSION "python$(python3 --version | sed 's/\.[0-9]*$//' | sed 's/Python //')"
-if test -n "$PYTHONPATH"
-    set -x PYTHONPATH "$HOME/.local/pipx/venvs/pdm/lib/$PYTHON_VERSION/site-packages/pdm/pep582" $PYTHONPATH
-else
-    set -x PYTHONPATH "$HOME/.local/pipx/venvs/pdm/lib/$PYTHON_VERSION/site-packages/pdm/pep582"
-end
 function java-gui
     java --module-path /usr/lib/jvm/java-11-openjfx/lib --add-modules javafx.controls,javafx.fxml,javafx.web $argv
 end
