@@ -20,9 +20,9 @@ set fish_greeting
 set -gx VDPAU_DRIVER radeonsi
 set -gx LIBVA_DRIVER_NAME radeonsi
 set -gxa NIX_PATH "REPEAT=/dev/null"
-set fzf_preview_dir_cmd exa --all --color=always
+set fzf_preview_dir_cmd eza --all --color=always
 alias 'vim'=$EDITOR
-alias 'ls'=exa
+alias 'ls'=eza
 alias 'grep'=rg
 alias 'du'=dust
 alias 'cat'="bat -p -p"
