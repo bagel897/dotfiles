@@ -10,12 +10,12 @@ fundle plugin sentriz/fish-pipenv
 fundle plugin franciscolourenco/done
 # fundle plugin "gazorby/fifc"
 fundle init
-export DENO_INSTALL="/home/bagel897/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 set -Ux fifc_editor $EDITOR
 set -U fifc_fd_opts --hidden
-set -gxp PATH /home/bagel897/.local/bin
+set -gxp PATH $HOME/.local/bin
 set fish_greeting
 set -gx VDPAU_DRIVER radeonsi
 set -gx LIBVA_DRIVER_NAME radeonsi
