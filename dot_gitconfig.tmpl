@@ -39,8 +39,12 @@
     colorMoved = default
 [push]
     autoSetupRemote = true
+{{if or (eq .chezmoi.hostname "Bagel-Max")  (eq .chezmoi.hostname "Bagel-Mini")}}
 [credential]
     helper = /usr/lib/git-core/git-credential-libsecret
+{{if eq .chezmoi.hostname "bagel-mini-fedora" }}
+[credential]
+    helper = /usr/libexec/git-core/git-credential-libsecret
 [credential "https://github.com"]
        helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]

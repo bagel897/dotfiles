@@ -5,17 +5,19 @@
       paths = [
 		pkgs.neovim
 		pkgs.fd
-		pkgs.exa
+		pkgs.eza
 		pkgs.fzf
 		pkgs.ripgrep
+    pkgs.du-dust
+    pkgs.btop
+    pkgs.mold
+    pkgs.gh
 		pkgs.delta
 		pkgs.fish
 		pkgs.git
-		pkgs.fish
 		pkgs.bat
 		pkgs.sccache
 		pkgs.chezmoi
-		pkgs.tree-sitter.allGrammars
 		pkgs.topgrade
 		pkgs.difftastic
       ];
