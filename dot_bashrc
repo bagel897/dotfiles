@@ -6,9 +6,10 @@
 [[ $- != *i* ]] && return
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
-export PATH=$PATH:~/.local/bin:~/.cargo/bin/
-if [ -e ~/.cargo/env ]; then
-	. "$HOME/.cargo/env"
+export CARGO_HOME=$HOME/.local/share/cargo
+export PATH=$PATH:~/.local/bin:$CARGO_HOME/bin/
+if [ -e $CARGO_HOME/env ]; then
+	. "$CARGO_HOME/env"
 fi
 if type -P nix-user-chroot > /dev/null; then
 	if ! [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
