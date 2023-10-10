@@ -3,6 +3,7 @@ ControlMaster auto
 ControlPersist yes
 ControlPath ~/.cache/ssh/mux/socket-%r@%h:%p
 ServerAliveInterval 120
+ServerAliveCountMax 2
 Host bagelpi
 	User bageljr
 	Port 6389
@@ -33,18 +34,15 @@ Host hart
 Host hart3
   Hostname 146.6.20.199
 Host rocketold
-  Hostname 10.157.95.31 
+  Hostname 10.157.95.28 
   User aa87445
 Host rocket
-  Hostname 10.157.95.28 
-  User aa87445
-Host rocketduck
-  Hostname 10.157.95.28 
-  User duck 
-Host rocketnew
   Hostname 10.157.95.31 
   User aa87445
-Host rocketducknew
+Host rocketduckold
+  Hostname 10.157.95.28 
+  User duck 
+Host rocketduck
   Hostname 10.157.95.31
   User duck 
 Host bagelzero
