@@ -4,50 +4,51 @@ ControlPersist yes
 ControlPath ~/.cache/ssh/mux/socket-%r@%h:%p
 ServerAliveInterval 120
 ServerAliveCountMax 2
+
 Host bagelpi
 	User bageljr
 	Port 6389
-	Hostname bageljr.com 
+	HostName bageljr.com
 
 Host bagelpilocal
     Port 6389
-    Hostname 192.168.3.129
+    HostName 192.168.3.129
 Host sampi
-	Hostname 192.168.3.144
+	HostName 192.168.3.144
 Host bagelgit
 	User git
 	Port 222
-	Hostname git.bageljr.com
+	HostName git.bageljr.com
 Host neogi
 	User neogi
-	Hostname 129.120.30.20
+	HostName 129.120.30.20
 Host aur.archlinux.org
   IdentityFile ~/.ssh/aur
   User aur
 Host cs
     User bageljr
-    Hostname trix.cs.utexas.edu
+    HostName trix.cs.utexas.edu
 Host hart2
-    Hostname 146.6.20.198
+    HostName 146.6.20.198
 Host hart
-  Hostname 146.6.20.207
+  HostName 146.6.20.207
 Host hart3
-  Hostname 146.6.20.199
+  HostName 146.6.20.199
 Host rocketold
-  Hostname 10.157.95.28 
+  HostName 10.157.95.28
   User aa87445
 Host rocket
-  Hostname 10.157.95.31 
+  HostName 10.157.95.31
   User aa87445
 Host rocketduckold
-  Hostname 10.157.95.28 
-  User duck 
+  HostName 10.157.95.28
+  User duck
 Host rocketduck
-  Hostname 10.157.95.31
-  User duck 
+  HostName 10.157.95.31
+  User duck
 Host bagelzero
 	User bageljr
-	Hostname     100.83.204.100
+	HostName     100.83.204.100
 	Port 6389
 Host bagelmax
-	Hostname 100.87.126.14
+	HostName 100.87.126.14
