@@ -1,4 +1,0 @@
-["~/.config/nvim/dependencies/lombok-1.18.26.jar"]
-type = "file"
-url = "https://github.com/snjeza/vscode-test/raw/master/lombok-1.18.26.jar"
-refreshPeriod = "168h"
