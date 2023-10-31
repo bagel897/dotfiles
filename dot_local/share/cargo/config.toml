@@ -1,0 +1,21 @@
+[registries.crates-io]
+protocol = "sparse"
+
+[target.x86_64-unknown-linux-gnu]
+rustflags = [
+  "-C",
+  "link-arg=-fuse-ld=/usr/bin/mold",
+  "-Clink-arg=-Wl,--no-rosegment",
+]
+[build]
+rustc-wrapper = "sccache"
+rustflags = [
+  "--cfg",
+  "tokio_unstable",
+  "-C",
+  "symbol-mangling-version=v0",
+  "-Ctarget-cpu=native",
+]
+[profile.release]
+lto = true
+opt-level = 2
