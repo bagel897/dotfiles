@@ -17,5 +17,5 @@ rustflags = [
   "-Ctarget-cpu=native",
 ]
 [profile.release]
-lto = true
+lto = "thin"
 opt-level = 2
