@@ -5,6 +5,10 @@ ControlPath ~/.cache/ssh/mux/socket-%r@%h:%p
 ServerAliveInterval 120
 ServerAliveCountMax 2
 
+Host rossbach
+	HostName caferri.csres.utexas.edu
+	User eagarwal
+
 Host bagelpi
 	User bageljr
 	Port 6389
