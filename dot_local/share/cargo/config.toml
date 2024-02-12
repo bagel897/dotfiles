@@ -7,6 +7,8 @@ rustflags = [
   "-C",
   "link-arg=-fuse-ld=/usr/bin/mold",
   "-Clink-arg=-Wl,--no-rosegment",
+  "--cfg",
+  "tokio_unstable",
 ]
 [build]
 rustc-wrapper = "sccache"
