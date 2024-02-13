@@ -1,14 +1,14 @@
 [user]
 	name = bagel897
 	email = ellenagarwal897@gmail.com	
-	signingkey = /home/bagel897/.ssh/id_ed25519_sk.pub
+	signingkey = /home/bagel897/.ssh/id_ed25519.pub
 [core]
 	autocrlf = input    
 	pager = delta
 	editor = nvim
 {{if or (eq .chezmoi.hostname "Bagel-Max") (eq .chezmoi.hostname "bagel-mini-fedora") (eq .chezmoi.hostname "Bagel-Mini")}}
 [commit]
-	gpgSign =false 
+	gpgSign = true 
 {{end}}
 [color]
 	ui = auto

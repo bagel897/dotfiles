@@ -16,6 +16,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 set -Ux fifc_editor $EDITOR
 set -U fifc_fd_opts --hidden
 set -gxp PATH $HOME/.local/bin
+set -gxp PATH $HOME/.local/share/bob/nvim-bin
 set fish_greeting
 set -gx VDPAU_DRIVER radeonsi
 set -gx LIBVA_DRIVER_NAME radeonsi
