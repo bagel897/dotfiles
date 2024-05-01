@@ -55,4 +55,7 @@ Host bagelzero
 	HostName     100.83.204.100
 	Port 6389
 Host bagelmax
-	HostName 100.87.126.14
+  HostName 100.87.126.14
+Host rsync
+  User de3623
+  HostName de3623.rsync.net
