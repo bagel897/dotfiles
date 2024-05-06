@@ -6,7 +6,7 @@
 	autocrlf = input    
 	pager = delta
 	editor = nvim
-{{if or (eq .chezmoi.hostname "Bagel-Max") (eq .chezmoi.hostname "bagel-mini-fedora") (eq .chezmoi.hostname "Bagel-Mini")}}
+{{if or (eq .chezmoi.hostname "bagel-mini-fedora") (eq .chezmoi.hostname "Bagel-Mini")}}
 [commit]
 	gpgSign = true 
 {{end}}
@@ -39,11 +39,7 @@
     colorMoved = default
 [push]
     autoSetupRemote = true
-{{if or (eq .chezmoi.hostname "Bagel-Max")  (eq .chezmoi.hostname "Bagel-Mini")}}
-[credential]
-    helper = /usr/lib/git-core/git-credential-libsecret
-{{end}}
-{{if eq .chezmoi.hostname "bagel-mini-fedora" }}
+{{if eq .chezmoi.osRelease.id "fedora" }}
 [credential]
     helper = /usr/libexec/git-core/git-credential-libsecret
 {{end}}

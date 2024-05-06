@@ -5,39 +5,18 @@ ControlPath ~/.cache/ssh/mux/socket-%r@%h:%p
 ServerAliveInterval 120
 ServerAliveCountMax 2
 
-Host rossbach
-	HostName caferri.csres.utexas.edu
-	User eagarwal
-
 Host bagelpi
 	User bageljr
 	Port 6389
 	HostName bageljr.com
-
 Host bagelpilocal
     Port 6389
     HostName 192.168.3.129
 Host sampi
 	HostName 192.168.3.144
-Host bagelgit
-	User git
-	Port 222
-	HostName git.bageljr.com
-Host neogi
-	User neogi
-	HostName 129.120.30.20
 Host aur.archlinux.org
   IdentityFile ~/.ssh/aur
   User aur
-Host cs
-    User bageljr
-    HostName trix.cs.utexas.edu
-Host hart2
-    HostName 146.6.20.198
-Host hart
-  HostName 146.6.20.207
-Host hart3
-  HostName 146.6.20.199
 Host rocketold
   HostName 10.157.95.28
   User aa87445
@@ -50,12 +29,6 @@ Host rocketduckold
 Host rocketduck
   HostName 10.157.95.31
   User duck
-Host bagelzero
-	User bageljr
-	HostName     100.83.204.100
-	Port 6389
-Host bagelmax
-  HostName 100.87.126.14
 Host rsync
   User de3623
   HostName de3623.rsync.net
