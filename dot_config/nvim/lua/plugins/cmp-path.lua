@@ -6,4 +6,5 @@ return {
     local cmp = require("cmp")
     opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" }, { name = "path" } }))
   end,
+  enabled = false,
 }
