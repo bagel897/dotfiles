@@ -9,7 +9,7 @@
 		pkgs.fzf
 		pkgs.ripgrep
     pkgs.du-dust
-    pkgs.btop
+    # pkgs.btop
     pkgs.mold
     pkgs.gh
 		pkgs.delta

@@ -9,7 +9,7 @@ table.insert(config.hyperlink_rules, {
 	regex = [[\b[tt](\d+)\b]],
 	format = "https://example.com/tasks/?t=$1",
 })
-config.hide_mouse_cursor_when_typing = false
+-- config.hide_mouse_cursor_when_typing = false
 -- make username/project paths clickable. this implies paths like the following are for github.
 -- ( "nvim-treesitter/nvim-treesitter" | wbthomason/packer.nvim | wez/wezterm | "wez/wezterm.git" )
 -- as long as a full url hyperlink regex exists above this it should not match a full url to

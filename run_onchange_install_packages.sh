@@ -7,7 +7,7 @@ if type -P pacman >/dev/null; then
 		cd paru
 		makepkg -si
 	fi
-	paru -S --needed neovim fd exa fzf ripgrep git-delta python-pipx topgrade
+	paru -S --needed neovim fd exa fzf ripgrep git-delta uv topgrade
 else
 	if type -P dnf >/dev/null; then
 		echo "Skipping, on fedora"

@@ -39,3 +39,4 @@ function windows
     sudo reboot
 end
 # eval "$(pdm --pep582)"
+set -e WAYLAND_DISPLAY
