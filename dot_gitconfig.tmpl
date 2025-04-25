@@ -38,8 +38,10 @@
     external = difft
     colorMoved = default
 [push]
-    autoSetupRemote = true
-{{if eq .chezmoi.osRelease.id "fedora" }}
+  autoSetupRemote = true
+{{ if eq .chezmoi.os "darwin" }}
+
+{{ else if eq .chezmoi.osRelease.id "fedora" }}
 [credential]
     helper = /usr/libexec/git-core/git-credential-libsecret
 {{end}}
