@@ -5,4 +5,5 @@ return {
       pylsp = { mason = false, settings = { rope_autoimport = { enabled = true } } },
     },
   },
+  enabled = false,
 }

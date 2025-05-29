@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Signal
-Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=signal-desktop --file-forwarding org.signal.Signal --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland --use-tray-icon --start-in-tray @@u %U @@
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=signal-desktop --file-forwarding org.signal.Signal --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland --use-tray-icon --start-in-tray --password-store=gnome-libsecret @@u %U @@
 Terminal=false
 Type=Application
 Icon=org.signal.Signal

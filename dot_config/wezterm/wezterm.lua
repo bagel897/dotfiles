@@ -18,6 +18,7 @@ table.insert(config.hyperlink_rules, {
 -- 	regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
 -- 	format = "https://www.github.com/$1/$3",
 -- })
+config.dpi = 192.0
 config.ssh_domains = wezterm.default_ssh_domains()
 -- config.ssh_domains = {
 --
