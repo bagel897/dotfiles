@@ -3,7 +3,7 @@
 assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["helm", "github_cli_extensions"]
+disable = ["helm", "github_cli_extensions", "uv"]
 
 # Ignore failures for these steps
 #ignore_failures = ["powershell"]
@@ -29,7 +29,7 @@ remote_topgrade_path = "topgrade"
 # Arguments to pass tmux when pulling Repositories
 #tmux_arguments = "-S /var/tmux.sock"
 
-# Do not set the terminal title
+# Do not set the terminal titlegzip
 #set_title = false
 
 # Display the time in step titles
@@ -63,6 +63,7 @@ skip_notify = true
 [commands]
 "fish_update_completions" = "fish_update_completions"
 "collect_garbage" = "nix-collect-garbage -d"
+"uv" = "uv tool upgrade --all"
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
 
 [brew]
